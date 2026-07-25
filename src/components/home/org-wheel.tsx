@@ -245,16 +245,9 @@ export const OrgWheel: React.FC = () => {
                 </div>
 
                 {/* Sub-Tree Extensions for specific nodes */}
-                {[
-                  "legal",
-                  "finance",
-                  "engineering",
-                  "sales",
-                  "marketing",
-                  "design",
-                  "support",
-                  "operations",
-                ].includes(dept.id) && <SubTreeExtension angle={dept.angle} />}
+                {DEPARTMENTS.map((m) => m.id).includes(dept.id) && (
+                  <SubTreeExtension angle={dept.angle} />
+                )}
               </div>
             );
           })}

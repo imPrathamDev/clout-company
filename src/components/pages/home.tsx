@@ -5,6 +5,7 @@ import Navbar from "../nav/nav-bar";
 import Clients from "../home/clients";
 import OrgWheel from "../home/org-wheel";
 import Wheel from "../home/wheel";
+import { BookCard } from "../home/card";
 
 function HomePage() {
   return (
@@ -14,7 +15,7 @@ function HomePage() {
       <HeroDivider />
       <Clients />
       <Wheel />
-      <section className="h-[200vh] w-full"></section>
+      <section className="h-[200vh] w-full flex items-center justify-center"></section>
     </main>
   );
 }
