@@ -44,3 +44,7 @@ body {
     0 0 2px #00000040,
     0 0 0 4px #fefffc52;
 }
+
+.footer-gradient {
+  background: linear-gradient(#fff0 75%, #000000d1);
+}

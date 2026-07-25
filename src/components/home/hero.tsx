@@ -1,13 +1,52 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import DisplayTime from "./time";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(useGSAP, SplitText);
 
 export type NavbarTheme = "light" | "dark";
 
 export const Hero: React.FC = () => {
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
+  useGSAP(
+    () => {
+      const split = SplitText.create(textRef.current, {
+        type: "words",
+      });
+
+      gsap.set(split.words, {
+        opacity: 0,
+        filter: "blur(10px)",
+        y: "50%",
+        willChange: "opacity,filter,transform",
+      });
+
+      gsap.set(textRef.current, {
+        opacity: 1,
+      });
+
+      gsap.to(split.words, {
+        opacity: 1,
+        filter: "blur(0px)",
+        y: "0%",
+        ease: "power3.inOut",
+        duration: 1,
+        stagger: 0.2,
+      });
+    },
+    {
+      scope: containerRef,
+    },
+  );
   return (
-    <div id="hero" data-navbar-theme="dark" className="">
+    <div ref={containerRef} id="hero" data-navbar-theme="dark" className="">
       {/* Full-width container breakout */}
       <section
         className="relative w-full"
@@ -35,7 +74,8 @@ export const Hero: React.FC = () => {
             <div className="max-w-360 mx-auto w-full h-full flex-1">
               {/* Main Headline */}
               <h1
-                className="tracking-[-1.08px] home-hero-title font-serif text-background text-center relative z-10 font-normal max-w-[24ch] mx-auto pt-4 md:pt-10 text-[16px] sm:text-[24px] lg:text-[27px] 3xl:text-[32px]"
+                ref={textRef}
+                className="opacity-0 tracking-[-1.08px] home-hero-title font-serif text-background text-center relative z-10 font-normal max-w-[24ch] mx-auto pt-4 md:pt-10 text-[16px] sm:text-[24px] lg:text-[27px] 3xl:text-[32px]"
                 style={{ textShadow: "0 0 4.978px rgba(255, 255, 255, 0.80)" }}
               >
                 The Clout Company

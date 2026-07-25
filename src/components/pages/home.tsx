@@ -6,6 +6,8 @@ import Clients from "../home/clients";
 import OrgWheel from "../home/org-wheel";
 import Wheel from "../home/wheel";
 import { BookCard } from "../home/card";
+import WordSearchReveal from "../home/word-search-reveal";
+import Footer from "../footer";
 
 function HomePage() {
   return (
@@ -15,7 +17,9 @@ function HomePage() {
       <HeroDivider />
       <Clients />
       <Wheel />
-      <section className="h-[200vh] w-full flex items-center justify-center"></section>
+      <WordSearchReveal />
+      <section className="h-[100vh] w-full flex items-center justify-center"></section>
+      <Footer />
     </main>
   );
 }

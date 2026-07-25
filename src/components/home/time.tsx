@@ -8,8 +8,8 @@ function DisplayTime() {
     "Europe/London",
   );
   return (
-    <div className="absolute top-6 right-4 z-103 md:flex items-center hidden">
-      <svg
+    <div className="md:flex items-center hidden">
+      {/* <svg
         xmlns="http://www.w3.org/2000/svg"
         width="12"
         height="12"
@@ -31,11 +31,11 @@ function DisplayTime() {
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-      </svg>
-      <span className="ml-2.5 font-af text-[13px] font-medium leading-[140%] tracking-[-0.15px] tabular-nums text-background">
+      </svg> */}
+      <span className="ml-2.5 text-[13px] font-medium leading-[140%] tracking-[-0.15px] tabular-nums text-foreground">
         {hours}:{minutes}:{seconds} {period}
       </span>
-      <span className="ml-3 font-af text-[13px] font-medium leading-[140%] tracking-[-0.15px] text-background/60">
+      <span className="ml-3 font-af text-[13px] font-medium leading-[140%] tracking-[-0.15px] text-foreground/60">
         London, UK
       </span>
     </div>
