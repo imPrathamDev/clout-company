@@ -204,13 +204,13 @@ export const OrgWheel: React.FC = () => {
           {/* --- Center Node (Cofounder) --- */}
           <div className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10">
             {/* Sunflower Icon */}
-            <div className="text-2xl mb-1 filter drop-shadow-sm transform hover:scale-110 transition-transform cursor-pointer">
+            <div className="filter drop-shadow-sm -mb-2">
               <Image
-                src={"/assets/images/dog.png"}
+                src={"/assets/images/logo/logo.png"}
                 alt=""
                 width={60}
-                height={60}
-                className="object-contain"
+                height={30}
+                className="h-auto object-contain"
               />
             </div>
 
@@ -240,7 +240,7 @@ export const OrgWheel: React.FC = () => {
                 {dept.status && <StatusBadge {...dept.status} />}
 
                 {/* Department Card */}
-                <div className="w-[84px] py-2.5 px-2 rounded-md border border-black/10 bg-[#FBFBF8] shadow-[0_2px_8px_rgba(0,0,0,0.04)] text-center text-xs text-stone-700 tracking-wide font-normal hover:border-stone-400 hover:shadow-md transition-all cursor-pointer">
+                <div className="w-21 py-2.5 px-2 rounded-md border border-black/10 bg-[#FBFBF8] shadow-[0_2px_8px_rgba(0,0,0,0.04)] text-center text-xs text-stone-700 tracking-wide font-normal hover:border-stone-400 hover:shadow-md transition-all cursor-pointer">
                   {dept.label}
                 </div>
 

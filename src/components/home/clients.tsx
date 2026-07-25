@@ -11,13 +11,17 @@ gsap.registerPlugin(useGSAP);
 const logos = [
   "logo1.png",
   "logo2.png",
-  "logo3.png",
+  // "logo3.png",
   "logo4.png",
   "logo5.png",
   "logo6.png",
+  "logo7.png",
+  "logo8.png",
+  "logo9.png",
+  "logo10.png",
 ];
 
-const GRID_SIZE = 4;
+const GRID_SIZE = 5;
 const CYCLE_INTERVAL = 5000; // fires every 5s
 const MIN_SWAPS = 2; // how many slots change per cycle
 const MAX_SWAPS = 4;
@@ -142,14 +146,14 @@ function Clients() {
       ref={containerRef}
       className="py-24 flex flex-col items-center justify-center gap-4"
     >
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-5 gap-4">
         {slots.map((slot, index) => (
           <div
             key={slot.slotId}
             className="cursor-pointer group relative flex items-center justify-center p-4 md:p-5 rounded-xl bg-[#f8f9f5] border border-[#e8ece0] transition-all duration-300 hover:border-[#383a35]/20 hover:shadow-sm"
           >
             {/* Paw Icon Container */}
-            <div className="-z-1 absolute -top-5 right-0 opacity-0 translate-y-2 scale-75 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 pointer-events-none">
+            {/* <div className="-z-1 absolute -top-5 right-0 opacity-0 translate-y-2 scale-75 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 pointer-events-none">
               <div className="animate-wave origin-bottom-center">
                 <Image
                   src="/assets/images/paw.png" // Replace with your paw image path
@@ -159,7 +163,7 @@ function Clients() {
                   className="w-7 h-7 object-contain drop-shadow-md"
                 />
               </div>
-            </div>
+            </div> */}
 
             {/* Client Logo Slot */}
             <div
