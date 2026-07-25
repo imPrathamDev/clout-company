@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import DisplayTime from "./time";
 
+export type NavbarTheme = "light" | "dark";
+
 export const Hero: React.FC = () => {
   return (
     <div id="hero" data-navbar-theme="dark" className="">
