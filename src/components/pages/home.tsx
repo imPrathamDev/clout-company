@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "../home/hero";
 import HeroDivider from "../home/hero-divider";
 import Navbar from "../nav/nav-bar";
+import Clients from "../home/clients";
 
 function HomePage() {
   return (
@@ -9,6 +10,7 @@ function HomePage() {
       <Navbar />
       <Hero />
       <HeroDivider />
+      <Clients />
       <section className="h-[200vh] w-full"></section>
     </main>
   );

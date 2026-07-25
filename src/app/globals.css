@@ -16,3 +16,20 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+@keyframes wave-paw {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+}
+
+.animate-wave {
+  animation: wave-paw 0.8s ease-in-out infinite;
+}

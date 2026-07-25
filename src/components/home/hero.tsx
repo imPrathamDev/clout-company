@@ -19,12 +19,12 @@ export const Hero: React.FC = () => {
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
-              src="/assets/images/hero-spring-1.png"
+              src="/assets/images/new-her.png"
               alt="Background Hero Image"
               fill
               priority
               sizes="100vw"
-              className="object-cover object-[50%_40%]"
+              className="object-cover w-full object-[50%_30%]"
             />
           </div>
 
@@ -33,12 +33,14 @@ export const Hero: React.FC = () => {
             <div className="max-w-360 mx-auto w-full h-full flex-1">
               {/* Main Headline */}
               <h1
-                className="tracking-[-1.08px] leading-none home-hero-title font-serif text-background text-center relative z-10 font-normal max-w-[24ch] mx-auto pt-4 md:pt-10 text-[16px] sm:text-[24px] lg:text-[46px] 3xl:text-[46px]"
+                className="tracking-[-1.08px] home-hero-title font-serif text-background text-center relative z-10 font-normal max-w-[24ch] mx-auto pt-4 md:pt-10 text-[16px] sm:text-[24px] lg:text-[27px] 3xl:text-[32px]"
                 style={{ textShadow: "0 0 4.978px rgba(255, 255, 255, 0.80)" }}
               >
                 The Clout Company
                 <br />
-                <span className="text-[40px]">by Crescent</span>
+                <span className="flex items-center justify-center gap-2">
+                  <span className="italic">by </span> Crescent
+                </span>
               </h1>
 
               {/* Tagline / Sub-description (Bottom Right Desktop Layout) */}
@@ -146,8 +148,7 @@ export const Hero: React.FC = () => {
                 <div className="p-5 lg:p-8 lg:pr-6 relative rounded-2xl backdrop-blur-[15px] border border-background/20 shadow-[0_2px_6px_0_rgba(0,0,0,0.15)] bg-linear-to-r from-foreground/10 via-foreground/5 to-foreground/5 max-w-125">
                   <div className="flex relative z-10 flex-col gap-4 items-start">
                     <h2 className="font-medium font-serif text-[22px] sm:text-[28px] xl:text-[40px] leading-[120%] md:leading-[110%] tracking-[-0.44px] sm:tracking-[-0.56px] xl:tracking-[-0.8px] text-background max-w-[25ch] text-left mb-2">
-                      The Distribution OS for Category Defining Consumer
-                      Companies.
+                      The Distribution OS for Consumer Companies.
                     </h2>
                     <p className="font-medium text-background text-[15px] leading-[140%] max-w-[42ch] tracking-[-0.15px]">
                       The Clout Company engineers systems to enable distribution
@@ -220,7 +221,7 @@ export const Hero: React.FC = () => {
               </div>
 
               {/* Location / Clock Widget Header (Top Right) */}
-              <DisplayTime />
+              {/* <DisplayTime /> */}
             </div>
           </div>
         </div>
