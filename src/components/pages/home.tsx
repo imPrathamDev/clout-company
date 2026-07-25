@@ -3,6 +3,8 @@ import Hero from "../home/hero";
 import HeroDivider from "../home/hero-divider";
 import Navbar from "../nav/nav-bar";
 import Clients from "../home/clients";
+import OrgWheel from "../home/org-wheel";
+import Wheel from "../home/wheel";
 
 function HomePage() {
   return (
@@ -11,6 +13,7 @@ function HomePage() {
       <Hero />
       <HeroDivider />
       <Clients />
+      <Wheel />
       <section className="h-[200vh] w-full"></section>
     </main>
   );

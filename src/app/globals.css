@@ -33,3 +33,14 @@ body {
 .animate-wave {
   animation: wave-paw 0.8s ease-in-out infinite;
 }
+
+.orch-frame {
+  contain: layout paint;
+  will-change: transform;
+  background: #f1f1ee;
+  box-shadow:
+    inset 0 0 0.357px 1.5px #ffffff59,
+    inset 0 2px #fff,
+    0 0 2px #00000040,
+    0 0 0 4px #fefffc52;
+}
