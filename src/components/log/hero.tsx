@@ -46,7 +46,7 @@ function Hero() {
                   padding: "10px 14px 10px 16px",
                 }}
               >
-                Read article
+                Explore our thinking
                 <div
                   className="flex items-center justify-center w-3 h-4 pl-[2.5px] pr-[1.5px] rounded-full"
                   style={{

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Instrument_Serif, Instrument_Sans } from "next/font/google";
 import "./globals.css";
+import CookieConsent from "@/components/cookie";
+import MachineToggle from "@/components/machine-toggle";
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
@@ -26,7 +28,11 @@ export default function RootLayout({
       lang="en"
       className={`${instrumentSerif.variable} ${instrumentSans.variable} h-full antialiased`}
     >
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {children}
+        <CookieConsent />
+        <MachineToggle />
+      </body>
     </html>
   );
 }

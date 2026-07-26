@@ -95,7 +95,10 @@ function Footer() {
         style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
       >
         <div className="relative h-[calc(100vh+500px)] -top-[100vh]">
-          <div className="h-[500px] sticky top-[calc(100vh-500px)]">
+          <div
+            data-navbar-theme="dark"
+            className="h-[500px] sticky top-[calc(100vh-500px)]"
+          >
             <section className="relative h-full w-full overflow-hidden">
               <div className="absolute w-screen h-full z-10 footer-gradient"></div>
               <div className="max-w-[1280px] mx-auto px-5 pb-5 absolute z-10 bottom-0 left-0 right-0 flex flex-col-reverse sm:flex-row justify-between items-center">
