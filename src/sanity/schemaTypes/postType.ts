@@ -46,7 +46,6 @@ export const postType = defineType({
       name: "content",
       title: "Full Case Study Content",
       type: "array",
-      group: "content",
       of: [
         // Standard text blocks
         {
@@ -242,7 +241,6 @@ export const postType = defineType({
       name: "seo",
       title: "SEO Settings",
       type: "object",
-      group: "seo",
       fields: [
         defineField({
           name: "metaTitle",
@@ -296,12 +294,10 @@ export const postType = defineType({
   preview: {
     select: {
       title: "title",
-      author: "author.name",
       media: "mainImage",
     },
     prepare(selection) {
-      const { author } = selection;
-      return { ...selection, subtitle: author && `by ${author}` };
+      return { ...selection };
     },
   },
 });
