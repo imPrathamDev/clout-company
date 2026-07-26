@@ -11,14 +11,16 @@ const Card = ({ item }: { item: LogListItem }) => {
     <Link href={"/log/" + item.slug} className="group">
       <div className="p-1 rounded-2xl transition-colors duration-300 group-hover:bg-gray-200/80">
         <div className="w-full aspect-square rounded-xl relative overflow-hidden">
-          <Image
-            src={urlFor(item.mainImage).url()!}
-            fill
-            alt={item.mainImage.alt ?? item.title}
-            placeholder="blur"
-            blurDataURL={item.mainImage.asset.metadata.lqip}
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
-          />
+          {item.mainImage && (
+            <Image
+              src={urlFor(item.mainImage).url()!}
+              fill
+              alt={item.mainImage.alt ?? item.title}
+              placeholder="blur"
+              blurDataURL={item.mainImage.asset.metadata.lqip}
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          )}
 
           <GradualBlurMemo
             target="parent"
