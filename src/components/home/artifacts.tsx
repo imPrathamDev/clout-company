@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import React from "react";
+import { SegmentedProgressBar } from "@/components/segmented-progress-bar";
+import Link from "next/link";
 
 const artifacts_array = [
   {
@@ -14,6 +16,7 @@ const artifacts_array = [
       primary: {
         label: "Engagement Rate",
         value: "42%",
+        isProgress: true,
       },
       secondary: [
         {
@@ -45,6 +48,7 @@ const artifacts_array = [
       primary: {
         label: "Activation Rate",
         value: "61%",
+        isProgress: true,
       },
       secondary: [
         {
@@ -76,6 +80,7 @@ const artifacts_array = [
       primary: {
         label: "Organic Views",
         value: "500M+",
+        isProgress: false,
       },
       secondary: [
         {
@@ -189,8 +194,8 @@ function Artifacts() {
               key={data.label}
               className="flex flex-col gap-y-8 min-[1280px]:flex-row min-[1280px]:items-center min-[1280px]:gap-y-0"
             >
-              <div className="flex flex-col min-[768px]:flex-row shrink-0 gap-y-4 max-[1280px]:gap-x-[40px] min-[1280px]:w-[290px] min-[1280px]:flex-col">
-                <div className="rounded-xl bg-[#f8f9f5] border border-[#e8ece0] size-20 flex items-center justify-center">
+              <div className="flex flex-col min-[768px]:flex-row shrink-0 gap-y-6 max-[1280px]:gap-x-[40px] min-[1280px]:w-[290px] min-[1280px]:flex-col">
+                <div className="rounded-xl bg-[#f8f9f5] border border-[#e8ece0] size-24 flex items-center justify-center">
                   <Image
                     alt=""
                     src={"/assets/images/folder.svg"}
@@ -201,13 +206,41 @@ function Artifacts() {
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  <h3 className="m-0 text-[16px] min-[767px]:text-[20px] min-[1000px]:text-[26px] font-medium leading-[115%] text-foreground/80">
+                  <h5 className="m-0 text-[16px] min-[767px]:text-[20px] min-[1000px]:text-[26px] font-medium leading-[115%] text-foreground/80">
                     {data.label}
+                  </h5>
+
+                  <h3 className="m-0 text-[22px] min-[767px]:text-[26px] min-[1000px]:text-[32px] font-medium leading-[115%] text-foreground">
+                    {data.title}
                   </h3>
 
-                  <p className="uppercase m-0 text-[16px] min-[767px]:text-[20px] min-[1000px]:text-[16px] font-normal leading-[115%] text-foreground/65">
+                  <p className="uppercase m-0 text-[14px] min-[767px]:text-[18px] min-[1000px]:text-[14px] font-normal leading-[115%] text-foreground/65">
                     {data.campaign_name}
                   </p>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div className="h-[5vh]"></div>
+                  <Link
+                    href={"/contact"}
+                    className="text-[13px] text-foreground/80 group flex items-center gap-[6px]"
+                  >
+                    enter the chat{" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1}
+                      stroke="currentColor"
+                      className="size-4 text-foreground/70 opacity-0 -translate-x-2 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                      />
+                    </svg>
+                  </Link>
                 </div>
               </div>
 
@@ -226,7 +259,7 @@ function Artifacts() {
                       }}
                       className="relative min-[768px]:w-[427px] h-[386px] min-[768px]:h-[330px] rounded-[12px] bg-surface overflow-hidden flex flex-col"
                     >
-                      <div className="flex justify-between px-4 py-4">
+                      <div className="border-b border-gray-200/60 flex justify-between px-4 py-2">
                         <div className="flex items-center gap-4 text-[10px]">
                           <div className="flex items-center gap-2">
                             <div className="size-2 rounded-full bg-[#FF605C]"></div>
@@ -332,7 +365,7 @@ function Artifacts() {
                       </div>
                       <div className="px-1 flex flex-1">
                         <div className="bg-gray-200/30 rounded-xl flex-1 p-6 px-6">
-                          <div className="h-[280px] w-full flex flex-col gap-3">
+                          <div className="h-full w-full flex flex-col gap-3">
                             <div className="space-y-1.5">
                               <p className="text-[9px]">
                                 {data.stats.primary.label}
@@ -340,6 +373,18 @@ function Artifacts() {
                               <h5 className="text-4xl font-medium">
                                 {data.stats.primary.value}
                               </h5>
+                              <div className="w-full relative flex">
+                                {data.stats.primary.isProgress && (
+                                  <SegmentedProgressBar
+                                    progress={Number(
+                                      data.stats.primary.value.substring(0, 2),
+                                    )}
+                                    scrollStart="top 80%"
+                                    activeColor="bg-[#86CEFF]"
+                                    inactiveColor="bg-foreground/90"
+                                  />
+                                )}
+                              </div>
                             </div>
 
                             <div className="flex-1 flex flex-col gap-2">
