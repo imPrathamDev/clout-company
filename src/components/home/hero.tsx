@@ -10,7 +10,7 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
-export type NavbarTheme = "light" | "dark";
+// export type NavbarTheme = "light" | "dark";
 
 export const Hero: React.FC = () => {
   const containerRef = useRef(null);
@@ -60,7 +60,7 @@ export const Hero: React.FC = () => {
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
-              src="/assets/images/new-her.png"
+              src="/assets/images/hero/hero-morning.jpg"
               alt="Background Hero Image"
               fill
               priority
