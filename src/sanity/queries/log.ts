@@ -63,7 +63,7 @@ export interface Category {
 export interface LogListItem {
   _id: string;
   title: string;
-  mainImage: SanityImage;
+  mainImage?: SanityImage;
   slug: string;
   publishedAt: string;
   categories: Category[] | null;
@@ -74,13 +74,7 @@ export interface LogDetail {
   title: string;
   slug: string;
   publishedAt: string;
-  mainImage?: {
-    asset: {
-      _ref: string;
-      url: string;
-    };
-    alt?: string;
-  };
+  mainImage?: SanityImage;
   categories: Category[] | null;
   content: PortableTextBlock[];
   seo?: {
@@ -164,13 +158,7 @@ export async function getLogBySlug(slug: string): Promise<LogDetail | null> {
     title,
     "slug": slug.current,
     publishedAt,
-    mainImage {
-      ...,
-      asset->{
-        _id,
-        url
-      }
-    },
+    mainImage { ${IMAGE_FIELDS} },
     "categories": categories[]->{
       _id,
       title,
