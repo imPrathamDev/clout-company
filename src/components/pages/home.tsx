@@ -8,6 +8,7 @@ import Wheel from "../home/wheel";
 import { BookCard } from "../home/card";
 import WordSearchReveal from "../home/word-search-reveal";
 import Footer from "../footer";
+import Artifacts from "../home/artifacts";
 
 function HomePage() {
   return (
@@ -17,8 +18,8 @@ function HomePage() {
       <HeroDivider />
       <Clients />
       <Wheel />
+      <Artifacts />
       <WordSearchReveal />
-      <section className="h-[100vh] w-full flex items-center justify-center"></section>
       <Footer />
     </main>
   );
