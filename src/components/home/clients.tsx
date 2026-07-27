@@ -5,21 +5,22 @@ import gsap from "gsap";
 import Image from "next/image";
 import React, { useCallback, useRef, useState } from "react";
 import { SmoothCounter } from "./smooth-counter";
+import { ClientLogo } from "@/sanity/queries/clinetsLogo";
 
 gsap.registerPlugin(useGSAP);
 
-const logos = [
-  "logo1.png",
-  "logo2.png",
-  // "logo3.png",
-  "logo4.png",
-  "logo5.png",
-  "logo6.png",
-  "logo7.png",
-  "logo8.png",
-  "logo9.png",
-  "logo10.png",
-];
+// const logos = [
+//   "logo1.png",
+//   "logo2.png",
+//   // "logo3.png",
+//   "logo4.png",
+//   "logo5.png",
+//   "logo6.png",
+//   "logo7.png",
+//   "logo8.png",
+//   "logo9.png",
+//   "logo10.png",
+// ];
 
 const GRID_SIZE = 5;
 const CYCLE_INTERVAL = 5000; // fires every 5s
@@ -37,7 +38,7 @@ function shuffleArray<T>(arr: T[]) {
   return a;
 }
 
-function Clients() {
+function Clients({ clientLogos }: { clientLogos: ClientLogo[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const imgWrapRefs = useRef<(HTMLDivElement | null)[]>([]);
   const animatingSlots = useRef<Set<number>>(new Set());
@@ -46,7 +47,9 @@ function Clients() {
 
   // Deterministic initial order — identical on server & client.
   const [slots, setSlots] = useState<Slot[]>(() =>
-    logos.slice(0, GRID_SIZE).map((logo, i) => ({ slotId: i, logo: logo })),
+    clientLogos
+      .slice(0, GRID_SIZE)
+      .map((logo, i) => ({ slotId: i, logo: logo.logoUrl })),
   );
 
   // always-fresh snapshot for interval/timeout closures
@@ -61,15 +64,16 @@ function Clients() {
 
     const currentLogos = slotsRef.current.map((s) => s.logo);
     const reservedLogos = Array.from(pendingLogos.current.values());
-    const pool = logos.filter(
-      (l) => !currentLogos.includes(l) && !reservedLogos.includes(l),
+    const pool = clientLogos.filter(
+      (l) =>
+        !currentLogos.includes(l.logoUrl) && !reservedLogos.includes(l.logoUrl),
     );
     if (pool.length === 0) return;
 
     const nextLogo = pool[Math.floor(Math.random() * pool.length)];
 
     animatingSlots.current.add(slotId);
-    pendingLogos.current.set(slotId, nextLogo); // reserve it right away
+    pendingLogos.current.set(slotId, nextLogo.logoUrl); // reserve it right away
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -86,7 +90,9 @@ function Clients() {
       ease: "power2.in",
       onComplete: () => {
         setSlots((prev) =>
-          prev.map((s) => (s.slotId === slotId ? { ...s, logo: nextLogo } : s)),
+          prev.map((s) =>
+            s.slotId === slotId ? { ...s, logo: nextLogo.logoUrl } : s,
+          ),
         );
       },
     })
@@ -107,9 +113,9 @@ function Clients() {
       if (!hasMounted.current) {
         hasMounted.current = true;
         setSlots(
-          shuffleArray(logos)
+          shuffleArray(clientLogos)
             .slice(0, GRID_SIZE)
-            .map((logo, i) => ({ slotId: i, logo: logo })),
+            .map((logo, i) => ({ slotId: i, logo: logo.logoUrl })),
         );
       }
 

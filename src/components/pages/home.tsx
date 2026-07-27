@@ -11,14 +11,15 @@ import Footer from "../footer";
 import Artifacts from "../home/artifacts";
 import SocialMediaFlowChart from "../home/social-media-flow-chart";
 import SocialPlatforms from "../home/social-platforms";
+import { ClientLogo } from "@/sanity/queries/clinetsLogo";
 
-function HomePage() {
+function HomePage({ clientLogos }: { clientLogos: ClientLogo[] }) {
   return (
     <main className="overflow-x-clip">
       <Navbar />
       <Hero />
       <HeroDivider />
-      <Clients />
+      <Clients clientLogos={clientLogos} />
       <Wheel />
       <Artifacts />
       <SocialPlatforms />
