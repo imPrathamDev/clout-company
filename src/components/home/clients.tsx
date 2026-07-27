@@ -45,7 +45,6 @@ function Clients() {
   const hasMounted = useRef(false);
 
   // Deterministic initial order — identical on server & client.
-  // NO Math.random() here, otherwise you get a hydration mismatch.
   const [slots, setSlots] = useState<Slot[]>(() =>
     logos.slice(0, GRID_SIZE).map((logo, i) => ({ slotId: i, logo: logo })),
   );
@@ -104,8 +103,7 @@ function Clients() {
 
   useGSAP(
     () => {
-      // First real shuffle happens client-side only, after hydration —
-      // this is the safe place for randomness, not in useState().
+      // First real shuffle happens client-side only, after hydration
       if (!hasMounted.current) {
         hasMounted.current = true;
         setSlots(
@@ -116,12 +114,21 @@ function Clients() {
       }
 
       const runCycle = () => {
-        const swapCount =
-          MIN_SWAPS + Math.floor(Math.random() * (MAX_SWAPS - MIN_SWAPS + 1));
+        // Detect if mobile (so we don't swap slots that are hidden via CSS)
+        const isMobile = window.innerWidth < 768;
+        const activeSlotIds = slotsRef.current
+          .filter((_, i) => (isMobile ? i < 4 : true))
+          .map((s) => s.slotId);
 
-        const targetSlotIds = shuffleArray(
-          slotsRef.current.map((s) => s.slotId),
-        ).slice(0, swapCount);
+        // Adjust max possible swaps if mobile grid only shows 4 items
+        const maxPossibleSwaps = Math.min(MAX_SWAPS, activeSlotIds.length);
+        const minPossibleSwaps = Math.min(MIN_SWAPS, activeSlotIds.length);
+
+        const swapCount =
+          minPossibleSwaps +
+          Math.floor(Math.random() * (maxPossibleSwaps - minPossibleSwaps + 1));
+
+        const targetSlotIds = shuffleArray(activeSlotIds).slice(0, swapCount);
 
         targetSlotIds.forEach((slotId) => {
           const delay = Math.random() * STAGGER_WINDOW;
@@ -129,48 +136,46 @@ function Clients() {
         });
       };
 
+      // FIX: Use GSAP's delayedCall loop instead of setInterval to prevent mobile browser throttling.
+      let cycleTimer: gsap.core.Tween;
+      const startLoop = () => {
+        runCycle();
+        cycleTimer = gsap.delayedCall(CYCLE_INTERVAL / 1000, startLoop);
+      };
+
       // slight offset so the first cycle doesn't collide with the mount shuffle
-      const firstCycle = gsap.delayedCall(0.6, runCycle);
-      const interval = setInterval(runCycle, CYCLE_INTERVAL);
+      const firstCycle = gsap.delayedCall(0.6, startLoop);
 
       return () => {
         firstCycle.kill();
-        clearInterval(interval);
+        if (cycleTimer) cycleTimer.kill();
       };
     },
-    { scope: containerRef },
+    // FIX: Added `dependencies: []` so this hook doesn't endlessly reboot every time a logo swaps!
+    { scope: containerRef, dependencies: [] },
   );
 
   return (
     <section
       ref={containerRef}
-      className="py-24 flex flex-col items-center justify-center gap-4"
+      className="py-16 md:py-24 px-4 flex flex-col items-center justify-center gap-8 md:gap-4"
     >
-      <div className="grid grid-cols-5 gap-4">
+      <div className="w-full max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
         {slots.map((slot, index) => (
           <div
             key={slot.slotId}
-            className="cursor-pointer group relative flex items-center justify-center p-4 md:p-5 rounded-xl bg-[#f8f9f5] border border-[#e8ece0] transition-all duration-300 hover:border-[#383a35]/20 hover:shadow-sm"
+            // Hide items beyond index 3 on mobile directly through CSS
+            className={`cursor-pointer group relative items-center justify-center p-4 md:p-5 rounded-xl bg-[#f8f9f5] border border-[#e8ece0] transition-all duration-300 hover:border-[#383a35]/20 hover:shadow-sm ${
+              index >= 4 ? "hidden md:flex" : "flex"
+            }`}
           >
-            {/* Paw Icon Container */}
-            {/* <div className="-z-1 absolute -top-5 right-0 opacity-0 translate-y-2 scale-75 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 pointer-events-none">
-              <div className="animate-wave origin-bottom-center">
-                <Image
-                  src="/assets/images/paw.png" // Replace with your paw image path
-                  alt="Paw"
-                  width={32}
-                  height={32}
-                  className="w-7 h-7 object-contain drop-shadow-md"
-                />
-              </div>
-            </div> */}
-
             {/* Client Logo Slot */}
             <div
               ref={(el) => {
                 imgWrapRefs.current[slot.slotId] = el;
               }}
-              className="w-14 md:w-20 lg:w-24 aspect-3/2 flex items-center justify-center will-change-[filter,transform,opacity]"
+              // Scaled down width for mobile (w-16) to ensure cards look well-proportioned
+              className="w-16 md:w-20 lg:w-24 aspect-3/2 flex items-center justify-center will-change-[filter,transform,opacity]"
             >
               <Image
                 src={"/assets/images/clients/" + slot.logo}

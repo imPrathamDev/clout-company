@@ -5,21 +5,19 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 /**
  * "Build across industries" word-search section.
  *
- * - Renders a grid of random letters with your WORDS hidden horizontally inside it.
- * - Each hidden word gets a pill-shaped border that "draws itself" around the word,
- *   starting from one point and closing the loop (same idea as the reference markup:
- *   an SVG stroke with pathLength=1 animated via stroke-dashoffset).
+ * - Desktop (>=768px): same horizontal layout as before — words hidden
+ *   left-to-right inside a wide grid, pill borders draw themselves in.
+ * - Mobile (<768px): fewer words, arranged vertically (top-to-bottom)
+ *   in a narrower grid so it doesn't overflow small screens.
  * - On mount, a random batch of 1-3 words reveal themselves together, then
  *   swap out for a new random batch every AUTO_CYCLE_MS.
- * - Hovering a word — either in the side list or directly on its letters in
- *   the grid — reveals just that one word and pauses the auto-cycle until
- *   the mouse leaves.
+ * - Hovering a word reveals just that one word and pauses the auto-cycle.
  *
  * Drop-in usage:
  *   <WordSearchReveal />
  */
 
-const WORDS = [
+const DESKTOP_WORDS = [
   "HEALTHTECH",
   "FINTECH",
   "DEVTOOLS",
@@ -34,15 +32,26 @@ const WORDS = [
   "OPENSOURCE",
 ];
 
-const COLS = 20;
-const CELL = 46; // px, matches the 46x46 letter cells in the reference markup
+// Shorter list so a vertical layout stays compact on small screens.
+const MOBILE_WORDS = ["AI", "BEAUTY", "GAMING", "MEDIA", "FINTECH", "EDTECH"];
+
+const DESKTOP_COLS = 20; // cross-axis size for the horizontal (desktop) layout
+const MOBILE_ROWS = Math.max(...MOBILE_WORDS.map((w) => w.length)) + 2; // cross-axis size for vertical (mobile) layout
+
+const DESKTOP_CELL = 46; // px, matches the 46x46 letter cells in the reference markup
+const MOBILE_CELL = 38;
+
 const AUTO_CYCLE_MS = 1800;
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const MOBILE_BREAKPOINT = "(max-width: 767px)";
+
+type Orientation = "horizontal" | "vertical";
 
 interface WordPlacement {
   word: string;
-  row: number;
-  colStart: number;
+  orientation: Orientation;
+  line: number; // fixed row (horizontal) or fixed column (vertical)
+  start: number; // starting column (horizontal) or starting row (vertical)
 }
 
 function shuffle<T>(input: T[]): T[] {
@@ -59,54 +68,99 @@ function randomLetter(): string {
 }
 
 /**
- * Places each word on its own row at a random column offset, then fills
- * every remaining cell with a random letter — same visual pattern as the
- * reference: words never overlap, everything else is filler.
+ * Places each word along its own row (horizontal) or column (vertical) at a
+ * random offset, then fills every remaining cell with a random letter —
+ * words never overlap, everything else is filler.
  */
-function buildGrid(words: string[]): {
-  grid: string[][];
-  placements: WordPlacement[];
-} {
-  const rowOrder = shuffle(words);
-  const grid: string[][] = rowOrder.map(() =>
-    Array.from({ length: COLS }, randomLetter),
+function buildGrid(
+  words: string[],
+  orientation: Orientation,
+  crossAxisSize: number,
+): { grid: string[][]; placements: WordPlacement[] } {
+  const order = shuffle(words);
+  const rows = orientation === "horizontal" ? order.length : crossAxisSize;
+  const cols = orientation === "horizontal" ? crossAxisSize : order.length;
+  const grid: string[][] = Array.from({ length: rows }, () =>
+    Array.from({ length: cols }, randomLetter),
   );
   const placements: WordPlacement[] = [];
 
-  rowOrder.forEach((word, rowIdx) => {
-    const maxStart = Math.max(COLS - word.length, 0);
-    const colStart = Math.floor(Math.random() * (maxStart + 1));
-    for (let i = 0; i < word.length; i++) {
-      grid[rowIdx][colStart + i] = word[i];
+  order.forEach((word, idx) => {
+    if (orientation === "horizontal") {
+      const maxStart = Math.max(cols - word.length, 0);
+      const start = Math.floor(Math.random() * (maxStart + 1));
+      for (let i = 0; i < word.length; i++) grid[idx][start + i] = word[i];
+      placements.push({ word, orientation, line: idx, start });
+    } else {
+      const maxStart = Math.max(rows - word.length, 0);
+      const start = Math.floor(Math.random() * (maxStart + 1));
+      for (let i = 0; i < word.length; i++) grid[start + i][idx] = word[i];
+      placements.push({ word, orientation, line: idx, start });
     }
-    placements.push({ word, row: rowIdx, colStart });
   });
 
   return { grid, placements };
 }
 
+function placementMatches(
+  p: WordPlacement,
+  rIdx: number,
+  cIdx: number,
+): boolean {
+  return p.orientation === "horizontal"
+    ? p.line === rIdx && cIdx >= p.start && cIdx < p.start + p.word.length
+    : p.line === cIdx && rIdx >= p.start && rIdx < p.start + p.word.length;
+}
+
 export default function WordSearchReveal() {
-  const { grid, placements } = useMemo(() => buildGrid(WORDS), []);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const mql = window.matchMedia(MOBILE_BREAKPOINT);
+    setIsMobile(mql.matches);
+    const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener("change", handleChange);
+    return () => mql.removeEventListener("change", handleChange);
+  }, []);
+
+  const words = isMobile ? MOBILE_WORDS : DESKTOP_WORDS;
+  const orientation: Orientation = isMobile ? "vertical" : "horizontal";
+  const cell = isMobile ? MOBILE_CELL : DESKTOP_CELL;
+  const crossAxisSize = isMobile ? MOBILE_ROWS : DESKTOP_COLS;
+  const fontSize = isMobile ? 19 : 26;
+  const letterSpacing = isMobile ? 5.2 : 7.8;
+
+  const { grid, placements } = useMemo(() => {
+    if (isMobile === null) {
+      return { grid: [] as string[][], placements: [] as WordPlacement[] };
+    }
+    return buildGrid(words, orientation, crossAxisSize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile]);
+
   const [activeWords, setActiveWords] = useState<Set<string>>(new Set());
   const [drawnWords, setDrawnWords] = useState<Set<string>>(new Set());
   const isHoveringRef = useRef(false);
   const autoTimerRef = useRef<number | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
-  const reveal = (words: string[]) => {
-    setActiveWords(new Set(words));
+
+  const reveal = (revealWords: string[]) => {
+    setActiveWords(new Set(revealWords));
     setDrawnWords(new Set());
     // Two rAFs: first lets the borders mount at dashoffset=1 (hidden),
     // second flips them to 0 so the transition actually animates the draw.
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => setDrawnWords(new Set(words)));
+      requestAnimationFrame(() => setDrawnWords(new Set(revealWords)));
     });
   };
 
   useEffect(() => {
+    if (isMobile === null || placements.length === 0) return undefined;
+
     const tick = () => {
       if (isHoveringRef.current) return;
-      // Highlight a random 1-3 words at once, never repeating within a batch.
-      const count = 1 + Math.floor(Math.random() * 3);
+      // Highlight a random 1-3 words at once (capped to how many exist).
+      const count =
+        1 + Math.floor(Math.random() * Math.min(3, placements.length));
       const chosen = shuffle(placements)
         .slice(0, count)
         .map((p) => p.word);
@@ -118,7 +172,7 @@ export default function WordSearchReveal() {
       if (autoTimerRef.current) clearInterval(autoTimerRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [placements]);
 
   const handleWordHoverStart = (word: string) => {
     isHoveringRef.current = true;
@@ -129,14 +183,13 @@ export default function WordSearchReveal() {
     isHoveringRef.current = false;
   };
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const cols = grid[0]?.length ?? 0;
+  const gridWidth = cols * cell;
 
   return (
-    <div className="w-full py-[120px]">
+    <div className="w-full py-[80px] md:py-[120px]">
       <div className="mx-auto max-w-[1100px] px-6 flex flex-col items-center">
-        <h3 className="m-0 text-[32px] leading-[115%] tracking-[0.32px] text-center text-[#262323]">
+        <h3 className="m-0 text-[24px] md:text-[32px] leading-[115%] tracking-[0.32px] text-center text-[#262323]">
           Distribution powers every category.
         </h3>
         <p className="m-0 text-[15px] font-[460] leading-[140%] tracking-[0.15px] mt-3 text-[#262323]/60 max-w-[460px] text-center">
@@ -144,35 +197,44 @@ export default function WordSearchReveal() {
           for.
         </p>
 
-        <div className="mt-[60px] flex flex-col justify-center items-center w-full">
+        <div className="mt-[40px] md:mt-[60px] flex flex-col justify-center items-center w-full">
           {/* GRID */}
-          {isMounted && (
+          {isMobile !== null && grid.length > 0 && (
             <div
               className="relative select-none mx-auto font-serif"
               style={{
-                fontSize: 26,
+                fontSize,
                 fontWeight: 400,
                 lineHeight: "160%",
-                letterSpacing: 7.8,
-                width: COLS * CELL,
+                letterSpacing,
+                width: gridWidth,
               }}
             >
               {/* animated borders, one per hidden word */}
               {placements.map((p) => {
-                const width = p.word.length * CELL;
-                const left = p.colStart * CELL;
-                const top = p.row * CELL;
+                const width =
+                  p.orientation === "horizontal" ? p.word.length * cell : cell;
+                const height =
+                  p.orientation === "horizontal" ? cell : p.word.length * cell;
+                const left =
+                  p.orientation === "horizontal"
+                    ? p.start * cell
+                    : p.line * cell;
+                const top =
+                  p.orientation === "horizontal"
+                    ? p.line * cell
+                    : p.start * cell;
                 const isDrawn = drawnWords.has(p.word);
                 return (
                   <div
                     key={p.word}
                     className="absolute pointer-events-none"
-                    style={{ left, top, width, height: CELL }}
+                    style={{ left, top, width, height }}
                   >
                     <svg
                       width={width}
-                      height={CELL}
-                      viewBox={`0 0 ${width} ${CELL}`}
+                      height={height}
+                      viewBox={`0 0 ${width} ${height}`}
                       style={{ overflow: "visible", display: "block" }}
                     >
                       <defs>
@@ -180,8 +242,8 @@ export default function WordSearchReveal() {
                           id={`ws-grad-${p.word}`}
                           x1="0"
                           y1="0"
-                          x2={width}
-                          y2="0"
+                          x2={p.orientation === "horizontal" ? width : 0}
+                          y2={p.orientation === "horizontal" ? 0 : height}
                           gradientUnits="userSpaceOnUse"
                         >
                           <stop stopColor="#86CEFF" />
@@ -192,9 +254,9 @@ export default function WordSearchReveal() {
                         x={2}
                         y={2}
                         width={width - 4}
-                        height={CELL - 4}
-                        rx={(CELL - 4) / 2}
-                        ry={(CELL - 4) / 2}
+                        height={height - 4}
+                        rx={(cell - 4) / 2}
+                        ry={(cell - 4) / 2}
                         fill="none"
                         stroke={`url(#ws-grad-${p.word})`}
                         strokeWidth={2}
@@ -218,11 +280,8 @@ export default function WordSearchReveal() {
                 {grid.map((row, rIdx) => (
                   <div className="flex" key={rIdx}>
                     {row.map((letter, cIdx) => {
-                      const placement = placements.find(
-                        (p) =>
-                          p.row === rIdx &&
-                          cIdx >= p.colStart &&
-                          cIdx < p.colStart + p.word.length,
+                      const placement = placements.find((p) =>
+                        placementMatches(p, rIdx, cIdx),
                       );
                       const isActive =
                         !!placement && activeWords.has(placement.word);
@@ -231,8 +290,8 @@ export default function WordSearchReveal() {
                           key={cIdx}
                           className="flex items-center justify-center"
                           style={{
-                            width: CELL,
-                            height: CELL,
+                            width: cell,
+                            height: cell,
                             cursor: placement ? "pointer" : "default",
                           }}
                           onMouseEnter={

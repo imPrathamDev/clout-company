@@ -20,22 +20,10 @@ const artifacts_array = [
         isProgress: true,
       },
       secondary: [
-        {
-          label: "Creator Reach",
-          value: "18.4M",
-        },
-        {
-          label: "Prize Pool",
-          value: "$100K",
-        },
-        {
-          label: "New Sign-ups",
-          value: "68K+",
-        },
-        {
-          label: "UGC Created",
-          value: "9.3K",
-        },
+        { label: "Creator Reach", value: "18.4M" },
+        { label: "Prize Pool", value: "$100K" },
+        { label: "New Sign-ups", value: "68K+" },
+        { label: "UGC Created", value: "9.3K" },
       ],
     },
   },
@@ -53,22 +41,10 @@ const artifacts_array = [
         isProgress: true,
       },
       secondary: [
-        {
-          label: "ICPs Tested",
-          value: "14",
-        },
-        {
-          label: "Markets Researched",
-          value: "9",
-        },
-        {
-          label: "Retention Lift",
-          value: "+37%",
-        },
-        {
-          label: "CAC Reduction",
-          value: "-28%",
-        },
+        { label: "ICPs Tested", value: "14" },
+        { label: "Markets Researched", value: "9" },
+        { label: "Retention Lift", value: "+37%" },
+        { label: "CAC Reduction", value: "-28%" },
       ],
     },
   },
@@ -86,22 +62,10 @@ const artifacts_array = [
         isProgress: false,
       },
       secondary: [
-        {
-          label: "Share Rate",
-          value: "21%",
-        },
-        {
-          label: "Earned Media",
-          value: "1.8K+",
-        },
-        {
-          label: "Engagements",
-          value: "12.6M",
-        },
-        {
-          label: "Countries Reached",
-          value: "34",
-        },
+        { label: "Share Rate", value: "21%" },
+        { label: "Earned Media", value: "1.8K+" },
+        { label: "Engagements", value: "12.6M" },
+        { label: "Countries Reached", value: "34" },
       ],
     },
   },
@@ -120,11 +84,7 @@ function Artifacts() {
             Case studies & Records of products finding their users.
           </p>
 
-          <a
-            href="https://cofounder.co"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="/contact">
             <button
               className="inline-flex items-center justify-center whitespace-nowrap font-medium outline-none focus-visible:ring-[3px] focus-visible:ring-white/20 cursor-pointer group border border-[#282834] rounded-lg gap-2 text-white hover:opacity-90 transition-opacity h-9 px-4 py-2 pr-3 text-[15px] tracking-[-0.15px] leading-[140%] before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white/.5)_50%,transparent_75%,transparent_100%)] dark:before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] relative before:bg-no-repeat before:[transition:background-position_0s_ease] hover:before:bg-[position:-100%_0,0_0] hover:before:duration-[1500ms]"
               style={{
@@ -186,7 +146,7 @@ function Artifacts() {
                 </div>
               </div>
             </button>
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -217,7 +177,7 @@ function Artifacts() {
                     {data.title}
                   </h3>
 
-                  <div className="pt-4">
+                  <div className="pt-2 md:pt-4">
                     <Image
                       src={data.brand_logo}
                       alt={data.campaign_name}
@@ -229,7 +189,7 @@ function Artifacts() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <div className="h-[2vh]"></div>
+                  <div className="h-0 md:h-[2vh]"></div>
                   <Link
                     href={"/contact"}
                     className="text-[13px] text-foreground/80 group flex items-center gap-[6px]"
@@ -253,20 +213,30 @@ function Artifacts() {
                 </div>
               </div>
 
-              <div className="px-24 overflow-hidden h-full w-full self-stretch flex items-center justify-center">
+              <div className="hidden px-24 overflow-hidden h-full w-full self-stretch md:flex items-center justify-center">
                 <div className="bg-foreground/20 h-full w-[2px]"></div>
               </div>
 
               <div className="flex flex-1 items-center justify-center min-[768px]:justify-start min-[768px]:py-[10px] min-[768px]:pl-[124px] min-[1280px]:pl-0">
-                <div className="relative w-[310px] min-[768px]:w-[580px] min-[768px]:max-w-[624px] min-h-[386px] min-[768px]:min-h-[386px]">
-                  {/* First Card (Left) */}
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 max-[767px]:w-[300px] max-[767px]:rounded-[12px]">
+                {/* 
+                  Mobile: taller container (h-[560px]) so both stacked cards fit
+                  without overflowing into the next artifact entry.
+                  Desktop unchanged (h-[386px]).
+                */}
+                <div className="relative w-[310px] min-[768px]:w-[580px] min-[768px]:max-w-[624px] h-[560px] min-[768px]:h-[386px]">
+                  {/* 
+                    First Card (Left/Back)
+                    Mobile: now a landscape rectangle (h-[200px] vs its old h-[386px]),
+                    centered and pinned to the top.
+                    Desktop: unchanged, centered vertically on the left.
+                  */}
+                  <div className="absolute left-1/2 -translate-x-1/2 top-0 min-[768px]:left-0 min-[768px]:top-1/2 min-[768px]:-translate-x-0 min-[768px]:-translate-y-1/2 w-[300px] min-[768px]:w-auto z-0">
                     <div
                       style={{
                         boxShadow:
                           "0px 0px 2px 0px rgba(0, 0, 0, 0.18), 0px 0px 0px 4px rgba(240, 239, 230, 0.45), inset 0px 0px 0.36px 1.5px rgba(255, 255, 255, 0.5), inset 0px 2px 0px 0px white",
                       }}
-                      className="relative min-[768px]:w-[427px] h-[386px] min-[768px]:h-[330px] rounded-[12px] bg-surface overflow-hidden flex flex-col"
+                      className="relative min-[768px]:w-[427px] h-[200px] min-[768px]:h-[330px] rounded-[12px] bg-surface overflow-hidden flex flex-col"
                     >
                       <div className="border-b border-gray-200/60 flex justify-between px-4 py-2">
                         <div className="flex items-center gap-4 text-[10px]">
@@ -341,8 +311,13 @@ function Artifacts() {
                     </div>
                   </div>
 
-                  {/* Second Card (Right) - FIXED with -translate-y-1/2 */}
-                  <div className="absolute min-[1280px]:right-[-80px] right-0 left-0 min-[768px]:left-auto top-1/2 -translate-y-1/2">
+                  {/* 
+                    Second Card (Right/Front) 
+                    Mobile: now sits just below the shortened first card
+                    (top-[170px] vs old top-[84px]) with a slight overlap.
+                    Desktop: unchanged, right-aligned and vertically centered.
+                  */}
+                  <div className="absolute left-1/2 -translate-x-1/2 top-[170px] min-[768px]:left-auto min-[768px]:right-0 min-[1280px]:right-[-80px] min-[768px]:top-1/2 min-[768px]:-translate-x-0 min-[768px]:-translate-y-1/2 z-10">
                     <div
                       className="w-[300px] min-[768px]:w-[270px] h-[386px] rounded-[12px] overflow-hidden bg-background flex flex-col pb-2"
                       style={{
@@ -420,59 +395,6 @@ function Artifacts() {
                                 }}
                               >
                                 replicate this result
-                                {/* Micro Arrow Badge */}
-                                {/* <div
-                                className="flex items-center justify-center w-3 h-4 pl-[2.5px] pr-[1.5px] py-0 rounded-[50px] border leading-none"
-                                style={{
-                                  borderColor: "rgba(255,255,255,0.24)",
-                                  background:
-                                    "linear-gradient(0deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.08) 100%)",
-                                  boxShadow:
-                                    "0 1.01px 1.01px 0 rgba(0, 0, 0, 0.04)",
-                                }}
-                              >
-                                <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
-                                  <div className="relative overflow-hidden flex items-center justify-center w-[7px] h-[10px]">
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      width="7"
-                                      height="10"
-                                      viewBox="0 0 7 10"
-                                      fill="none"
-                                      className="transition-transform duration-500 group-hover:animate-[slideOut_0.8s_linear_infinite]"
-                                    >
-                                      <rect
-                                        x="3.94922"
-                                        y="4.29102"
-                                        width="1.41526"
-                                        height="1.41526"
-                                        fill="currentColor"
-                                      />
-                                      <rect
-                                        x="1.13281"
-                                        y="1.47021"
-                                        width="1.41526"
-                                        height="1.41526"
-                                        fill="currentColor"
-                                      />
-                                      <rect
-                                        x="1.13281"
-                                        y="7.11426"
-                                        width="1.41526"
-                                        height="1.41526"
-                                        fill="currentColor"
-                                      />
-                                      <rect
-                                        x="2.53125"
-                                        y="2.87549"
-                                        width="1.41526"
-                                        height="4.24579"
-                                        fill="currentColor"
-                                      />
-                                    </svg>
-                                  </div>
-                                </div>
-                              </div> */}
                               </button>
                             </Link>
                           </div>

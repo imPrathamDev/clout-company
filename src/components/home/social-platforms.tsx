@@ -1,10 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import AgencyFlowChart from "./social-media-flow-chart";
+import MobileSocialPlatforms from "./mobile-social-platforms";
 
 function SocialPlatforms() {
   return (
-    <section className="relative flex min-h-0 flex-1 flex-col justify-center h-svh pt-[100px] min-[1000px]:pb-[220px] pb-[160px] min-[767px]:pb-[100px] overflow-hidden">
+    <section className="relative flex min-h-0 flex-1 flex-col justify-center h-[70vh] md:h-svh pt-[100px] min-[1000px]:pb-[220px] pb-[160px] min-[767px]:pb-[100px] overflow-hidden">
       <Image
         src={"/assets/images/platforms/bg.png"}
         alt=""
@@ -41,10 +42,12 @@ function SocialPlatforms() {
         </div>
 
         <div className="mt-14 mb-12 flex items-center justify-center">
-          <div className="w-[40vw] aspect-video rounded-2xl p-2 bg-gray-100/80">
-            <div className="w-full h-full rounded-xl bg-background flex items-center justify-center">
+          <div className="w-[95vw] md:w-[40vw] aspect-video rounded-2xl p-2 bg-gray-100/80">
+            <div className="hidden md:flex w-full h-full rounded-xl bg-background items-center justify-center">
               <AgencyFlowChart />
             </div>
+
+            <MobileSocialPlatforms />
           </div>
         </div>
       </div>
