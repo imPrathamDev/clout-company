@@ -20,7 +20,7 @@ function Hero() {
           </h1>
 
           <div className="flex max-[400px]:flex-col gap-2 justify-center items-center mb-6">
-            <p className="font-medium text-[16px] tracking-[-0.15px] leading-[140%] text-foreground/80">
+            <p className="font-medium text-[16px] tracking-[-0.15px] leading-[140%] text-foreground/80 text-center">
               These logs document what worked, what didn't, and what we'll build
               next.
             </p>
@@ -37,7 +37,7 @@ function Hero() {
           />
 
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
-            <Link href="/writing/agent-native-engineering">
+            <Link href="#cards">
               <button
                 className="inline-flex items-center justify-center gap-2 h-10 rounded-lg px-6 text-[15px] tracking-[-0.15px] leading-[140%] text-white border border-white/40 backdrop-blur-[9px] shadow-[0_2px_6px_0_rgba(0,0,0,0.15)] group transition-all"
                 style={{
@@ -47,7 +47,7 @@ function Hero() {
                 }}
               >
                 Explore our thinking
-                <div
+                {/* <div
                   className="flex items-center justify-center w-3 h-4 pl-[2.5px] pr-[1.5px] rounded-full"
                   style={{
                     border: "1px solid rgba(255,255,255,0.24)",
@@ -55,7 +55,7 @@ function Hero() {
                       "linear-gradient(0deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 100%)",
                     boxShadow: "0 1.01px 1.01px rgba(0,0,0,.04)",
                   }}
-                ></div>
+                ></div> */}
               </button>
             </Link>
           </div>

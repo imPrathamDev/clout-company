@@ -73,7 +73,10 @@ function LogList({ logs }: { logs: LogListItem[] }) {
   }, [logs]);
 
   return (
-    <section className="2xl:px-30 xl:px-12 md:px-8 px-5 w-full mx-auto pt-20 pb-35 sm:pt-25 2xl:pt-30">
+    <section
+      id="cards"
+      className="2xl:px-30 xl:px-12 md:px-8 px-5 w-full mx-auto pt-20 pb-35 sm:pt-25 2xl:pt-30"
+    >
       <div className="w-full">
         <div className="sm:px-4 mx-auto w-full max-w-7xl">
           <div className="flex items-center gap-4">
@@ -92,7 +95,7 @@ function LogList({ logs }: { logs: LogListItem[] }) {
             ))}
           </div>
 
-          <div className="mt-12 grid grid-cols-3 gap-6">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
             {logs.map((log) => (
               <Card item={log} key={log._id} />
             ))}

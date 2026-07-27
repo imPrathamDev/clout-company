@@ -8,7 +8,7 @@ function DisplayTime() {
     "Europe/London",
   );
   return (
-    <div className="md:flex items-center hidden">
+    <div className="flex items-center">
       {/* <svg
         xmlns="http://www.w3.org/2000/svg"
         width="12"

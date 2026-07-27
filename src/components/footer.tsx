@@ -55,7 +55,7 @@ function Footer() {
             We're programming distribution for businesses that love building
           </h2>
         </div>
-        <div className="flex items-center justify-between w-7xl">
+        <div className="flex flex-col-reverse gap-4 md:gap-0 md:flex-row items-center justify-between md:w-7xl">
           <div className="flex items-center gap-3">
             {links.map((link) => (
               <Link

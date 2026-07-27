@@ -96,7 +96,7 @@ function Content({ log }: { log: LogDetail }) {
             </div>
           </div>
 
-          <div className="px-0 px-25">
+          <div className="px-0 md:px-25">
             <div className="mb-10 sm:mb-15 md:mb-15 lg:mb-20 xl:mb-25 p-2 bg-gray-200/60 w-full rounded-2xl">
               <div className="w-full aspect-[16/9] rounded-xl overflow-hidden relative">
                 <Image
