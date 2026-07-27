@@ -183,7 +183,7 @@ function Clients() {
           </div>
         ))}
       </div>
-      <SmoothCounter />
+      <SmoothCounter duration={10} pauseDuration={2} incrementAmount={8} />
     </section>
   );
 }

@@ -1,5 +1,8 @@
 import LegalPageWrapper from "@/components/wrapper/legal";
+import { getSiteMetadata } from "@/lib/metadata";
 import React from "react";
+
+export const metadata = getSiteMetadata("/terms-and-conditions");
 
 function TAndC() {
   return (

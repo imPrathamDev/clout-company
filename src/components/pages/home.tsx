@@ -9,6 +9,8 @@ import { BookCard } from "../home/card";
 import WordSearchReveal from "../home/word-search-reveal";
 import Footer from "../footer";
 import Artifacts from "../home/artifacts";
+import SocialMediaFlowChart from "../home/social-media-flow-chart";
+import SocialPlatforms from "../home/social-platforms";
 
 function HomePage() {
   return (
@@ -19,6 +21,7 @@ function HomePage() {
       <Clients />
       <Wheel />
       <Artifacts />
+      <SocialPlatforms />
       <WordSearchReveal />
       <Footer />
     </main>

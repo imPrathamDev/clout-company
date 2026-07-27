@@ -10,6 +10,7 @@ const artifacts_array = [
     label: "Artifact 001",
     title: "Incentives Create Markets",
     campaign_name: "Emergent × FIFA",
+    brand_logo: "/assets/images/clients/logo1.png",
     content:
       "Attention alone doesn't create users—participation does. For Emergent, we partnered with creators like Theo Baker, Danny Aarons, Leon to reach a global football audience during the FIFA season. A $100,000 creator prize pool turned spectators into builders, encouraging thousands of users to test, create with, and adopt the product.",
     stats: {
@@ -42,6 +43,7 @@ const artifacts_array = [
     label: "Artifact 002",
     title: "Distribution Begins With Discovery",
     campaign_name: "Gamma",
+    brand_logo: "/assets/images/clients/logo6.png",
     content:
       "The obvious user isn't always the right user. After systematically testing multiple ICPs across different markets, we discovered that educators and trainers were among Gamma's strongest power users.",
     stats: {
@@ -74,6 +76,7 @@ const artifacts_array = [
     label: "Artifact 003",
     title: "Culture Travels Further Than Advertising",
     campaign_name: "XYXX",
+    brand_logo: "/assets/images/clients/logo5.png",
     content:
       "The most effective distribution feels like culture, not marketing. For XYXX, we produced stereotype-breaking content that generated 500M+ organic views.",
     stats: {
@@ -214,13 +217,19 @@ function Artifacts() {
                     {data.title}
                   </h3>
 
-                  <p className="uppercase m-0 text-[14px] min-[767px]:text-[18px] min-[1000px]:text-[14px] font-normal leading-[115%] text-foreground/65">
-                    {data.campaign_name}
-                  </p>
+                  <div className="pt-4">
+                    <Image
+                      src={data.brand_logo}
+                      alt={data.campaign_name}
+                      width={100}
+                      height={50}
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <div className="h-[5vh]"></div>
+                  <div className="h-[2vh]"></div>
                   <Link
                     href={"/contact"}
                     className="text-[13px] text-foreground/80 group flex items-center gap-[6px]"
@@ -399,16 +408,20 @@ function Artifacts() {
                               ))}
                             </div>
 
-                            <button
-                              className="underline inline-flex items-center justify-center whitespace-nowrap font-medium outline-none focus-visible:ring-[3px] focus-visible:ring-white/20 cursor-pointer group border border-[#282834] rounded-lg gap-2 text-white hover:opacity-90 transition-opacity h-9 px-4 py-2 pr-3 text-[12px] tracking-[-0.15px] leading-[140%] before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white/.5)_50%,transparent_75%,transparent_100%)] dark:before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] relative before:bg-no-repeat before:[transition:background-position_0s_ease] hover:before:bg-[position:-100%_0,0_0] hover:before:duration-[1500ms]"
-                              style={{
-                                background:
-                                  "linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.12) 100%), #1F1F29",
-                              }}
+                            <Link
+                              href={"/contact"}
+                              className="w-full flex items-center justify-center"
                             >
-                              view more result
-                              {/* Micro Arrow Badge */}
-                              {/* <div
+                              <button
+                                className="w-full underline inline-flex items-center justify-center whitespace-nowrap font-medium outline-none focus-visible:ring-[3px] focus-visible:ring-white/20 cursor-pointer group border border-[#282834] rounded-lg gap-2 text-white hover:opacity-90 transition-opacity h-9 px-4 py-2 pr-3 text-[12px] tracking-[-0.15px] leading-[140%] before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white/.5)_50%,transparent_75%,transparent_100%)] dark:before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] relative before:bg-no-repeat before:[transition:background-position_0s_ease] hover:before:bg-[position:-100%_0,0_0] hover:before:duration-[1500ms]"
+                                style={{
+                                  background:
+                                    "linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.12) 100%), #1F1F29",
+                                }}
+                              >
+                                replicate this result
+                                {/* Micro Arrow Badge */}
+                                {/* <div
                                 className="flex items-center justify-center w-3 h-4 pl-[2.5px] pr-[1.5px] py-0 rounded-[50px] border leading-none"
                                 style={{
                                   borderColor: "rgba(255,255,255,0.24)",
@@ -460,7 +473,8 @@ function Artifacts() {
                                   </div>
                                 </div>
                               </div> */}
-                            </button>
+                              </button>
+                            </Link>
                           </div>
                         </div>
                       </div>

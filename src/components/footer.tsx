@@ -45,22 +45,18 @@ function Footer() {
         <div className="flex flex-col justify-center items-center gap-4">
           <Image
             src={"/assets/images/logo/logo.png"}
-            alt=""
+            alt="Clout OS"
             width={70}
             height={70}
             className="object-contain"
           />
 
           <h2 className="font-serif text-[32px] lg:text-[40px] xl:text-[48px] tracking-[-0.44px] md:tracking-[-0.8px] lg:tracking-[-0.96px] leading-[120%] md:leading-[110%] text-center mb-8 max-w-[24ch] mx-auto">
-            We're building tools for businesses that run themselves
+            We're programming distribution for businesses that love building
           </h2>
-
-          <p className="font-medium text-[15px] tracking-[-0.15px] leading-[100%] text-neutral-700">
-            If that sounds interesting to you, come work with us
-          </p>
         </div>
         <div className="flex items-center justify-between w-7xl">
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-3">
             {links.map((link) => (
               <Link
                 key={link.href}

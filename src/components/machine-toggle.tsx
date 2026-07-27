@@ -22,7 +22,7 @@ function MachineToggle() {
   return (
     <div
       ref={navRef}
-      className="fixed right-8 bottom-12 w-fit flex items-center gap-2 text-[16px] font-medium"
+      className="fixed left-10 bottom-12 w-fit flex items-center gap-2 text-[16px] font-medium"
     >
       <Link
         href={"/"}

@@ -28,6 +28,8 @@ function Wheel() {
         <span className="text-foreground/70">
           helping products reach the right users at the right time.
         </span>
+        <br />
+        <span className="text-foreground/70">- make it Clout OS</span>
       </h2>
 
       <OrgWheel />

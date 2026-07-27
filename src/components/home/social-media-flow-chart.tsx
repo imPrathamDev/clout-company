@@ -1,0 +1,638 @@
+"use client";
+
+import { useRef, useState, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import Image from "next/image";
+
+gsap.registerPlugin(ScrollTrigger);
+
+type PlatformNode = {
+  key: string;
+  name: string;
+};
+
+const icons = {
+  instagram: (
+    <svg
+      className="size-6 fill-foreground"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_17_27)">
+        <path d="M24 4.32187C30.4125 4.32187 31.1719 4.35 33.6938 4.4625C36.0375 4.56562 37.3031 4.95938 38.1469 5.2875C39.2625 5.71875 40.0688 6.24375 40.9031 7.07812C41.7469 7.92188 42.2625 8.71875 42.6938 9.83438C43.0219 10.6781 43.4156 11.9531 43.5188 14.2875C43.6313 16.8187 43.6594 17.5781 43.6594 23.9813C43.6594 30.3938 43.6313 31.1531 43.5188 33.675C43.4156 36.0188 43.0219 37.2844 42.6938 38.1281C42.2625 39.2438 41.7375 40.05 40.9031 40.8844C40.0594 41.7281 39.2625 42.2438 38.1469 42.675C37.3031 43.0031 36.0281 43.3969 33.6938 43.5C31.1625 43.6125 30.4031 43.6406 24 43.6406C17.5875 43.6406 16.8281 43.6125 14.3063 43.5C11.9625 43.3969 10.6969 43.0031 9.85313 42.675C8.7375 42.2438 7.93125 41.7188 7.09688 40.8844C6.25313 40.0406 5.7375 39.2438 5.30625 38.1281C4.97813 37.2844 4.58438 36.0094 4.48125 33.675C4.36875 31.1438 4.34063 30.3844 4.34063 23.9813C4.34063 17.5688 4.36875 16.8094 4.48125 14.2875C4.58438 11.9437 4.97813 10.6781 5.30625 9.83438C5.7375 8.71875 6.2625 7.9125 7.09688 7.07812C7.94063 6.23438 8.7375 5.71875 9.85313 5.2875C10.6969 4.95938 11.9719 4.56562 14.3063 4.4625C16.8281 4.35 17.5875 4.32187 24 4.32187ZM24 0C17.4844 0 16.6688 0.028125 14.1094 0.140625C11.5594 0.253125 9.80625 0.665625 8.2875 1.25625C6.70312 1.875 5.3625 2.69062 4.03125 4.03125C2.69063 5.3625 1.875 6.70313 1.25625 8.27813C0.665625 9.80625 0.253125 11.55 0.140625 14.1C0.028125 16.6687 0 17.4844 0 24C0 30.5156 0.028125 31.3312 0.140625 33.8906C0.253125 36.4406 0.665625 38.1938 1.25625 39.7125C1.875 41.2969 2.69063 42.6375 4.03125 43.9688C5.3625 45.3 6.70313 46.125 8.27813 46.7344C9.80625 47.325 11.55 47.7375 14.1 47.85C16.6594 47.9625 17.475 47.9906 23.9906 47.9906C30.5063 47.9906 31.3219 47.9625 33.8813 47.85C36.4313 47.7375 38.1844 47.325 39.7031 46.7344C41.2781 46.125 42.6188 45.3 43.95 43.9688C45.2812 42.6375 46.1063 41.2969 46.7156 39.7219C47.3063 38.1938 47.7188 36.45 47.8313 33.9C47.9438 31.3406 47.9719 30.525 47.9719 24.0094C47.9719 17.4938 47.9438 16.6781 47.8313 14.1188C47.7188 11.5688 47.3063 9.81563 46.7156 8.29688C46.125 6.70312 45.3094 5.3625 43.9688 4.03125C42.6375 2.7 41.2969 1.875 39.7219 1.26562C38.1938 0.675 36.45 0.2625 33.9 0.15C31.3313 0.028125 30.5156 0 24 0Z" />
+        <path d="M24 11.6719C17.1938 11.6719 11.6719 17.1938 11.6719 24C11.6719 30.8062 17.1938 36.3281 24 36.3281C30.8062 36.3281 36.3281 30.8062 36.3281 24C36.3281 17.1938 30.8062 11.6719 24 11.6719ZM24 31.9969C19.5844 31.9969 16.0031 28.4156 16.0031 24C16.0031 19.5844 19.5844 16.0031 24 16.0031C28.4156 16.0031 31.9969 19.5844 31.9969 24C31.9969 28.4156 28.4156 31.9969 24 31.9969Z" />
+        <path d="M39.6937 11.1844C39.6937 12.7782 38.4 14.0625 36.8156 14.0625C35.2219 14.0625 33.9375 12.7688 33.9375 11.1844C33.9375 9.59065 35.2313 8.30627 36.8156 8.30627C38.4 8.30627 39.6937 9.60003 39.6937 11.1844Z" />
+      </g>
+    </svg>
+  ),
+  tiktok: (
+    <svg
+      className="size-6"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M34.353 17.327C37.4397 19.5413 41.2211 20.8442 45.3051 20.8442V12.9573C44.5322 12.9574 43.7613 12.8765 43.0051 12.7158V18.9239C38.9214 18.9239 35.1405 17.621 32.053 15.4068V31.5018C32.053 39.5533 25.5492 46.0799 17.5268 46.0799C14.5334 46.0799 11.7512 45.1717 9.44006 43.6141C12.0779 46.3209 15.7565 48 19.8263 48C27.8492 48 34.3534 41.4734 34.3534 33.4216V17.327H34.353ZM37.1904 9.37002C35.6129 7.64048 34.5772 5.40538 34.353 2.93438V1.91995H32.1735C32.7221 5.06059 34.5934 7.74377 37.1904 9.37002ZM14.5142 37.4356C13.6329 36.2759 13.1566 34.8572 13.1587 33.3985C13.1587 29.7161 16.1336 26.7303 19.8037 26.7303C20.4877 26.7301 21.1675 26.8352 21.8194 27.0428V18.9796C21.0576 18.8748 20.2888 18.8303 19.5203 18.8466V25.1226C18.868 24.9151 18.1878 24.8096 17.5037 24.8103C13.8335 24.8103 10.8589 27.7958 10.8589 31.4787C10.8589 34.0828 12.3458 36.3374 14.5142 37.4356Z"
+        fill="#FF004F"
+      />
+      <path
+        d="M32.0529 15.4067C35.1404 17.6209 38.9213 18.9237 43.005 18.9237V12.7156C40.7255 12.2283 38.7075 11.0328 37.1903 9.37002C34.5931 7.74361 32.722 5.06043 32.1733 1.91995H26.4482V33.4213C26.4352 37.0937 23.4655 40.0673 19.8032 40.0673C17.6451 40.0673 15.7279 39.0349 14.5136 37.4356C12.3454 36.3374 10.8585 34.0827 10.8585 31.4789C10.8585 27.7963 13.8331 24.8105 17.5032 24.8105C18.2064 24.8105 18.8842 24.9204 19.5199 25.1228V18.8468C11.6384 19.0102 5.2998 25.473 5.2998 33.4214C5.2998 37.3892 6.87827 40.9861 9.44013 43.6143C11.7513 45.1717 14.5335 46.08 17.5268 46.08C25.5494 46.08 32.0531 39.5531 32.0531 31.5018V15.4067H32.0529Z"
+        fill="black"
+      />
+      <path
+        d="M43.0051 12.7156V11.037C40.9495 11.0401 38.9343 10.4624 37.1903 9.36987C38.7342 11.0661 40.7671 12.2357 43.0051 12.7156ZM32.1734 1.91997C32.1211 1.61982 32.0809 1.3177 32.053 1.01443V0H24.148V31.5016C24.1354 35.1735 21.1658 38.1471 17.5033 38.1471C16.428 38.1471 15.4128 37.891 14.5137 37.4358C15.7279 39.0349 17.6452 40.0671 19.8033 40.0671C23.4652 40.0671 26.4354 37.0938 26.4482 33.4214V1.91997H32.1734ZM19.5203 18.8468V17.0598C18.8598 16.9692 18.1938 16.9237 17.5271 16.924C9.50383 16.9239 3 23.4508 3 31.5016C3 36.5491 5.55612 40.9974 9.44034 43.614C6.87848 40.986 5.30002 37.3889 5.30002 33.4213C5.30002 25.473 11.6385 19.0102 19.5203 18.8468Z"
+        fill="#00F2EA"
+      />
+    </svg>
+  ),
+  youtube: (
+    <svg
+      className="size-6"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_17_47)">
+        <path
+          d="M47.044 12.3709C46.7726 11.3497 46.2378 10.4178 45.493 9.66822C44.7483 8.91869 43.8197 8.37791 42.8003 8.1C39.0476 7.09091 24.0476 7.09091 24.0476 7.09091C24.0476 7.09091 9.04761 7.09091 5.29488 8.1C4.27547 8.37791 3.34693 8.91869 2.60218 9.66822C1.85744 10.4178 1.32262 11.3497 1.05124 12.3709C0.0476075 16.14 0.0476074 24 0.0476074 24C0.0476074 24 0.0476075 31.86 1.05124 35.6291C1.32262 36.6503 1.85744 37.5822 2.60218 38.3318C3.34693 39.0813 4.27547 39.6221 5.29488 39.9C9.04761 40.9091 24.0476 40.9091 24.0476 40.9091C24.0476 40.9091 39.0476 40.9091 42.8003 39.9C43.8197 39.6221 44.7483 39.0813 45.493 38.3318C46.2378 37.5822 46.7726 36.6503 47.044 35.6291C48.0476 31.86 48.0476 24 48.0476 24C48.0476 24 48.0476 16.14 47.044 12.3709Z"
+          fill="#FF0302"
+        />
+        <path
+          d="M19.1385 31.1373V16.8628L31.684 24.0001L19.1385 31.1373Z"
+          fill="#FEFEFE"
+        />
+      </g>
+    </svg>
+  ),
+
+  reddit: (
+    <svg
+      className="size-6"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_191_72)">
+        <path
+          d="M24 0C10.7456 0 0 10.7456 0 24C0 30.6281 2.68688 36.6281 7.02938 40.9706L2.45812 45.5419C1.55062 46.4494 2.19375 48 3.47625 48H24C37.2544 48 48 37.2544 48 24C48 10.7456 37.2544 0 24 0Z"
+          fill="#FF4500"
+        />
+        <path
+          d="M37.605 28.7887C40.7002 28.7887 43.2094 26.2796 43.2094 23.1844C43.2094 20.0892 40.7002 17.58 37.605 17.58C34.5098 17.58 32.0006 20.0892 32.0006 23.1844C32.0006 26.2796 34.5098 28.7887 37.605 28.7887Z"
+          fill="url(#paint0_radial_191_72)"
+        />
+        <path
+          d="M10.395 28.7887C13.4902 28.7887 15.9994 26.2796 15.9994 23.1844C15.9994 20.0892 13.4902 17.58 10.395 17.58C7.29978 17.58 4.79062 20.0892 4.79062 23.1844C4.79062 26.2796 7.29978 28.7887 10.395 28.7887Z"
+          fill="url(#paint1_radial_191_72)"
+        />
+        <path
+          d="M24.0131 39.9994C32.8493 39.9994 40.0125 34.6268 40.0125 27.9994C40.0125 21.372 32.8493 15.9994 24.0131 15.9994C15.1769 15.9994 8.01376 21.372 8.01376 27.9994C8.01376 34.6268 15.1769 39.9994 24.0131 39.9994Z"
+          fill="url(#paint2_radial_191_72)"
+        />
+        <path
+          d="M19.2825 26.8331C19.1888 28.8656 17.8388 29.6044 16.2694 29.6044C14.7 29.6044 13.5 28.5637 13.5938 26.5312C13.6875 24.4987 15.0375 23.1525 16.6069 23.1525C18.1763 23.1525 19.3763 24.8006 19.2825 26.8331Z"
+          fill="#842123"
+        />
+        <path
+          d="M34.4325 26.5294C34.5263 28.5619 33.3281 29.6025 31.7569 29.6025C30.1856 29.6025 28.8356 28.8656 28.7438 26.8313C28.65 24.7988 29.8481 23.1506 31.4194 23.1506C32.9906 23.1506 34.3406 24.495 34.4325 26.5294Z"
+          fill="#842123"
+        />
+        <path
+          d="M28.7438 27.0094C28.8319 28.9125 30.0937 29.6025 31.5637 29.6025C33.0337 29.6025 34.155 28.5694 34.0669 26.6663C33.9788 24.7631 32.7169 23.5181 31.2469 23.5181C29.7769 23.5181 28.6556 25.1063 28.7438 27.0094Z"
+          fill="url(#paint3_radial_191_72)"
+        />
+        <path
+          d="M19.2844 27.0094C19.1962 28.9125 17.9344 29.6025 16.4644 29.6025C14.9944 29.6025 13.8731 28.5694 13.9612 26.6663C14.0494 24.7631 15.3112 23.5181 16.7812 23.5181C18.2512 23.5181 19.3725 25.1063 19.2844 27.0094Z"
+          fill="url(#paint4_radial_191_72)"
+        />
+        <path
+          d="M24.0131 30.96C22.0294 30.96 20.1281 31.0556 18.3694 31.23C18.0694 31.26 17.8781 31.5656 17.9944 31.8394C18.9787 34.1475 21.3019 35.7694 24.0131 35.7694C26.7244 35.7694 29.0456 34.1475 30.0319 31.8394C30.1481 31.5656 29.9587 31.26 29.6569 31.23C27.8981 31.0556 25.9969 30.96 24.0131 30.96Z"
+          fill="#BBCFDA"
+        />
+        <path
+          d="M24.0131 31.4006C22.035 31.4006 20.1394 31.4981 18.3863 31.6763C18.0863 31.7063 17.8969 32.0175 18.0131 32.295C18.9956 34.6406 21.3113 36.2869 24.0113 36.2869C26.7113 36.2869 29.0288 34.6388 30.0113 32.295C30.1275 32.0175 29.9381 31.7063 29.6381 31.6763C27.885 31.4981 25.9894 31.4006 24.0113 31.4006H24.0131Z"
+          fill="white"
+        />
+        <path
+          d="M24.0131 31.1719C22.0669 31.1719 20.2012 31.2675 18.4744 31.4419C18.18 31.4719 17.9925 31.7775 18.1069 32.0513C19.0725 34.3594 21.3525 35.9812 24.0131 35.9812C26.6737 35.9812 28.9519 34.3594 29.9194 32.0513C30.0337 31.7775 29.8462 31.4719 29.5519 31.4419C27.8269 31.2675 25.9612 31.1719 24.0131 31.1719Z"
+          fill="url(#paint5_radial_191_72)"
+        />
+        <path
+          d="M32.7769 14.3681C34.9701 14.3681 36.7481 12.5901 36.7481 10.3969C36.7481 8.20362 34.9701 6.42563 32.7769 6.42563C30.5836 6.42563 28.8056 8.20362 28.8056 10.3969C28.8056 12.5901 30.5836 14.3681 32.7769 14.3681Z"
+          fill="url(#paint6_radial_191_72)"
+        />
+        <path
+          d="M23.9569 16.5056C23.4806 16.5056 23.0963 16.3069 23.0963 15.9994C23.0963 12.4406 25.9913 9.54749 29.5481 9.54749C30.0244 9.54749 30.4088 9.93374 30.4088 10.4081C30.4088 10.8825 30.0225 11.2687 29.5481 11.2687C26.94 11.2687 24.8175 13.3912 24.8175 15.9994C24.8175 16.3069 24.4313 16.5056 23.9569 16.5056Z"
+          fill="url(#paint7_radial_191_72)"
+        />
+        <path
+          d="M18.2381 27.9506C18.2381 28.6875 17.4544 29.0175 16.4888 29.0175C15.5231 29.0175 14.7394 28.6875 14.7394 27.9506C14.7394 27.2137 15.5231 26.6175 16.4888 26.6175C17.4544 26.6175 18.2381 27.2137 18.2381 27.9506Z"
+          fill="#FF6101"
+        />
+        <path
+          d="M33.2888 27.9506C33.2888 28.6875 32.505 29.0175 31.5394 29.0175C30.5738 29.0175 29.79 28.6875 29.79 27.9506C29.79 27.2137 30.5738 26.6175 31.5394 26.6175C32.505 26.6175 33.2888 27.2137 33.2888 27.9506Z"
+          fill="#FF6101"
+        />
+        <path
+          d="M17.6963 25.9519C18.0401 25.9519 18.3188 25.648 18.3188 25.2731C18.3188 24.8982 18.0401 24.5944 17.6963 24.5944C17.3525 24.5944 17.0738 24.8982 17.0738 25.2731C17.0738 25.648 17.3525 25.9519 17.6963 25.9519Z"
+          fill="#FFC49C"
+        />
+        <path
+          d="M32.4919 25.9519C32.8357 25.9519 33.1144 25.648 33.1144 25.2731C33.1144 24.8982 32.8357 24.5944 32.4919 24.5944C32.1481 24.5944 31.8694 24.8982 31.8694 25.2731C31.8694 25.648 32.1481 25.9519 32.4919 25.9519Z"
+          fill="#FFC49C"
+        />
+      </g>
+      <defs>
+        <radialGradient
+          id="paint0_radial_191_72"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(37.6897 20.167) scale(11.2315 9.79772)"
+        >
+          <stop stopColor="#FEFFFF" />
+          <stop offset="0.4" stopColor="#FEFFFF" />
+          <stop offset="0.51" stopColor="#F9FCFC" />
+          <stop offset="0.62" stopColor="#EDF3F5" />
+          <stop offset="0.7" stopColor="#DEE9EC" />
+          <stop offset="0.72" stopColor="#D8E4E8" />
+          <stop offset="0.76" stopColor="#CCD8DF" />
+          <stop offset="0.8" stopColor="#C8D5DD" />
+          <stop offset="0.83" stopColor="#CCD6DE" />
+          <stop offset="0.85" stopColor="#D8DBE2" />
+          <stop offset="0.88" stopColor="#EDE3E9" />
+          <stop offset="0.9" stopColor="#FFEBEF" />
+        </radialGradient>
+        <radialGradient
+          id="paint1_radial_191_72"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(10.4797 20.167) scale(11.2315 9.79772)"
+        >
+          <stop stopColor="#FEFFFF" />
+          <stop offset="0.4" stopColor="#FEFFFF" />
+          <stop offset="0.51" stopColor="#F9FCFC" />
+          <stop offset="0.62" stopColor="#EDF3F5" />
+          <stop offset="0.7" stopColor="#DEE9EC" />
+          <stop offset="0.72" stopColor="#D8E4E8" />
+          <stop offset="0.76" stopColor="#CCD8DF" />
+          <stop offset="0.8" stopColor="#C8D5DD" />
+          <stop offset="0.83" stopColor="#CCD6DE" />
+          <stop offset="0.85" stopColor="#D8DBE2" />
+          <stop offset="0.88" stopColor="#EDE3E9" />
+          <stop offset="0.9" stopColor="#FFEBEF" />
+        </radialGradient>
+        <radialGradient
+          id="paint2_radial_191_72"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(24.4401 18.5955) scale(33.8788 23.7872)"
+        >
+          <stop stopColor="#FEFFFF" />
+          <stop offset="0.4" stopColor="#FEFFFF" />
+          <stop offset="0.51" stopColor="#F9FCFC" />
+          <stop offset="0.62" stopColor="#EDF3F5" />
+          <stop offset="0.7" stopColor="#DEE9EC" />
+          <stop offset="0.72" stopColor="#D8E4E8" />
+          <stop offset="0.76" stopColor="#CCD8DF" />
+          <stop offset="0.8" stopColor="#C8D5DD" />
+          <stop offset="0.83" stopColor="#CCD6DE" />
+          <stop offset="0.85" stopColor="#D8DBE2" />
+          <stop offset="0.88" stopColor="#EDE3E9" />
+          <stop offset="0.9" stopColor="#FFEBEF" />
+        </radialGradient>
+        <radialGradient
+          id="paint3_radial_191_72"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(30.99 28.3071) rotate(180) scale(2.83057 4.15553)"
+        >
+          <stop stopColor="#FF6600" />
+          <stop offset="0.5" stopColor="#FF4500" />
+          <stop offset="0.7" stopColor="#FC4301" />
+          <stop offset="0.82" stopColor="#F43F07" />
+          <stop offset="0.92" stopColor="#E53812" />
+          <stop offset="1" stopColor="#D4301F" />
+        </radialGradient>
+        <radialGradient
+          id="paint4_radial_191_72"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(16.9107 28.3071) scale(2.83057 4.15553)"
+        >
+          <stop stopColor="#FF6600" />
+          <stop offset="0.5" stopColor="#FF4500" />
+          <stop offset="0.7" stopColor="#FC4301" />
+          <stop offset="0.82" stopColor="#F43F07" />
+          <stop offset="0.92" stopColor="#E53812" />
+          <stop offset="1" stopColor="#D4301F" />
+        </radialGradient>
+        <radialGradient
+          id="paint5_radial_191_72"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(24.0691 36.5452) scale(9.98104 6.58324)"
+        >
+          <stop stopColor="#172E35" />
+          <stop offset="0.29" stopColor="#0E1C21" />
+          <stop offset="0.73" stopColor="#030708" />
+          <stop offset="1" />
+        </radialGradient>
+        <radialGradient
+          id="paint6_radial_191_72"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(32.871 6.3949) scale(8.76139 8.76139)"
+        >
+          <stop stopColor="#FEFFFF" />
+          <stop offset="0.4" stopColor="#FEFFFF" />
+          <stop offset="0.51" stopColor="#F9FCFC" />
+          <stop offset="0.62" stopColor="#EDF3F5" />
+          <stop offset="0.7" stopColor="#DEE9EC" />
+          <stop offset="0.72" stopColor="#D8E4E8" />
+          <stop offset="0.76" stopColor="#CCD8DF" />
+          <stop offset="0.8" stopColor="#C8D5DD" />
+          <stop offset="0.83" stopColor="#CCD6DE" />
+          <stop offset="0.85" stopColor="#D8DBE2" />
+          <stop offset="0.88" stopColor="#EDE3E9" />
+          <stop offset="0.9" stopColor="#FFEBEF" />
+        </radialGradient>
+        <radialGradient
+          id="paint7_radial_191_72"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(29.22 15.9461) scale(7.1813 7.18131)"
+        >
+          <stop offset="0.48" stopColor="#7A9299" />
+          <stop offset="0.67" stopColor="#172E35" />
+          <stop offset="0.75" />
+          <stop offset="0.82" stopColor="#172E35" />
+        </radialGradient>
+        <clipPath id="clip0_191_72">
+          <rect width="48" height="48" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  ),
+  x: (
+    <svg
+      className="size-6 fill-foreground"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M36.6526 3.80782H43.3995L28.6594 20.6548L46 43.5798H32.4225L21.7881 29.6759L9.61989 43.5798H2.86886L18.6349 25.56L2 3.80782H15.9222L25.5348 16.5165L36.6526 3.80782ZM34.2846 39.5414H38.0232L13.8908 7.63408H9.87892L34.2846 39.5414Z" />
+    </svg>
+  ),
+  linkedin: (
+    <svg
+      className="size-6"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_17_32)">
+        <path
+          d="M44.4567 0H3.54333C2.60358 0 1.70232 0.373315 1.03782 1.03782C0.373315 1.70232 0 2.60358 0 3.54333V44.4567C0 45.3964 0.373315 46.2977 1.03782 46.9622C1.70232 47.6267 2.60358 48 3.54333 48H44.4567C45.3964 48 46.2977 47.6267 46.9622 46.9622C47.6267 46.2977 48 45.3964 48 44.4567V3.54333C48 2.60358 47.6267 1.70232 46.9622 1.03782C46.2977 0.373315 45.3964 0 44.4567 0ZM14.3067 40.89H7.09V17.9667H14.3067V40.89ZM10.6933 14.79C9.87473 14.7854 9.07583 14.5384 8.39747 14.0802C7.71911 13.622 7.19168 12.9731 6.88175 12.2154C6.57183 11.4577 6.4933 10.6252 6.65606 9.82291C6.81883 9.02063 7.2156 8.28455 7.79631 7.70756C8.37702 7.13057 9.11563 6.73853 9.91893 6.58092C10.7222 6.42331 11.5542 6.50719 12.3099 6.82197C13.0656 7.13675 13.7111 7.66833 14.1649 8.34962C14.6188 9.03092 14.8606 9.83138 14.86 10.65C14.8677 11.1981 14.765 11.7421 14.558 12.2496C14.351 12.7571 14.044 13.2178 13.6551 13.6041C13.2663 13.9905 12.8037 14.2946 12.2948 14.4983C11.786 14.702 11.2413 14.8012 10.6933 14.79ZM40.9067 40.91H33.6933V28.3867C33.6933 24.6933 32.1233 23.5533 30.0967 23.5533C27.9567 23.5533 25.8567 25.1667 25.8567 28.48V40.91H18.64V17.9833H25.58V21.16H25.6733C26.37 19.75 28.81 17.34 32.5333 17.34C36.56 17.34 40.91 19.73 40.91 26.73L40.9067 40.91Z"
+          fill="#0A66C2"
+        />
+      </g>
+    </svg>
+  ),
+};
+
+const PLATFORMS: PlatformNode[] = [
+  { key: "instagram", name: "Instagram" },
+  { key: "tiktok", name: "TikTok" },
+  { key: "youtube", name: "YouTube" },
+  { key: "reddit", name: "Reddit" },
+  { key: "x", name: "X" },
+  { key: "linkedin", name: "LinkedIn" },
+];
+
+// Layout constants (SVG viewBox space)
+const VB_WIDTH = 1200;
+const VB_HEIGHT = 320;
+
+const ROOT_X = 600; // Perfectly centered in 1200 viewBox
+const ROOT_TOP = 8;
+const ROOT_BOTTOM = 72;
+
+const BUS_Y = 116;
+const CORNER_R = 8;
+
+const NODE_TOP = 156;
+const ROOT_WIDTH = 260;
+const NODE_WIDTH = 64; // Slimmer width since we only show the logo slot now
+
+function NodeCard({
+  title,
+  x,
+  y,
+  width,
+  nodeRef,
+  id,
+}: {
+  title?: string;
+  x: number;
+  y: number;
+  width: number;
+  nodeRef: (el: HTMLDivElement | null) => void;
+  id: string;
+}) {
+  return (
+    <div
+      ref={nodeRef}
+      className={`absolute flex items-center justify-center rounded-[10px] bg-background/90 ${
+        title ? "py-2 pl-2 pr-3.5 gap-2.5" : "p-2" // Smaller padding if no title
+      } shadow-[0_0_0_1px_#fff_inset,0_0_0_1px_rgba(0,0,0,0.08),0_0_20px_0_rgba(0,0,0,0.03),0_36px_28px_0_rgba(0,0,0,0.02),0_4px_4px_0_rgba(0,0,0,0.02)]`}
+      style={{
+        left: `${(x / VB_WIDTH) * 100}%`,
+        top: `${(y / VB_HEIGHT) * 100}%`,
+        width: `${(width / VB_WIDTH) * 100}%`,
+        transform: "translate(-50%, 0)",
+        opacity: 0,
+      }}
+    >
+      {/* logo slot -- drop platform/brand icon here later */}
+      {/* <div className="size-7 shrink-0 rounded-md bg-[rgba(232,231,230,0.6)] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)]" /> */}
+      {!title && <>{(icons as any)[id]}</>}
+      {id === "root" && (
+        <Image
+          src={"/assets/images/logo/logo.png"}
+          width={48}
+          height={48}
+          alt="The Clout OS"
+          className="size-6 object-contain"
+        />
+      )}
+
+      {/* Only render title if it is passed (Root node) */}
+      {title && (
+        <span className="truncate text-[13px] font-medium text-[rgba(32,32,32,0.85)]">
+          {title}
+        </span>
+      )}
+    </div>
+  );
+}
+
+export default function AgencyFlowChart() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLDivElement | null>(null);
+  const childRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const trunkPathRef = useRef<SVGPathElement | null>(null);
+  const branchPathRefs = useRef<(SVGPathElement | null)[]>([]);
+
+  // State to track how many items can fit on screen
+  const [visibleCount, setVisibleCount] = useState(PLATFORMS.length);
+
+  // Responsive logic: Observe container width and adjust node count
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const observer = new ResizeObserver((entries) => {
+      const width = entries[0].contentRect.width;
+      if (width < 360) setVisibleCount(3);
+      else if (width < 480) setVisibleCount(4);
+      else if (width < 640) setVisibleCount(5);
+      else setVisibleCount(PLATFORMS.length);
+    });
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Dynamic SVG columns based on how many nodes are visible
+  const visiblePlatforms = PLATFORMS.slice(0, visibleCount);
+  const X_SPACING = 140; // Spacing between nodes in SVG space
+  const totalBusWidth = (visibleCount - 1) * X_SPACING;
+  const startX = ROOT_X - totalBusWidth / 2;
+  const COL_X = Array.from({ length: visibleCount }).map(
+    (_, i) => startX + i * X_SPACING,
+  );
+
+  const FIRST_COL = COL_X[0];
+  const LAST_COL = COL_X[COL_X.length - 1];
+
+  useGSAP(
+    () => {
+      const trunkPath = trunkPathRef.current;
+      const branchPaths = branchPathRefs.current
+        .slice(0, visibleCount)
+        .filter((el): el is SVGPathElement => !!el);
+
+      if (!trunkPath || branchPaths.length === 0) return;
+
+      const trunkLen = trunkPath.getTotalLength();
+      gsap.set(trunkPath, {
+        strokeDasharray: trunkLen,
+        strokeDashoffset: trunkLen,
+      });
+
+      branchPaths.forEach((p) => {
+        const len = p.getTotalLength();
+        gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
+      });
+
+      gsap.set(rootRef.current, { opacity: 0, y: 16 });
+      const activeChildren = childRefs.current.slice(0, visibleCount);
+      gsap.set(activeChildren, { opacity: 0, y: 16 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 75%",
+          // Remove once: true so if they resize and animation breaks, it can be re-triggered naturally,
+          // or leave it based on your preference. We'll stick to once.
+          once: true,
+        },
+      });
+
+      tl.to(rootRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      })
+        .to(trunkPath, {
+          strokeDashoffset: 0,
+          duration: 0.35,
+          ease: "power1.inOut",
+        })
+        .to(
+          branchPaths,
+          {
+            strokeDashoffset: 0,
+            duration: 0.45,
+            ease: "power1.inOut",
+            stagger: 0.06,
+          },
+          "<",
+        )
+        .to(
+          activeChildren,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: "power2.out",
+            stagger: 0.06,
+          },
+          "-=0.25",
+        );
+    },
+    { scope: containerRef, dependencies: [visibleCount] }, // Re-run GSAP when visible count changes
+  );
+
+  const trunkD = [
+    `M ${ROOT_X} ${ROOT_BOTTOM}`,
+    `L ${ROOT_X} ${BUS_Y}`,
+    `M ${FIRST_COL} ${BUS_Y + CORNER_R}`,
+    `A ${CORNER_R} ${CORNER_R} 0 0 1 ${FIRST_COL + CORNER_R} ${BUS_Y}`,
+    `L ${LAST_COL - CORNER_R} ${BUS_Y}`,
+    `A ${CORNER_R} ${CORNER_R} 0 0 1 ${LAST_COL} ${BUS_Y + CORNER_R}`,
+  ].join(" ");
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative mx-auto w-full max-w-5xl px-4 py-8"
+    >
+      <div
+        className="relative w-full"
+        style={{ paddingTop: `${(VB_HEIGHT / VB_WIDTH) * 100}%` }}
+      >
+        <svg
+          viewBox={`0 0 ${VB_WIDTH} ${VB_HEIGHT}`}
+          preserveAspectRatio="xMidYMid meet"
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          aria-hidden="true"
+        >
+          <defs>
+            <marker
+              id="acfc-arrow"
+              markerWidth="4"
+              markerHeight="8"
+              refX="2.6"
+              refY="0"
+              orient="auto"
+              markerUnits="userSpaceOnUse"
+              overflow="visible"
+            >
+              <path
+                d="M0 2.9 L2.6 0 L0 -2.9"
+                fill="none"
+                stroke="#BFBFBF"
+                strokeWidth="0.9"
+                strokeLinecap="square"
+                strokeLinejoin="round"
+              />
+            </marker>
+          </defs>
+
+          <path
+            d={trunkD}
+            stroke="#BFBFBF"
+            strokeWidth="1.1"
+            strokeDasharray="2 3"
+            strokeLinecap="round"
+            fill="none"
+          />
+          <path
+            ref={trunkPathRef}
+            d={trunkD}
+            stroke="#8f8f8f"
+            strokeWidth="1.1"
+            strokeLinecap="round"
+            fill="none"
+          />
+
+          {COL_X.map((x, i) => {
+            const isOuter = i === 0 || i === COL_X.length - 1;
+            const dropStart = isOuter ? BUS_Y + CORNER_R : BUS_Y;
+            const d = `M ${x} ${dropStart} L ${x} ${NODE_TOP - 6}`;
+            return (
+              <g key={`branch-${i}`}>
+                <path
+                  d={d}
+                  stroke="#BFBFBF"
+                  strokeWidth="1.1"
+                  strokeDasharray="2 3"
+                  strokeLinecap="round"
+                  fill="none"
+                  markerEnd="url(#acfc-arrow)"
+                />
+                <path
+                  ref={(el) => {
+                    branchPathRefs.current[i] = el;
+                  }}
+                  d={d}
+                  stroke="#8f8f8f"
+                  strokeWidth="1.1"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+              </g>
+            );
+          })}
+        </svg>
+
+        {/* Root node */}
+        <NodeCard
+          title="The Clout OS"
+          x={ROOT_X}
+          y={ROOT_TOP}
+          width={ROOT_WIDTH}
+          nodeRef={(el) => {
+            rootRef.current = el;
+          }}
+          id="root"
+        />
+
+        {/* Platform subagent nodes (No title passed, only logo slot renders) */}
+        {visiblePlatforms.map((platform, i) => (
+          <NodeCard
+            key={platform.key}
+            x={COL_X[i]}
+            y={NODE_TOP}
+            width={NODE_WIDTH}
+            nodeRef={(el) => {
+              childRefs.current[i] = el;
+            }}
+            id={platform.key}
+          />
+        ))}
+      </div>
+
+      {/* Overflow text for small screens */}
+      {PLATFORMS.length > visibleCount && (
+        <div className="absolute -bottom-2 left-0 w-full text-center fade-in">
+          <p className="text-[13px] font-medium text-[rgba(32,32,32,0.5)]">
+            + {PLATFORMS.length - visibleCount} more platforms available
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
