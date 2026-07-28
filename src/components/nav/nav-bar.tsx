@@ -38,7 +38,7 @@ export const Navbar: React.FC = () => {
     <Fragment>
       <nav
         ref={navRef}
-        className="fixed top-0 lg:top-4 left-0 lg:left-1/2 lg:-translate-x-1/2 z-[112] w-full lg:max-w-fit mx-auto lg:rounded-[12px] transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] will-change-[background-color,border-color,box-shadow,backdrop-filter] lg:border border-white/20 bg-gradient-to-r from-[rgba(249,250,247,0.12)] to-[rgba(249,250,247,0.18)] lg:shadow-[0_2px_6px_0_rgba(0,0,0,0.15)] backdrop-blur-[9px]"
+        className="fixed top-0 lg:top-4 left-0 lg:left-1/2 lg:-translate-x-1/2 z-100000 w-full lg:max-w-fit mx-auto lg:rounded-[12px] transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] will-change-[background-color,border-color,box-shadow,backdrop-filter] lg:border border-white/20 bg-gradient-to-r from-[rgba(249,250,247,0.12)] to-[rgba(249,250,247,0.18)] lg:shadow-[0_2px_6px_0_rgba(0,0,0,0.15)] backdrop-blur-[9px]"
       >
         <div className="flex gap-6 items-center px-5 py-3 lg:px-3 lg:py-2 w-full justify-between">
           {/* Brand Logo */}
@@ -144,26 +144,26 @@ export const Navbar: React.FC = () => {
             {/* Mobile Hamburger Toggle Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`flex relative flex-col justify-center items-center w-9 h-9 rounded-lg backdrop-blur-sm focus:outline-none focus:ring-1 focus:ring-neutral-100 focus:ring-offset-2 group cursor-pointer lg:hidden border ${theme === "dark" ? "border-background/20" : "border-foreground/20"}`}
+              className={`flex relative flex-col justify-center items-center w-9 h-9 rounded-lg backdrop-blur-sm focus:outline-none focus:ring-1 focus:ring-neutral-100 focus:ring-offset-2 group cursor-pointer lg:hidden border ${isMobileMenuOpen ? "border-foreground/20" : theme === "dark" ? "border-background/20" : "border-foreground/20"}`}
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
               <span
-                className={`block w-3.5 h-[1px] rounded-full transition-all duration-200 ease-in-out origin-center ${theme === "dark" ? "bg-background" : "bg-foreground"} ${
+                className={`block w-3.5 h-[1px] rounded-full transition-all duration-200 ease-in-out origin-center ${isMobileMenuOpen ? "bg-foreground" : theme === "dark" ? "bg-background" : "bg-foreground"} ${
                   isMobileMenuOpen
                     ? "rotate-45 translate-y-[5px]"
                     : "rotate-0 translate-y-0"
                 }`}
               />
               <span
-                className={`block w-3.5 h-[1px] rounded-full transition-all duration-150 ease-in-out mt-1 ${theme === "dark" ? "bg-background" : "bg-foreground"} ${
+                className={`block w-3.5 h-[1px] rounded-full transition-all duration-150 ease-in-out mt-1 ${isMobileMenuOpen ? "bg-foreground" : theme === "dark" ? "bg-background" : "bg-foreground"} ${
                   isMobileMenuOpen
                     ? "opacity-0 scale-0"
                     : "opacity-100 scale-100"
                 }`}
               />
               <span
-                className={`block w-3.5 h-[1px] rounded-full transition-all duration-200 ease-in-out origin-center mt-1 ${theme === "dark" ? "bg-background" : "bg-foreground"} ${
+                className={`block w-3.5 h-[1px] rounded-full transition-all duration-200 ease-in-out origin-center mt-1 ${isMobileMenuOpen ? "bg-foreground" : theme === "dark" ? "bg-background" : "bg-foreground"} ${
                   isMobileMenuOpen
                     ? "-rotate-45 -translate-y-[5px]"
                     : "rotate-0 translate-y-0"
