@@ -16,7 +16,7 @@ type PlatformNode = {
 const icons = {
   instagram: (
     <svg
-      className="size-6"
+      className="size-8"
       viewBox="0 0 2500 2500"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -54,7 +54,7 @@ const icons = {
   ),
   tiktok: (
     <svg
-      className="size-6"
+      className="size-8"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ const icons = {
   ),
   youtube: (
     <svg
-      className="size-6"
+      className="size-8"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ const icons = {
 
   reddit: (
     <svg
-      className="size-6"
+      className="size-8"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -319,7 +319,7 @@ const icons = {
   ),
   x: (
     <svg
-      className="size-6 fill-foreground"
+      className="size-8 fill-foreground"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -329,7 +329,7 @@ const icons = {
   ),
   linkedin: (
     <svg
-      className="size-6"
+      className="size-8"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
