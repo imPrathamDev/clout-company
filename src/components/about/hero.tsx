@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
+import image from "../../../public/assets/images/about/hero.png";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
@@ -57,11 +58,12 @@ export const Hero: React.FC = () => {
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
-              src="/assets/images/hero/hero-evening.jpg"
+              src={image}
               alt="Background Hero Image"
               fill
               priority
               sizes="100vw"
+              placeholder="blur"
               className="object-cover w-full object-[50%_30%]"
             />
           </div>
