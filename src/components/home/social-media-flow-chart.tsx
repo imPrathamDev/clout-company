@@ -341,14 +341,14 @@ const BUS_Y = 116;
 const CORNER_R = 8;
 
 const NODE_TOP = 156;
-const ROOT_WIDTH = 260;
+const ROOT_WIDTH = 300;
 const NODE_WIDTH = 64; // Slimmer width since we only show the logo slot now
 
 function NodeCard({
   title,
   x,
   y,
-  width,
+  width, // We keep the prop so we don't break the parent component, but we won't use it for inline styles
   nodeRef,
   id,
 }: {
@@ -363,18 +363,18 @@ function NodeCard({
     <div
       ref={nodeRef}
       className={`absolute flex items-center justify-center rounded-[10px] bg-background/90 ${
-        title ? "py-2 pl-2 pr-3.5 gap-2.5" : "p-2" // Smaller padding if no title
+        title
+          ? "py-2 pl-2 pr-3.5 gap-2.5 w-max min-w-[140px]" // w-max ensures it fits the content
+          : "p-2 w-12 h-12 sm:w-14 sm:h-14 aspect-square" // explicitly makes the boxes perfectly square
       } shadow-[0_0_0_1px_#fff_inset,0_0_0_1px_rgba(0,0,0,0.08),0_0_20px_0_rgba(0,0,0,0.03),0_36px_28px_0_rgba(0,0,0,0.02),0_4px_4px_0_rgba(0,0,0,0.02)]`}
       style={{
         left: `${(x / VB_WIDTH) * 100}%`,
         top: `${(y / VB_HEIGHT) * 100}%`,
-        width: `${(width / VB_WIDTH) * 100}%`,
+        /* Removed the inline width calculation to stop them from infinitely squishing */
         transform: "translate(-50%, 0)",
         opacity: 0,
       }}
     >
-      {/* logo slot -- drop platform/brand icon here later */}
-      {/* <div className="size-7 shrink-0 rounded-md bg-[rgba(232,231,230,0.6)] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)]" /> */}
       {!title && <>{(icons as any)[id]}</>}
       {id === "root" && (
         <Image
@@ -386,9 +386,8 @@ function NodeCard({
         />
       )}
 
-      {/* Only render title if it is passed (Root node) */}
       {title && (
-        <span className="truncate text-[13px] font-medium text-[rgba(32,32,32,0.85)]">
+        <span className="whitespace-nowrap text-[13px] font-medium text-[rgba(32,32,32,0.85)]">
           {title}
         </span>
       )}

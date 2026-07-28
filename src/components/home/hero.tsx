@@ -16,8 +16,8 @@ gsap.registerPlugin(useGSAP, SplitText);
 const imageMap = {
   morning: "/assets/images/hero/morning.jpg",
   afternoon: "/assets/images/hero/morning.jpg",
-  evening: "/assets/images/her/evening.jpg",
-  night: "/assets/images/her/evening.jpg",
+  evening: "/assets/images/hero/evening.jpg",
+  night: "/assets/images/hero/evening.jpg",
 } as const;
 
 export const Hero: React.FC = () => {

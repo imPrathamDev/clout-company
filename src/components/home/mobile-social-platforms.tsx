@@ -318,7 +318,7 @@ const PLATFORMS = [
 
 function MobileSocialPlatforms() {
   return (
-    <div className="grid md:hidden grid-cols-3 gap-4 w-full h-full rounded-xl bg-background p-[10vw]">
+    <div className="grid lg:hidden grid-cols-3 gap-4 w-full h-full rounded-xl bg-background p-[10vw]">
       {PLATFORMS.map((platform) => (
         <div
           key={platform.key}

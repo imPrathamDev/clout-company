@@ -14,7 +14,7 @@ function Content() {
   return (
     <div className="w-full">
       <section
-        className="md:pb-[280px] pt-0 px-0 w-full mx-auto"
+        className="pb-[60px] md:pb-[280px] pt-0 px-0 w-full mx-auto"
         data-navbar-theme="light"
       >
         <div className="flex justify-center w-full">
@@ -65,7 +65,7 @@ function Content() {
                 </div>
               </div>
 
-              <div className="h-[320px] w-[210px] px-3 pt-3 pb-8 bg-background absolute -bottom-[195px] -right-[50px] rotate-12 shadow">
+              <div className="h-[240px] w-[170px] md:h-[280px] md:w-[200px] px-3 pt-3 pb-8 bg-background absolute -bottom-[40px] md:-bottom-[160px] right-4 md:-right-[50px] rotate-12 shadow">
                 <div className="w-full h-full overflow-hidden relative">
                   <Image
                     src={"/assets/images/about/about-frame.jpeg"}

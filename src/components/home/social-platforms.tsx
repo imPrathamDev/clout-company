@@ -8,8 +8,10 @@ function SocialPlatforms() {
     <section className="relative flex min-h-0 flex-1 flex-col justify-center h-[70vh] md:h-svh pt-[100px] min-[1000px]:pb-[220px] pb-[160px] min-[767px]:pb-[100px] overflow-hidden">
       <Image
         src={"/assets/images/platforms/bg.png"}
-        alt=""
+        alt="Clout OS"
+        loading="eager"
         fill
+        sizes="100vw"
         className="object-cover"
       />
       <div className="w-full h-full absolute top-0 left-0">
@@ -43,7 +45,7 @@ function SocialPlatforms() {
 
         <div className="mt-14 mb-12 flex items-center justify-center">
           <div className="w-[95vw] md:w-[40vw] aspect-video rounded-2xl p-2 bg-gray-100/80">
-            <div className="hidden md:flex w-full h-full rounded-xl bg-background items-center justify-center">
+            <div className="hidden lg:flex w-full h-full rounded-xl bg-background items-center justify-center">
               <AgencyFlowChart />
             </div>
 
