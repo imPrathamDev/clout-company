@@ -116,7 +116,7 @@ function Footer() {
                   alt="Clout OS"
                   fill
                   priority
-                  className="object-cover"
+                  className="object-cover object-[50%_75%]"
                 />
               </div>
             </section>
