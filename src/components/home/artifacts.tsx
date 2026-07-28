@@ -4,74 +4,79 @@ import Image from "next/image";
 import React from "react";
 import { SegmentedProgressBar } from "@/components/segmented-progress-bar";
 import Link from "next/link";
+import { ArtifactCampaign } from "@/sanity/queries/artifactCampaign";
 
-const artifacts_array = [
-  {
-    label: "Artifact 001",
-    title: "Incentives Create Markets",
-    campaign_name: "Emergent × FIFA",
-    brand_logo: "/assets/images/clients/logo1.png",
-    content:
-      "Attention alone doesn't create users—participation does. For Emergent, we partnered with creators like Theo Baker, Danny Aarons, Leon to reach a global football audience during the FIFA season. A $100,000 creator prize pool turned spectators into builders, encouraging thousands of users to test, create with, and adopt the product.",
-    stats: {
-      primary: {
-        label: "Engagement Rate",
-        value: "42%",
-        isProgress: true,
-      },
-      secondary: [
-        { label: "Creator Reach", value: "18.4M" },
-        { label: "Prize Pool", value: "$100K" },
-        { label: "New Sign-ups", value: "68K+" },
-        { label: "UGC Created", value: "9.3K" },
-      ],
-    },
-  },
-  {
-    label: "Artifact 002",
-    title: "Distribution Begins With Discovery",
-    campaign_name: "Gamma",
-    brand_logo: "/assets/images/clients/logo6.png",
-    content:
-      "The obvious user isn't always the right user. After systematically testing multiple ICPs across different markets, we discovered that educators and trainers were among Gamma's strongest power users.",
-    stats: {
-      primary: {
-        label: "Activation Rate",
-        value: "61%",
-        isProgress: true,
-      },
-      secondary: [
-        { label: "ICPs Tested", value: "14" },
-        { label: "Markets Researched", value: "9" },
-        { label: "Retention Lift", value: "+37%" },
-        { label: "CAC Reduction", value: "-28%" },
-      ],
-    },
-  },
-  {
-    label: "Artifact 003",
-    title: "Culture Travels Further Than Advertising",
-    campaign_name: "XYXX",
-    brand_logo: "/assets/images/clients/logo5.png",
-    content:
-      "The most effective distribution feels like culture, not marketing. For XYXX, we produced stereotype-breaking content that generated 500M+ organic views.",
-    stats: {
-      primary: {
-        label: "Organic Views",
-        value: "500M+",
-        isProgress: false,
-      },
-      secondary: [
-        { label: "Share Rate", value: "21%" },
-        { label: "Earned Media", value: "1.8K+" },
-        { label: "Engagements", value: "12.6M" },
-        { label: "Countries Reached", value: "34" },
-      ],
-    },
-  },
-];
+// const artifacts_array = [
+//   {
+//     label: "Artifact 001",
+//     title: "Incentives Create Markets",
+//     campaign_name: "Emergent × FIFA",
+//     brand_logo: "/assets/images/clients/logo1.png",
+//     content:
+//       "Attention alone doesn't create users—participation does. For Emergent, we partnered with creators like Theo Baker, Danny Aarons, Leon to reach a global football audience during the FIFA season. A $100,000 creator prize pool turned spectators into builders, encouraging thousands of users to test, create with, and adopt the product.",
+//     stats: {
+//       primary: {
+//         label: "Engagement Rate",
+//         value: "42%",
+//         isProgress: true,
+//       },
+//       secondary: [
+//         { label: "Creator Reach", value: "18.4M" },
+//         { label: "Prize Pool", value: "$100K" },
+//         { label: "New Sign-ups", value: "68K+" },
+//         { label: "UGC Created", value: "9.3K" },
+//       ],
+//     },
+//   },
+//   {
+//     label: "Artifact 002",
+//     title: "Distribution Begins With Discovery",
+//     campaign_name: "Gamma",
+//     brand_logo: "/assets/images/clients/logo6.png",
+//     content:
+//       "The obvious user isn't always the right user. After systematically testing multiple ICPs across different markets, we discovered that educators and trainers were among Gamma's strongest power users.",
+//     stats: {
+//       primary: {
+//         label: "Activation Rate",
+//         value: "61%",
+//         isProgress: true,
+//       },
+//       secondary: [
+//         { label: "ICPs Tested", value: "14" },
+//         { label: "Markets Researched", value: "9" },
+//         { label: "Retention Lift", value: "+37%" },
+//         { label: "CAC Reduction", value: "-28%" },
+//       ],
+//     },
+//   },
+//   {
+//     label: "Artifact 003",
+//     title: "Culture Travels Further Than Advertising",
+//     campaign_name: "XYXX",
+//     brand_logo: "/assets/images/clients/logo5.png",
+//     content:
+//       "The most effective distribution feels like culture, not marketing. For XYXX, we produced stereotype-breaking content that generated 500M+ organic views.",
+//     stats: {
+//       primary: {
+//         label: "Organic Views",
+//         value: "500M+",
+//         isProgress: false,
+//       },
+//       secondary: [
+//         { label: "Share Rate", value: "21%" },
+//         { label: "Earned Media", value: "1.8K+" },
+//         { label: "Engagements", value: "12.6M" },
+//         { label: "Countries Reached", value: "34" },
+//       ],
+//     },
+//   },
+// ];
 
-function Artifacts() {
+function Artifacts({
+  artifactCampaigns,
+}: {
+  artifactCampaigns: ArtifactCampaign[];
+}) {
   return (
     <section className="flex flex-col justify-center items-center mx-auto max-w-[1100px] px-6">
       <div className="w-full pt-24 pb-10">
@@ -152,7 +157,7 @@ function Artifacts() {
 
       <div className="w-full pt-8 pb-24">
         <div className="mt-[60px] mx-auto flex w-full max-w-[820px] flex-col gap-[80px] min-[1280px]:max-w-none justify-center items-center">
-          {artifacts_array.map((data) => (
+          {artifactCampaigns.map((data) => (
             <div
               key={data.label}
               className="flex flex-col gap-y-8 min-[1280px]:flex-row min-[1280px]:items-center min-[1280px]:gap-y-0"

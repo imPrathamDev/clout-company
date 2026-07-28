@@ -12,8 +12,15 @@ import Artifacts from "../home/artifacts";
 import SocialMediaFlowChart from "../home/social-media-flow-chart";
 import SocialPlatforms from "../home/social-platforms";
 import { ClientLogo } from "@/sanity/queries/clinetsLogo";
+import { ArtifactCampaign } from "@/sanity/queries/artifactCampaign";
 
-function HomePage({ clientLogos }: { clientLogos: ClientLogo[] }) {
+function HomePage({
+  clientLogos,
+  artifactCampaigns,
+}: {
+  clientLogos: ClientLogo[];
+  artifactCampaigns: ArtifactCampaign[];
+}) {
   return (
     <main className="overflow-x-clip">
       <Navbar />
@@ -21,7 +28,7 @@ function HomePage({ clientLogos }: { clientLogos: ClientLogo[] }) {
       <HeroDivider />
       <Clients clientLogos={clientLogos} />
       <Wheel />
-      <Artifacts />
+      <Artifacts artifactCampaigns={artifactCampaigns} />
       <SocialPlatforms />
       <WordSearchReveal />
       <Footer />
