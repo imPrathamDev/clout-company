@@ -113,8 +113,9 @@ function Footer() {
               <div className="h-full w-full relative overflow-hidden">
                 <Image
                   src={"/assets/images/footer.png"}
-                  alt=""
+                  alt="Clout OS"
                   fill
+                  priority
                   className="object-cover"
                 />
               </div>

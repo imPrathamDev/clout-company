@@ -48,10 +48,11 @@ export const Navbar: React.FC = () => {
             >
               <Image
                 src={"/assets/images/logo/logo.png"}
-                alt=""
+                alt="Logo"
                 width={34}
                 height={34}
-                className="object-contain"
+                // Add w-auto and h-auto here 👇
+                className="object-contain w-auto h-auto"
               />
             </div>
           </Link>

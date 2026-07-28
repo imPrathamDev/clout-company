@@ -7,13 +7,22 @@ import DisplayTime from "./time";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { useLocaleTime } from "../hooks/use-locale-time";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
 // export type NavbarTheme = "light" | "dark";
 
+const imageMap = {
+  morning: "/assets/images/hero/morning.jpg",
+  afternoon: "/assets/images/hero/morning.jpg",
+  evening: "/assets/images/her/evening.jpg",
+  night: "/assets/images/her/evening.jpg",
+} as const;
+
 export const Hero: React.FC = () => {
   const containerRef = useRef(null);
+  const { timeOfDayKey } = useLocaleTime();
   const textRef = useRef(null);
   useGSAP(
     () => {
@@ -60,7 +69,7 @@ export const Hero: React.FC = () => {
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
-              src="/assets/images/hero/hero-morning.jpg"
+              src={imageMap[timeOfDayKey]}
               alt="Background Hero Image"
               fill
               priority

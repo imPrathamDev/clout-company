@@ -184,7 +184,7 @@ function Clients({ clientLogos }: { clientLogos: ClientLogo[] }) {
               className="w-16 md:w-20 lg:w-24 aspect-3/2 flex items-center justify-center will-change-[filter,transform,opacity]"
             >
               <Image
-                src={"/assets/images/clients/" + slot.logo}
+                src={slot.logo}
                 alt={slot.logo.split(".")[0] || "Client logo"}
                 width={200}
                 height={80}
