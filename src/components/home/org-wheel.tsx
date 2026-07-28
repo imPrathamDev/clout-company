@@ -42,6 +42,25 @@ const DEPARTMENTS: NodeData[] = [
   },
 ];
 
+const CHAT_MESSAGES = [
+  {
+    title: "Who",
+    text: "We identify, size, and validate the highest-converting customer segments before selecting a single creator.",
+  },
+  {
+    title: "When",
+    text: "We launch campaigns around seasonal demand, market trends, and cultural moments to maximize reach and conversions.",
+  },
+  {
+    title: "Where",
+    text: "We determine the right creators and social platforms based on where your ICP is most active.",
+  },
+  {
+    title: "How",
+    text: "We orchestrate the entire campaign—from custom creator discovery and outreach to execution, optimization, and reporting.",
+  },
+];
+
 // --- Sub-Components ---
 
 /** Small status indicator badge sitting above nodes */
@@ -99,13 +118,13 @@ export const OrgWheel: React.FC = () => {
   const RADIUS = 184;
 
   return (
-    <div className="orch-frame mt-8 md:mt-16 relative flex flex-col overflow-hidden w-full max-w-[1080px] mx-auto min-h-[400px] md:min-h-[600px] rounded-2xl border border-gray-200">
+    <div className="orch-frame mt-8 md:mt-16 relative flex flex-col overflow-hidden w-full max-w-[1080px] mx-auto min-h-[400px] md:min-h-[600px] rounded-2xl border border-gray-200 shadow-lg">
       {/* Header Bar */}
       <div className="absolute top-0 left-0 w-full h-fit flex justify-between px-4 py-2 border-b border-gray-200 bg-white z-10">
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-[#FF605C]"></div>
-          <div className="w-2 h-2 rounded-full bg-[#FFBD44]"></div>
-          <div className="w-2 h-2 rounded-full bg-[#00CA4E]"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-[#FF605C]"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD44]"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-[#00CA4E]"></div>
         </div>
 
         <div className="flex items-center gap-2 text-gray-600">
@@ -113,9 +132,9 @@ export const OrgWheel: React.FC = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1}
+            strokeWidth={1.5}
             stroke="currentColor"
-            className="w-3 h-3"
+            className="w-4 h-4"
           >
             <path
               strokeLinecap="round"
@@ -127,9 +146,9 @@ export const OrgWheel: React.FC = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1}
+            strokeWidth={1.5}
             stroke="currentColor"
-            className="w-3 h-3"
+            className="w-4 h-4"
           >
             <path
               strokeLinecap="round"
@@ -140,9 +159,9 @@ export const OrgWheel: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex items-center justify-center h-full flex-grow pt-12 pb-8 bg-[#F4F4F0] px-4 text-stone-800 antialiased overflow-hidden">
-        {/* Responsive constraints container */}
-        <div className="relative w-full max-w-[320px] sm:max-w-[420px] md:max-w-[520px] aspect-square select-none">
+      <div className="flex flex-col lg:flex-row justify-between h-full pt-12 pb-4 lg:pb-8 bg-[#F4F4F0] px-4 text-stone-800 antialiased overflow-hidden gap-6 lg:gap-0">
+        {/* Left: Responsive constraints container for the Wheel */}
+        <div className="relative w-full max-w-[320px] sm:max-w-[420px] md:max-w-[550px] lg:max-w-[600px] aspect-square select-none mx-auto lg:mx-0 lg:ml-2">
           {/* --- SVG Background: Rings, Spokes, Connection Dots --- */}
           <svg
             viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
@@ -258,6 +277,71 @@ export const OrgWheel: React.FC = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Right: Chat Section */}
+        <div className="relative z-100 rounded-xl lg:self-stretch w-full lg:w-[calc(100%-620px)] lg:max-w-[420px] h-[400px] lg:h-auto bg-white/60 backdrop-blur-sm flex flex-col border border-black/5 shadow-sm overflow-hidden mt-4 lg:mt-0 lg:mr-0">
+          {/* Chat Header */}
+          <div className="px-4 py-3 border-b border-black/5 bg-white/80 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg border border-stone-200 flex items-center justify-center shrink-0 overflow-clip">
+              <Image
+                src={"/assets/images/logo/logo.png"}
+                width={22}
+                height={22}
+                alt="Clout OS"
+                className="object-contain"
+              />
+            </div>
+            <div>
+              <h3 className="text-sm font-medium text-stone-800 leading-tight">
+                The Clout Company
+              </h3>
+              <p className="text-[11px] text-stone-500">by Crescent</p>
+            </div>
+          </div>
+
+          {/* Chat Messages */}
+          <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-5 scrollbar-thin scrollbar-thumb-stone-200">
+            {CHAT_MESSAGES.map((msg, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col gap-1.5 w-full self-end animate-fade-in-up"
+              >
+                <div className="self-end w-fit p-2.5 bg-white border border-stone-100 rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.02)] text-[13px] md:text-sm text-stone-600 leading-relaxed">
+                  <span>{msg.title}</span>
+                </div>
+
+                <div className="w-[80%] self-start flex gap-1">
+                  <span className="text-[12px] font-semibold">.::</span>{" "}
+                  <p className="text-[12px] font-normal text-foreground ml-1">
+                    {msg.text}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Chat Input (Visual only) */}
+          <div className="p-3 bg-white/80 border-t border-black/5">
+            <div className="flex items-center gap-2 px-4 py-2.5 bg-[#F4F4F0] rounded-full text-[13px] text-stone-400">
+              <span className="flex-1">Ask about Clout OS...</span>
+              <button className="w-7 h-7 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
+                <svg
+                  className="-rotate-90 w-3.5 h-3.5 text-white translate-x-[1px]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 12h14M12 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
