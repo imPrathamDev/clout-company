@@ -21,9 +21,9 @@ function SocialPlatforms() {
               textShadow:
                 "0 0 3px rgba(0, 0, 0, 0.08), 0 0.5px 0.5px rgba(0, 0, 0, 0.12)",
             }}
-            className="text-background leading-[120%] m-0 mx-auto text-center text-[28px] min-[768px]:text-[32px] min-[1000px]:text-[40px] max-w-[20ch]"
+            className="text-background leading-[120%] m-0 mx-auto text-center text-[26px] min-[768px]:text-[32px] min-[1000px]:text-[40px] max-w-[22ch]"
           >
-            All the tools and systems
+            Multiple platforms. Every user.
             <br />
             <span
               style={{
@@ -34,17 +34,16 @@ function SocialPlatforms() {
                 textShadow: "none",
               }}
             >
-              your company needs
+              One OS
             </span>
           </h2>
           <p className="m-0 mx-auto mt-5 max-w-[580px] text-center text-[16px] font-[460] leading-[150%] text-background/80">
-            Give agents the context, tools, and approvals they need to keep
-            company work moving.
+            Build compounding reach across channels.
           </p>
         </div>
 
         <div className="mt-14 mb-12 flex items-center justify-center">
-          <div className="w-[95vw] md:w-[40vw] aspect-video rounded-2xl p-2 bg-gray-100/80">
+          <div className="w-[95vw] md:w-[40vw] lg:w-[60vw] xl:w-[40vw] aspect-video rounded-2xl p-2 bg-gray-100/80">
             <div className="hidden lg:flex w-full h-full rounded-xl bg-background items-center justify-center">
               <AgencyFlowChart />
             </div>

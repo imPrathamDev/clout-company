@@ -14,10 +14,10 @@ gsap.registerPlugin(useGSAP, SplitText);
 // export type NavbarTheme = "light" | "dark";
 
 const imageMap = {
-  morning: require("../../../public/assets/images/hero/new-morning.jpg"),
-  afternoon: require("../../../public/assets/images/hero/new-morning.jpg"),
-  evening: require("../../../public/assets/images/hero/new-evening.jpg"),
-  night: require("../../../public/assets/images/hero/new-evening.jpg"),
+  morning: require("../../../public/assets/images/hero/morning-final.jpg"),
+  afternoon: require("../../../public/assets/images/hero/morning-final.jpg"),
+  evening: require("../../../public/assets/images/hero/evening-final.jpg"),
+  night: require("../../../public/assets/images/hero/evening-final.jpg"),
 } as const;
 
 export const Hero: React.FC = () => {

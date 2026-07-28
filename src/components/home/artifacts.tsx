@@ -165,7 +165,7 @@ function Artifacts({
               <div className="flex flex-col min-[768px]:flex-row shrink-0 gap-y-6 max-[1280px]:gap-x-[40px] min-[1280px]:w-[290px] min-[1280px]:flex-col">
                 <div className="rounded-xl bg-[#f8f9f5] border border-[#e8ece0] size-24 flex items-center justify-center">
                   <Image
-                    alt=""
+                    alt="Folder"
                     src={"/assets/images/folder.svg"}
                     width={66}
                     height={66}
@@ -195,25 +195,68 @@ function Artifacts({
 
                 <div className="flex flex-col gap-2">
                   <div className="h-0 md:h-[2vh]"></div>
-                  <Link
-                    href={"/contact"}
-                    className="text-[13px] text-foreground/80 group flex items-center gap-[6px]"
-                  >
-                    enter the chat{" "}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1}
-                      stroke="currentColor"
-                      className="size-4 text-foreground/70 opacity-0 -translate-x-2 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300"
+                  <Link href={"/contact"}>
+                    <button
+                      className="inline-flex items-center justify-center whitespace-nowrap font-medium outline-none focus-visible:ring-[3px] focus-visible:ring-white/20 cursor-pointer group border border-[#282834] rounded-lg gap-2 text-white hover:opacity-90 transition-opacity h-9 px-4 py-2 pr-3 text-[15px] tracking-[-0.15px] leading-[140%] before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white/.5)_50%,transparent_75%,transparent_100%)] dark:before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] relative before:bg-no-repeat before:[transition:background-position_0s_ease] hover:before:bg-[position:-100%_0,0_0] hover:before:duration-[1500ms]"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.12) 100%), #1F1F29",
+                      }}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                      />
-                    </svg>
+                      enter the chat
+                      {/* Micro Arrow Badge */}
+                      <div
+                        className="flex items-center justify-center w-3 h-4 pl-[2.5px] pr-[1.5px] py-0 rounded-[50px] border leading-none"
+                        style={{
+                          borderColor: "rgba(255,255,255,0.24)",
+                          background:
+                            "linear-gradient(0deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.08) 100%)",
+                          boxShadow: "0 1.01px 1.01px 0 rgba(0, 0, 0, 0.04)",
+                        }}
+                      >
+                        <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
+                          <div className="relative overflow-hidden flex items-center justify-center w-[7px] h-[10px]">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="7"
+                              height="10"
+                              viewBox="0 0 7 10"
+                              fill="none"
+                              className="transition-transform duration-500 group-hover:animate-[slideOut_0.8s_linear_infinite]"
+                            >
+                              <rect
+                                x="3.94922"
+                                y="4.29102"
+                                width="1.41526"
+                                height="1.41526"
+                                fill="currentColor"
+                              />
+                              <rect
+                                x="1.13281"
+                                y="1.47021"
+                                width="1.41526"
+                                height="1.41526"
+                                fill="currentColor"
+                              />
+                              <rect
+                                x="1.13281"
+                                y="7.11426"
+                                width="1.41526"
+                                height="1.41526"
+                                fill="currentColor"
+                              />
+                              <rect
+                                x="2.53125"
+                                y="2.87549"
+                                width="1.41526"
+                                height="4.24579"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
                   </Link>
                 </div>
               </div>
