@@ -55,7 +55,7 @@ function Footer() {
             We're programming distribution for businesses that love building
           </h2>
         </div>
-        <div className="flex flex-col-reverse gap-4 md:gap-0 md:flex-row items-center justify-between md:w-7xl">
+        <div className="flex flex-col-reverse gap-4 md:gap-0 md:flex-row items-center justify-center md:w-7xl">
           <div className="flex items-center gap-3">
             {links.map((link) => (
               <Link
@@ -68,9 +68,9 @@ function Footer() {
             ))}
           </div>
 
-          <div className="">
+          {/* <div className="">
             <DisplayTime />
-          </div>
+          </div> */}
         </div>
       </section>
       <div className="w-full">
@@ -112,11 +112,11 @@ function Footer() {
 
               <div className="h-full w-full relative overflow-hidden">
                 <Image
-                  src={"/assets/images/footer.png"}
+                  src={"/assets/images/new-footer.png"}
                   alt="Clout OS"
                   fill
                   priority
-                  className="object-cover object-[50%_75%]"
+                  className="object-cover"
                 />
               </div>
             </section>

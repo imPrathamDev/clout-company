@@ -79,17 +79,17 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Main Hero Content */}
-          <div className="relative flex flex-col justify-start items-start pt-20 w-full h-full">
+          <div className="relative flex flex-col justify-start items-start w-full h-full pt-28">
             <div className="max-w-360 mx-auto w-full h-full flex-1">
               {/* Main Headline */}
               <h1
                 ref={textRef}
-                className="opacity-0 tracking-[-1.08px] home-hero-title font-serif text-background text-center relative z-10 font-normal max-w-[24ch] mx-auto pt-4 md:pt-10 text-[16px] sm:text-[24px] lg:text-[27px] 3xl:text-[32px]"
+                className="opacity-0 tracking-[-1.08px] home-hero-title font-serif text-background text-center relative z-10 font-normal max-w-[24ch] mx-auto pt-4 md:pt-10 text-[41px] sm:text-[49px] lg:text-[52px] 3xl:text-[57px] leading-[0.95]"
                 style={{ textShadow: "0 0 4.978px rgba(255, 255, 255, 0.80)" }}
               >
                 The Clout Company
                 <br />
-                <span className="flex items-center justify-center gap-2">
+                <span className="flex items-center justify-center gap-4">
                   <span className="italic">by </span> Crescent
                 </span>
               </h1>

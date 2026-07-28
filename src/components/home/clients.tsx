@@ -188,7 +188,7 @@ function Clients({ clientLogos }: { clientLogos: ClientLogo[] }) {
                 alt={slot.logo.split(".")[0] || "Client logo"}
                 width={200}
                 height={80}
-                className="max-h-full max-w-full object-contain grayscale opacity-60 contrast-125 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                className="max-h-full max-w-full object-contain"
               />
             </div>
           </div>

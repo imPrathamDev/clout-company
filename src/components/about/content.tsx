@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const paras = [
@@ -13,7 +14,7 @@ function Content() {
   return (
     <div className="w-full">
       <section
-        className="md:pb-[140px] pt-0 px-0 w-full mx-auto"
+        className="md:pb-[280px] pt-0 px-0 w-full mx-auto"
         data-navbar-theme="light"
       >
         <div className="flex justify-center w-full">
@@ -30,25 +31,49 @@ function Content() {
               products people love.
             </h2>
 
-            <div className="relative pb-30 p-5 md:p-10 rounded-2xl border border-foreground/10 bg-foreground/5 shadow-lg max-w-[540px] mx-auto">
-              <div className="space-y-6">
-                {paras.map((para, index) => (
-                  <p
-                    key={index}
-                    className="font-medium text-[17px] tracking-[-0.27px] leading-[130%] text-foreground/80"
-                  >
-                    {para}
-                  </p>
-                ))}
+            <div className="relative max-w-[540px] mx-auto">
+              <div className="relative overflow-hidden rounded-2xl pb-30 p-5 md:p-10 rounded-2xl border border-foreground/10 bg-foreground/5 shadow-lg w-full h-full">
+                <div className="absolute inset-0 -z-1 opacity-50">
+                  <Image
+                    src={"/assets/images/paper-background/paper.jpg"}
+                    alt="Paper Texture"
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="object-cover w-full"
+                  />
+                </div>
+                <div className="space-y-6">
+                  {paras.map((para, index) => (
+                    <p
+                      key={index}
+                      className="font-medium text-[17px] tracking-[-0.27px] leading-[130%] text-foreground/80"
+                    >
+                      {para}
+                    </p>
+                  ))}
 
-                <div className="mt-20">
-                  <p className="font-medium text-[17px] tracking-[-0.27px] leading-[130%] text-foreground/80">
-                    with love,
-                  </p>
+                  <div className="mt-20">
+                    <p className="font-medium text-[17px] tracking-[-0.27px] leading-[130%] text-foreground/80">
+                      with love,
+                    </p>
 
-                  <p className="font-medium text-[17px] tracking-[-0.27px] leading-[130%]">
-                    Crescent &amp; Shubha
-                  </p>
+                    <p className="font-medium text-[17px] tracking-[-0.27px] leading-[130%]">
+                      Crescent &amp; Shubha
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="h-[320px] w-[210px] px-3 pt-3 pb-8 bg-background absolute -bottom-[195px] -right-[50px] rotate-12 shadow">
+                <div className="w-full h-full overflow-hidden relative">
+                  <Image
+                    src={"/assets/images/about/about-frame.jpeg"}
+                    alt=""
+                    fill
+                    sizes="100vw"
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>
