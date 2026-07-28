@@ -38,10 +38,10 @@ const CookieConsent: React.FC<CookieConsentProps> = ({
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-16 right-6 flex items-center gap-6 px-6 py-3 rounded-xl bg-background/60 backdrop-blur-md border border-foreground/10 shadow-lg z-10000">
-      <p className="text-[16px] font-medium">{message}</p>
+    <div className="fixed bottom-16 -translate-x-1/2 left-1/2 w-[90vw] md:w-fit md:left-auto md:translate-x-0 md:right-6 flex items-center justify-between md:justify-start gap-6 px-4 py-2 md:px-6 md:py-3 rounded-xl bg-background/60 backdrop-blur-md border border-foreground/10 shadow-lg z-10000">
+      <p className="text-[12px] md:text-[16px] font-medium">{message}</p>
 
-      <div className="flex items-center gap-2 text-[16px] font-semibold">
+      <div className="flex items-center gap-2 text-[12px] md:text-[16px] font-semibold">
         <button
           className="cookie-accept-btn cursor-pointer hover:text-foreground/70 transition-colors duration-200"
           onClick={handleAccept}
