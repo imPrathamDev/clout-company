@@ -42,6 +42,12 @@ const DEPARTMENTS: NodeData[] = [
   },
 ];
 
+const FLOW_COLORS = ["#46ABFD", "#69B4E5", "#A6D9E9"];
+const LINE_WINDOW = 2; // seconds each spoke "hosts" its flowing particles
+const PARTICLE_STAGGER = 0.35; // gap between particles on the same spoke
+const PARTICLE_TRAVEL = 1.1; // seconds for a particle to travel the spoke
+const TOTAL_CYCLE = DEPARTMENTS.length * LINE_WINDOW; // full loop duration (16s)
+
 const CHAT_MESSAGES = [
   {
     title: "Who",
@@ -60,6 +66,75 @@ const CHAT_MESSAGES = [
     text: "We orchestrate the entire campaign—from custom creator discovery and outreach to execution, optimization, and reporting.",
   },
 ];
+
+/** Flowing dots that travel center -> end, one spoke at a time, looping forever */
+const FlowingParticles: React.FC<{
+  size: number;
+  center: number;
+  radius: number;
+}> = ({ size, center, radius }) => {
+  const innerR = 45; // matches the inner radius used for spokes above
+
+  return (
+    <svg
+      viewBox={`0 0 ${size} ${size}`}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+    >
+      {DEPARTMENTS.map((dept, i) => {
+        const rad = ((dept.angle - 90) * Math.PI) / 180;
+        const x1 = center + innerR * Math.cos(rad);
+        const y1 = center + innerR * Math.sin(rad);
+        const x2 = center + radius * Math.cos(rad);
+        const y2 = center + radius * Math.sin(rad);
+        const path = `M ${x1} ${y1} L ${x2} ${y2}`;
+
+        return FLOW_COLORS.map((color, j) => {
+          const startAbs = i * LINE_WINDOW + j * PARTICLE_STAGGER;
+          const endAbs = startAbs + PARTICLE_TRAVEL;
+          const fadeIn = PARTICLE_TRAVEL * 0.15;
+          const fadeOut = PARTICLE_TRAVEL * 0.03;
+
+          const t1 = Math.max(startAbs / TOTAL_CYCLE, 0.0001);
+          const t2 = (startAbs + fadeIn) / TOTAL_CYCLE;
+          const t3 = (endAbs - fadeOut) / TOTAL_CYCLE;
+          const t4 = Math.min(endAbs / TOTAL_CYCLE, 0.9999);
+
+          return (
+            <rect
+              key={`${dept.id}-particle-${j}`}
+              x="-2"
+              y="-2"
+              width="4"
+              height="4"
+              rx="0.5"
+              fill={color}
+              opacity="0"
+            >
+              <animateMotion
+                path={path}
+                dur={`${TOTAL_CYCLE}s`}
+                begin="0s"
+                repeatCount="indefinite"
+                calcMode="linear"
+                keyPoints="0;0;1;1"
+                keyTimes={`0;${t1};${t4};1`}
+                rotate="auto"
+              />
+              <animate
+                attributeName="opacity"
+                values="0;0;1;1;0;0"
+                keyTimes={`0;${t1};${t2};${t3};${t4};1`}
+                dur={`${TOTAL_CYCLE}s`}
+                begin="0s"
+                repeatCount="indefinite"
+              />
+            </rect>
+          );
+        });
+      })}
+    </svg>
+  );
+};
 
 // --- Sub-Components ---
 
@@ -223,6 +298,7 @@ export const OrgWheel: React.FC = () => {
               );
             })}
           </svg>
+          <FlowingParticles size={SVG_SIZE} center={CENTER} radius={RADIUS} />
 
           {/* --- Center Node (Cofounder) --- */}
           <div className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10 w-max">
