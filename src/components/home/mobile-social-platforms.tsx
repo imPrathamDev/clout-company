@@ -3,7 +3,7 @@ import React from "react";
 const icons = {
   instagram: (
     <svg
-      className="size-8 shrink-0"
+      className="size-6 sm:size-8 shrink-0"
       viewBox="0 0 2500 2500"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -41,7 +41,7 @@ const icons = {
   ),
   tiktok: (
     <svg
-      className="size-8 shrink-0"
+      className="size-6 sm:size-8 shrink-0"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@ const icons = {
   ),
   youtube: (
     <svg
-      className="size-8"
+      className="size-6 sm:size-8"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +82,7 @@ const icons = {
 
   reddit: (
     <svg
-      className="size-8"
+      className="size-6 sm:size-8"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -306,7 +306,7 @@ const icons = {
   ),
   x: (
     <svg
-      className="size-8 fill-foreground"
+      className="size-6 sm:size-8 fill-foreground"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -316,7 +316,7 @@ const icons = {
   ),
   linkedin: (
     <svg
-      className="size-8"
+      className="size-6 sm:size-8"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -331,7 +331,7 @@ const icons = {
   ),
   discord: (
     <svg
-      className="size-8"
+      className="size-6 sm:size-8"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -344,19 +344,19 @@ const icons = {
   ),
   telegram: (
     <svg
-      className="size-8"
+      className="size-6 sm:size-8"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_318_61)">
+      <g clipPath="url(#clip0_318_61)">
         <path
           d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48Z"
           fill="url(#paint0_linear_318_61)"
         />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M10.8638 23.7466C17.8603 20.6984 22.5257 18.6888 24.8601 17.7179C31.5251 14.9456 32.91 14.4641 33.8127 14.4482C34.0113 14.4447 34.4552 14.4939 34.7427 14.7272C34.9855 14.9242 35.0523 15.1904 35.0843 15.3771C35.1163 15.5639 35.1561 15.9895 35.1244 16.3219C34.7633 20.1169 33.2004 29.3263 32.4053 33.5767C32.0689 35.3752 31.4065 35.9783 30.7652 36.0373C29.3714 36.1655 28.3131 35.1162 26.9632 34.2313C24.8509 32.8467 23.6576 31.9847 21.6072 30.6336C19.2377 29.0721 20.7738 28.2139 22.1242 26.8113C22.4776 26.4442 28.6183 20.8587 28.7372 20.352C28.7521 20.2886 28.7659 20.0524 28.6255 19.9277C28.4852 19.803 28.2781 19.8456 28.1286 19.8795C27.9168 19.9276 24.5423 22.158 18.0053 26.5707C17.0475 27.2284 16.1799 27.5489 15.4026 27.5321C14.5457 27.5135 12.8973 27.0475 11.6719 26.6492C10.1689 26.1606 8.97432 25.9023 9.07834 25.0726C9.13252 24.6404 9.72767 24.1984 10.8638 23.7466Z"
           fill="white"
         />
@@ -370,8 +370,8 @@ const icons = {
           y2="47.644"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#2AABEE" />
-          <stop offset="1" stop-color="#229ED9" />
+          <stop stopColor="#2AABEE" />
+          <stop offset="1" stopColor="#229ED9" />
         </linearGradient>
         <clipPath id="clip0_318_61">
           <rect width="48" height="48" fill="white" />
@@ -381,7 +381,7 @@ const icons = {
   ),
   twitch: (
     <svg
-      className="size-8"
+      className="size-6 sm:size-8"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -406,7 +406,7 @@ const icons = {
   ),
   facebook: (
     <svg
-      className="size-8"
+      className="size-6 sm:size-8"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -425,7 +425,7 @@ const icons = {
   ),
   threads: (
     <svg
-      className="size-8"
+      className="size-6 sm:size-8"
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
