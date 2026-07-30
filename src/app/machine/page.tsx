@@ -1,10 +1,52 @@
+import { Metadata } from "next";
+import Image from "next/image";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Clout OS — Machine Mode",
+  description:
+    "Clout OS is a technology-enabled programmable distribution engine helping consumer companies, AI startups, and enterprise brands acquire users via creator ecosystems globally.",
+  keywords: [
+    "Clout OS",
+    "Crescent Media Group",
+    "Programmable Distribution",
+    "Creator Marketing Platform",
+    "Influencer Marketing Infrastructure",
+    "AI Marketing",
+    "User Acquisition",
+    "Global Creator Network",
+  ],
+  authors: [{ name: "Crescent Media Group" }],
+  creator: "Crescent Media Group",
+  publisher: "Clout OS",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
 function Machine() {
   return (
     <main className="w-full h-full bg-[#000] text-background">
       <section className="2xl:pb-[200px] xl:pb-[180px] md:pb-[140px] pb-[120px] px-4 w-full min-h-screen flex flex-col max-w-[640px] mx-auto">
         <div className="flex-1 pt-40 py-12 px-4 md:px-2 lg:px-0 flex flex-col gap-4">
+          <div className="">
+            <Image
+              src={"/assets/images/logo/logo.png"}
+              alt="Clout OS Logo"
+              width={200}
+              height={200}
+              className="size-24 object-contain brightness-0 invert"
+            />
+          </div>
+
           <div className="">
             <h1 className="text-base">
               <span className="font-mono text-xl">#</span> The Clout Company by
