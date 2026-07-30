@@ -469,13 +469,13 @@ const PLATFORMS = [
 
 function MobileSocialPlatforms() {
   return (
-    <div className="flex flex-col justify-center items-center w-full h-full px-16">
+    <div className="flex flex-col justify-center items-center w-full h-full px-4 sm:px-16">
       {/* <div className="p-4 flex items-center justify-center rounded-2xl bg-background shadow-[0_0_0_1px_#fff_inset,0_0_0_1px_rgba(0,0,0,0.08),0_0_20px_0_rgba(0,0,0,0.03),0_36px_28px_0_rgba(0,0,0,0.02),0_4px_4px_0_rgba(0,0,0,0.02)]"></div> */}
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
         {PLATFORMS.map((platform) => (
           <div
             key={platform.key}
-            className="p-4 flex items-center justify-center rounded-2xl bg-background shadow-[0_0_0_1px_#fff_inset,0_0_0_1px_rgba(0,0,0,0.08),0_0_20px_0_rgba(0,0,0,0.03),0_36px_28px_0_rgba(0,0,0,0.02),0_4px_4px_0_rgba(0,0,0,0.02)]"
+            className="p-2 sm:p-4 flex items-center justify-center rounded-xl sm:rounded-2xl bg-background shadow-[0_0_0_1px_#fff_inset,0_0_0_1px_rgba(0,0,0,0.08),0_0_20px_0_rgba(0,0,0,0.03),0_36px_28px_0_rgba(0,0,0,0.02),0_4px_4px_0_rgba(0,0,0,0.02)]"
           >
             {(icons as any)[platform.key]}
           </div>

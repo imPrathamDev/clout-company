@@ -43,8 +43,8 @@ function SocialPlatforms() {
         </div>
 
         <div className="mt-14 mb-12 flex items-center justify-center">
-          <div className="w-[95vw] md:w-[40vw] lg:w-[60vw] xl:w-[40vw] aspect-video rounded-2xl p-2 bg-gray-200/50">
-            <div className="hidden lg:flex w-full h-full rounded-xl items-center justify-center bg-background">
+          <div className="w-[95vw] md:w-[60vw] lg:w-[60vw] xl:w-[60vw] 2xl:w-[40vw] aspect-video rounded-2xl p-2 bg-gray-200/50">
+            <div className="flex w-full h-full rounded-xl items-center justify-center bg-background">
               {/* <AgencyFlowChart /> */}
               <MobileSocialPlatforms />
             </div>
