@@ -315,7 +315,7 @@ export const OrgWheel: React.FC = () => {
 
             {/* Center Card */}
             <div className="px-2 sm:px-2.5 py-1 sm:py-1.5 border border-gray-300 rounded-md text-sm sm:text-base md:text-lg tracking-wide bg-white shadow-sm">
-              <h4 className="font-serif">Clout OS</h4>
+              <h4 className="font-serif font-medium">Clout OS</h4>
             </div>
           </div>
 
@@ -342,14 +342,22 @@ export const OrgWheel: React.FC = () => {
                 {dept.status && <StatusBadge {...dept.status} />}
 
                 {/* Department Card */}
-                <div className="w-[72px] sm:w-[84px] md:w-[92px] py-1.5 sm:py-2 md:py-2.5 px-1 sm:px-2 rounded-md border border-black/10 bg-[#FBFBF8] shadow-[0_2px_8px_rgba(0,0,0,0.04)] text-center text-[9px] sm:text-[10px] md:text-xs text-stone-700 tracking-wide font-normal hover:border-stone-400 hover:shadow-md transition-all cursor-pointer leading-tight sm:leading-normal">
+                <div className="w-[72px] sm:w-[84px] md:w-[92px] py-1.5 font-semibold sm:py-2 md:py-2.5 px-1 sm:px-2 rounded-md border border-black/10 bg-[#FBFBF8] shadow-[0_2px_8px_rgba(0,0,0,0.04)] text-center text-[9px] sm:text-[10px] md:text-xs text-stone-700 tracking-wide font-normal hover:border-stone-400 hover:shadow-md transition-all cursor-pointer leading-tight sm:leading-normal">
                   {dept.label}
                 </div>
 
                 {/* Sub-Tree Extensions for specific nodes */}
-                {DEPARTMENTS.map((m) => m.id).includes(dept.id) && (
-                  <SubTreeExtension angle={dept.angle} />
-                )}
+                {DEPARTMENTS.filter(
+                  (f) =>
+                    ![
+                      "incentive_design",
+                      "market_mapping",
+                      "enablers",
+                      "narrative_testing",
+                    ].includes(f.id),
+                )
+                  .map((m) => m.id)
+                  .includes(dept.id) && <SubTreeExtension angle={dept.angle} />}
               </div>
             );
           })}
@@ -383,7 +391,7 @@ export const OrgWheel: React.FC = () => {
                 key={idx}
                 className="flex flex-col gap-1.5 w-full self-end animate-fade-in-up"
               >
-                <div className="self-end w-fit p-2.5 bg-white border border-stone-100 rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.02)] text-[13px] md:text-sm text-stone-600 leading-relaxed">
+                <div className="w-fit px-2.5 py-1.5 font-semibold bg-white border border-stone-100 rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.02)] text-[13px] md:text-sm text-stone-600 leading-relaxed">
                   <span>{msg.title}</span>
                 </div>
 
@@ -398,7 +406,7 @@ export const OrgWheel: React.FC = () => {
           </div>
 
           {/* Chat Input (Visual only) */}
-          <div className="p-3 bg-white/80 border-t border-black/5">
+          {/* <div className="p-3 bg-white/80 border-t border-black/5">
             <div className="flex items-center gap-2 px-4 py-2.5 bg-[#F4F4F0] rounded-full text-[13px] text-stone-400">
               <span className="flex-1">Ask about Clout OS...</span>
               <button className="w-7 h-7 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 transition-colors">
@@ -417,7 +425,7 @@ export const OrgWheel: React.FC = () => {
                 </svg>
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

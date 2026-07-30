@@ -85,13 +85,14 @@ export const Hero: React.FC = () => {
               {/* Main Headline */}
               <h1
                 ref={textRef}
-                className="opacity-0 tracking-[-1.08px] home-hero-title font-serif text-background text-center relative z-10 font-normal max-w-[24ch] mx-auto pt-4 md:pt-10 text-[41px] sm:text-[49px] lg:text-[52px] 3xl:text-[57px] leading-[0.95]"
+                className="opacity-0 tracking-[-1.08px] home-hero-title font-serif text-background text-center relative z-10 font-normal max-w-[24ch] mx-auto pt-4 md:pt-10 text-[41px] sm:text-[49px] lg:text-[52px] 3xl:text-[57px] leading-[95%]"
                 style={{ textShadow: "0 0 4.978px rgba(255, 255, 255, 0.80)" }}
               >
                 The Clout Company
                 <br />
-                <span className="flex items-center justify-center gap-4">
-                  <span className="italic">by </span> Crescent
+                <span className="text-[26px] sm:text-[28px] lg:text-[36px] 3xl:text-[38px] flex items-center justify-center gap-4">
+                  <span className="italic">by </span>
+                  <span>Crescent Media Group</span>
                 </span>
               </h1>
 

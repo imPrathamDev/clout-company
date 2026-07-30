@@ -112,7 +112,7 @@ function Footer() {
 
               <div className="h-full w-full relative overflow-hidden">
                 <Image
-                  src={"/assets/images/new-footer.png"}
+                  src={"/assets/images/footer/bg.png"}
                   alt="Clout OS"
                   fill
                   priority

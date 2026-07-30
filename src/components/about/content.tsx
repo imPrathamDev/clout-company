@@ -31,11 +31,11 @@ function Content() {
               products people love.
             </h2>
 
-            <div className="relative max-w-[540px] mx-auto">
+            <div className="relative max-w-[630px] mx-auto">
               <div className="relative overflow-hidden rounded-2xl pb-30 p-5 md:p-10 rounded-2xl border border-foreground/10 bg-foreground/5 shadow-lg w-full h-full">
-                <div className="absolute inset-0 -z-1 opacity-50">
+                <div className="absolute inset-0 -z-1 opacity-100">
                   <Image
-                    src={"/assets/images/paper-background/paper.jpg"}
+                    src={"/assets/images/about/paper.png"}
                     alt="Paper Texture"
                     fill
                     priority
@@ -65,7 +65,7 @@ function Content() {
                 </div>
               </div>
 
-              <div className="h-[240px] w-[170px] md:h-[280px] md:w-[200px] px-3 pt-3 pb-8 bg-background absolute -bottom-[40px] md:-bottom-[160px] right-4 md:-right-[50px] rotate-12 shadow">
+              <div className="h-[240px] w-[170px] md:h-[280px] md:w-[200px] px-3 pt-3 pb-8 bg-background absolute -bottom-[40px] md:-bottom-[110px] right-4 md:-right-[20px] rotate-12 shadow">
                 <div className="w-full h-full overflow-hidden relative">
                   <Image
                     src={"/assets/images/about/about-frame.jpeg"}
