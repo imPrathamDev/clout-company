@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import DisplayTime from "./time";
@@ -16,8 +16,8 @@ gsap.registerPlugin(useGSAP, SplitText);
 const imageMap = {
   morning: require("../../../public/assets/images/hero/morning-final.jpg"),
   afternoon: require("../../../public/assets/images/hero/morning-final.jpg"),
-  evening: require("../../../public/assets/images/hero/evening-final.jpg"),
-  night: require("../../../public/assets/images/hero/evening-final.jpg"),
+  evening: require("../../../public/assets/images/hero/new-evening-final.jpg"),
+  night: require("../../../public/assets/images/hero/new-evening-final.jpg"),
 } as const;
 
 export const Hero: React.FC = () => {
@@ -54,6 +54,7 @@ export const Hero: React.FC = () => {
       scope: containerRef,
     },
   );
+
   return (
     <div ref={containerRef} id="hero" data-navbar-theme="dark" className="">
       {/* Full-width container breakout */}

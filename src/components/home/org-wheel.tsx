@@ -35,8 +35,8 @@ const DEPARTMENTS: NodeData[] = [
   { id: "narrative_testing", label: "Narrative Testing", angle: 225 },
   { id: "scaling", label: "Scaling", angle: 270 },
   {
-    id: "sales",
-    label: "Sales",
+    id: "conversions",
+    label: "Conversions",
     angle: 315,
     // status: { yellow: 3, blue: 2, green: 2 },
   },

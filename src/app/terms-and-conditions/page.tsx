@@ -6,10 +6,11 @@ export const metadata = getSiteMetadata("/terms-and-conditions");
 
 function TAndC() {
   return (
-    <LegalPageWrapper lastUpdated="July 27, 2026" title="Terms and Conditions">
+    <LegalPageWrapper
+      lastUpdated="Last Updated: July 29, 2026"
+      title="Terms and Conditions"
+    >
       <>
-        <h2>Terms and Conditions</h2>
-        <p>Last Updated: July 29, 2026</p>
         <p>
           Welcome to Crescent Media Group ("Company", "we", "our", or "us"). By
           accessing or using our website, services, campaigns, products,

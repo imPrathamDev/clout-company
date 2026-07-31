@@ -7,11 +7,6 @@ export interface TimeOfDay {
   text: string;
 }
 
-export interface UseLocaleTimeOptions {
-  locale?: string;
-  timeZone?: string;
-}
-
 export interface LocaleTimeResult {
   formattedTime: string;
   hours: string;
@@ -20,6 +15,7 @@ export interface LocaleTimeResult {
   period: string; // 'AM' | 'PM' or localized equivalent
   timeOfDayKey: TimeOfDayKey;
   timeOfDayText: string;
+  timeZone: string; // Added so you can display the visitor's exact time zone if needed
 }
 
 /**
@@ -39,28 +35,38 @@ const getTimeOfDay = (hours24: number): TimeOfDay => {
 
 /**
  * Custom React Hook to retrieve real-time components and time-of-day info.
+ * Defaults to the visitor's current browser locale and time zone.
  */
 export const useLocaleTime = (
-  locale: string = "en-US",
-  timeZone?: string,
+  customLocale?: string,
+  customTimeZone?: string,
 ): LocaleTimeResult => {
   const getTimeData = useCallback((): LocaleTimeResult => {
     const now = new Date();
 
-    // 1. Format parts for 12-hour breakdown (hours, minutes, seconds, dayPeriod)
+    // 1. Get visitor defaults if no custom overrides are provided
+    // SSR safe check for navigator
+    const isClient = typeof window !== "undefined";
+    const locale = customLocale || (isClient ? navigator.language : "en-US");
+
+    // Automatically grabs the visitor's IANA time zone (e.g., 'America/New_York')
+    const timeZone =
+      customTimeZone || Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    // 2. Format parts for 12-hour breakdown
     const formatter12 = new Intl.DateTimeFormat(locale, {
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
       hour12: true,
-      ...(timeZone && { timeZone }),
+      timeZone,
     });
 
-    // 2. Format parts for 24-hour calculation (accurate time-of-day determination)
+    // 3. Format parts for 24-hour calculation (accurate time-of-day determination)
     const formatter24 = new Intl.DateTimeFormat("en-US", {
       hour: "2-digit",
       hour12: false,
-      ...(timeZone && { timeZone }),
+      timeZone,
     });
 
     const parts12 = formatter12.formatToParts(now);
@@ -89,12 +95,14 @@ export const useLocaleTime = (
       period,
       timeOfDayKey: timeOfDay.key,
       timeOfDayText: timeOfDay.text,
+      timeZone,
     };
-  }, [locale, timeZone]);
+  }, [customLocale, customTimeZone]);
 
   const [timeData, setTimeData] = useState<LocaleTimeResult>(getTimeData);
 
   useEffect(() => {
+    // Initial set in case of hydration mismatches
     setTimeData(getTimeData());
 
     const intervalId = setInterval(() => {
