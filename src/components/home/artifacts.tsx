@@ -348,13 +348,44 @@ function Artifacts({
                         </div>
                       </div>
                       <div className="p-4 py-4 flex flex-col gap-2">
-                        <h6 className="font-medium text-foreground/90 text-[16px] leading-[120%]">
-                          Overview
-                        </h6>
+                        {!data.youtubeLink && (
+                          <>
+                            <h6 className="font-medium text-foreground/90 text-[16px] leading-[120%]">
+                              Overview
+                            </h6>
 
-                        <p className="text-[12px] text-foreground/70 pr-[20px]">
-                          {data.content}
-                        </p>
+                            <p className="text-[12px] text-foreground/70 pr-[20px]">
+                              {data.content}
+                            </p>
+                          </>
+                        )}
+                        {data.youtubeLink && (
+                          <div
+                            style={{
+                              left: 0,
+                              width: "100%",
+                              height: 0,
+                              position: "relative",
+                              paddingBottom: "56.25%",
+                            }}
+                          >
+                            <iframe
+                              src={data.youtubeLink}
+                              style={{
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                                position: "absolute",
+                                border: 0,
+                              }}
+                              allowFullScreen
+                              scrolling="no"
+                              allow="accelerometer *; clipboard-write *; encrypted-media *; gyroscope *; picture-in-picture *; web-share *;"
+                              referrerPolicy="strict-origin"
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

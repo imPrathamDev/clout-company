@@ -6,7 +6,8 @@ type RoutePath =
   | "/source-code"
   | "/terms-and-conditions"
   | "/privacy-policy"
-  | "/log";
+  | "/log"
+  | "/contact";
 
 export function getSiteMetadata(path: RoutePath): Metadata {
   const siteName = "The Clout Company";
@@ -102,6 +103,21 @@ export function getSiteMetadata(path: RoutePath): Metadata {
           title: `Logs | ${siteName}`,
           description:
             "Read the latest articles and insights from The Clout Company. Explore our Logs to learn how we program distribution and help great products find their users.",
+          url: `${baseUrl}/log`,
+        },
+      };
+
+    case "/contact":
+      return {
+        ...baseMetadata,
+        title: `Contact | ${siteName}`,
+        description:
+          "Get in touch with The Clout Company. Reach out to our team to learn how we program distribution and help your great product find its perfect users.",
+        openGraph: {
+          ...baseMetadata.openGraph,
+          title: `Contact | ${siteName}`,
+          description:
+            "Get in touch with The Clout Company. Reach out to our team to learn how we program distribution and help your great product find its perfect users.",
           url: `${baseUrl}/log`,
         },
       };
