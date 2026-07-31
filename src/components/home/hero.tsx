@@ -16,8 +16,8 @@ gsap.registerPlugin(useGSAP, SplitText);
 const imageMap = {
   morning: require("../../../public/assets/images/hero/morning-final.jpg"),
   afternoon: require("../../../public/assets/images/hero/morning-final.jpg"),
-  evening: require("../../../public/assets/images/hero/new-evening-final.jpg"),
-  night: require("../../../public/assets/images/hero/new-evening-final.jpg"),
+  evening: require("../../../public/assets/images/hero/final-evening.jpg"),
+  night: require("../../../public/assets/images/hero/final-evening.jpg"),
 } as const;
 
 export const Hero: React.FC = () => {
