@@ -10,6 +10,7 @@ export const ALL_ARTIFACT_CAMPAIGNS_QUERY = groq`
     campaign_name,
     "brand_logo": brand_logo.asset->url,
     content,
+    youtubeLink,
     stats {
       primary {
         label,
@@ -33,6 +34,7 @@ export const ARTIFACT_CAMPAIGN_BY_ID_QUERY = groq`
     campaign_name,
     "brand_logo": brand_logo.asset->url,
     content,
+    youtubeLink,
     stats {
       primary {
         label,
@@ -68,6 +70,7 @@ export interface ArtifactCampaign {
   campaign_name: string;
   brand_logo: string; // resolved asset URL
   content: string;
+  youtubeLink?: string;
   stats: ArtifactStats;
 }
 

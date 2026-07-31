@@ -104,6 +104,12 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "youtubeLink",
+      title: "Youtube Link",
+      type: "url",
+      validation: (R) => R.uri({ scheme: ["https", "http", "mailto", "tel"] }),
+    }),
+    defineField({
       name: "order",
       title: "Order",
       type: "number",
