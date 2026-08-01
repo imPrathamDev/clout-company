@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Clout OS — Machine Mode",
+  title: "Clout OS - Machine Mode",
   description:
     "Clout OS is a technology-enabled programmable distribution engine helping consumer companies, AI startups, and enterprise brands acquire users via creator ecosystems globally.",
   keywords: [

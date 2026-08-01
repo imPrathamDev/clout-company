@@ -63,7 +63,7 @@ const CHAT_MESSAGES = [
   },
   {
     title: "How",
-    text: "We orchestrate the entire campaign—from custom creator discovery and outreach to execution, optimization, and reporting.",
+    text: "We orchestrate the entire campaign from custom creator discovery and outreach to execution, optimization, and reporting.",
   },
 ];
 
