@@ -9,7 +9,7 @@ function LogPage({ logs }: { logs: LogListItem[] }) {
   return (
     <main className="">
       <Navbar />
-      <Hero />
+      <Hero logs={logs} />
       <LogList logs={logs} />
       <Footer />
     </main>

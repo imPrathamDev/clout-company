@@ -24,10 +24,11 @@ export function getSiteMetadata(path: RoutePath): Metadata {
       siteName,
       type: "website",
       locale: "en_US",
+      images: "/assets/images/og/image.png",
     },
     twitter: {
       card: "summary_large_image",
-      creator: "@thecloutcompany", // Replace with actual handle
+      images: "/assets/images/og/image.png",
     },
   };
 

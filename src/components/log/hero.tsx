@@ -1,9 +1,11 @@
 "use client";
+import { urlFor } from "@/sanity/lib/image";
+import { LogListItem } from "@/sanity/queries/log";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
 
-function Hero() {
+function Hero({ logs }: { logs: LogListItem[] }) {
   const containerRef = useRef(null);
   return (
     <section
@@ -29,8 +31,8 @@ function Hero() {
 
         <div className="relative mx-auto w-full h-[350px]">
           <Image
-            src={"/assets/images/footer.png"}
-            alt=""
+            src={logs[0].mainImage ? urlFor(logs[0].mainImage).url() : ""}
+            alt={logs[0].mainImage?.alt ?? logs[0].title}
             width={3840}
             height={300}
             className="absolute inset-0 h-full w-full object-cover object-[50%_30%] rounded-t-2xl"
