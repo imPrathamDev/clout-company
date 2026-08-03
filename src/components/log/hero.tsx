@@ -35,6 +35,8 @@ function Hero({ logs }: { logs: LogListItem[] }) {
             alt={logs[0].mainImage?.alt ?? logs[0].title}
             width={3840}
             height={300}
+            placeholder="blur"
+            blurDataURL={logs[0].mainImage?.asset.metadata.lqip}
             className="absolute inset-0 h-full w-full object-cover object-[50%_30%] rounded-t-2xl"
           />
 
