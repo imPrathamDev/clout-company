@@ -2,22 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { useNavbarTheme } from "./hooks/use-navbar-theme";
 
 function MachineToggle() {
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
-  const theme = useNavbarTheme({ navRef, defaultTheme: "light" });
+  const theme = useNavbarTheme({ navRef, defaultTheme: "light", pathname });
 
-  // This will run every time the URL changes
-  useEffect(() => {
-    // If useNavbarTheme exposes a recalculate or reset function, call it here.
-    // Example: theme.recalculate()
-
-    // Or just use this block to reset any local state you might add.
-    console.log("Page changed to:", pathname);
-  }, [pathname]); // <-- pathname as a dependency
+  if (pathname?.startsWith("/studio")) return null;
 
   return (
     <div
