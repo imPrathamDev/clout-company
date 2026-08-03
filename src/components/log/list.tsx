@@ -2,7 +2,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { LogListItem } from "@/sanity/queries/log";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useMemo } from "react";
+import React from "react";
 import GradualBlurMemo from "../gradual-blur";
 import moment from "moment";
 
@@ -49,29 +49,6 @@ const Card = ({ item }: { item: LogListItem }) => {
 };
 
 function LogList({ logs }: { logs: LogListItem[] }) {
-  const categories = useMemo(() => {
-    const cs = logs
-      .map((l) => l.categories)
-      .flat()
-      .filter((f) => f !== null);
-
-    const obj: { [key: string]: number } = {};
-    const uc_array: NonNullable<(typeof logs)[number]["categories"]> = [];
-    cs.forEach((d) => {
-      if (Object.hasOwn(obj, d._id)) {
-        obj[d._id] = obj[d._id] + 1;
-      } else {
-        uc_array.push({ ...d });
-        obj[d._id] = 1;
-      }
-    });
-
-    return uc_array.map((c) => ({
-      ...c,
-      count: obj[c._id],
-    }));
-  }, [logs]);
-
   return (
     <section
       id="cards"
@@ -79,20 +56,10 @@ function LogList({ logs }: { logs: LogListItem[] }) {
     >
       <div className="w-full">
         <div className="sm:px-4 mx-auto w-full max-w-7xl">
-          <div className="flex items-center gap-4">
-            <button className="text-[16px] font-medium">
-              All <span className="text-gray-500/50">{categories.length}</span>
-            </button>
-
-            {categories.map((category) => (
-              <button
-                key={category._id}
-                className="text-[16px] font-medium flex items-center gap-1"
-              >
-                {category.title}
-                <span className="text-gray-500/50">{category.count}</span>
-              </button>
-            ))}
+          <div className="flex items-center gap-4 text-[16px] font-medium">
+            <p className="text-[16px] font-medium">
+              Epiphanies amid execution {logs.length}
+            </p>
           </div>
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
