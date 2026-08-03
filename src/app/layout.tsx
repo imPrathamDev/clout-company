@@ -2,6 +2,7 @@ import { Instrument_Serif, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import CookieConsent from "@/components/cookie";
 import MachineToggle from "@/components/machine-toggle";
+import { Analytics } from "@vercel/analytics/next";
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
@@ -26,6 +27,7 @@ export default function RootLayout({
         {children}
         <CookieConsent />
         <MachineToggle />
+        <Analytics />
       </body>
     </html>
   );
