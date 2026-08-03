@@ -13,13 +13,17 @@ import SocialMediaFlowChart from "../home/social-media-flow-chart";
 import SocialPlatforms from "../home/social-platforms";
 import { ClientLogo } from "@/sanity/queries/clinetsLogo";
 import { ArtifactCampaign } from "@/sanity/queries/artifactCampaign";
+import { Creator } from "@/sanity/queries/creators";
+import Talents from "../home/talents";
 
 function HomePage({
   clientLogos,
   artifactCampaigns,
+  creators,
 }: {
   clientLogos: ClientLogo[];
   artifactCampaigns: ArtifactCampaign[];
+  creators: Creator[];
 }) {
   return (
     <main className="overflow-x-clip">
@@ -29,6 +33,7 @@ function HomePage({
       <Clients clientLogos={clientLogos} />
       <Wheel />
       <Artifacts artifactCampaigns={artifactCampaigns} />
+      <Talents creators={creators} />
       <SocialPlatforms />
       <WordSearchReveal />
       <Footer />
