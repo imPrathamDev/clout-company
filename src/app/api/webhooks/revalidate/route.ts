@@ -1,0 +1,46 @@
+import { revalidatePath } from "next/cache";
+import { type NextRequest, NextResponse } from "next/server";
+import { parseBody } from "next-sanity/webhook";
+
+type WebhookPayload = {
+  _type?: string;
+  _id?: string;
+  slug?: { current?: string };
+};
+
+export async function POST(req: NextRequest) {
+  try {
+    if (!process.env.SANITY_REVALIDATE_SECRET) {
+      return new Response(
+        "Missing environment variable SANITY_REVALIDATE_SECRET",
+        { status: 500 },
+      );
+    }
+
+    const { isValidSignature, body } = await parseBody<WebhookPayload>(
+      req,
+      process.env.SANITY_REVALIDATE_SECRET,
+    );
+
+    if (!isValidSignature) {
+      const message = "Invalid signature";
+      return new Response(JSON.stringify({ message, isValidSignature, body }), {
+        status: 401,
+      });
+    }
+
+    // Revalidate everything under the root layout — covers every route,
+    // regardless of which document type/slug triggered the webhook.
+    revalidatePath("/", "layout");
+
+    const message = `Revalidated entire site (triggered by ${body?._type ?? "unknown"}${
+      body?.slug?.current ? ` / ${body.slug.current}` : ""
+    })`;
+    console.log(message);
+
+    return NextResponse.json({ body, message });
+  } catch (err) {
+    console.error(err);
+    return new Response((err as Error).message, { status: 500 });
+  }
+}

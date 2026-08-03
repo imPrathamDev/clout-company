@@ -86,8 +86,8 @@ const Card = ({ creator }: { creator: Creator }) => {
 
       {/* inset-0 + flex perfectly centers the content every time */}
       <div className="to-show absolute inset-0 flex items-center justify-center pointer-events-none">
-        <p className="text-[12px] font-medium uppercase flex items-center gap-1 whitespace-nowrap">
-          View Reel{" "}
+        <p className="text-[12px] font-medium flex items-center gap-1 whitespace-nowrap">
+          View Video{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -109,8 +109,14 @@ const Card = ({ creator }: { creator: Creator }) => {
 };
 
 function Talents({ creators }: { creators: Creator[] }) {
-  // Duplicate creators to ensure the marquee has enough length to loop seamlessly
-  const marqueeCreators = [...creators, ...creators];
+  // Split the array into two halves
+  const halfIndex = Math.ceil(creators.length / 2);
+  const firstHalf = creators.slice(0, halfIndex);
+  const secondHalf = creators.slice(halfIndex);
+
+  // Duplicate each half separately to ensure the marquees loop seamlessly
+  const marqueeRow1 = [...firstHalf, ...firstHalf];
+  const marqueeRow2 = [...secondHalf, ...secondHalf];
 
   return (
     <div className="relative z-10 mx-auto max-w-[1100px] px-6 flex flex-col items-center">
@@ -154,14 +160,14 @@ function Talents({ creators }: { creators: Creator[] }) {
 
           {/* First Row - Moving Right */}
           <div className="flex w-max items-center gap-4 animate-marquee-right">
-            {marqueeCreators.map((creator, index) => (
+            {marqueeRow1.map((creator, index) => (
               <Card creator={creator} key={`row1-${creator._id}-${index}`} />
             ))}
           </div>
 
           {/* Second Row - Moving Left */}
           <div className="flex w-max items-center gap-4 animate-marquee-left">
-            {marqueeCreators.map((creator, index) => (
+            {marqueeRow2.map((creator, index) => (
               <Card creator={creator} key={`row2-${creator._id}-${index}`} />
             ))}
           </div>

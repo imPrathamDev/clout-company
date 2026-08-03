@@ -205,8 +205,9 @@ export const Hero: React.FC = () => {
                       The Distribution OS for Consumer Companies.
                     </h2>
                     <p className="font-medium text-background text-[15px] leading-[140%] max-w-[42ch] tracking-[-0.15px]">
-                      The Clout Company engineers systems to enable distribution
-                      at internet scale from first launch to global adoption.
+                      The Clout Company engineers AI powered systems to enable
+                      distribution at internet scale from first launch to global
+                      adoption.
                     </p>
 
                     {/* CTA Button */}

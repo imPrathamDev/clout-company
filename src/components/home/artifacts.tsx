@@ -14,14 +14,16 @@ function Artifacts({
   return (
     <section className="flex flex-col justify-center items-center mx-auto max-w-[1100px] px-6">
       <div className="w-full pt-24 pb-10">
-        <div className="max-w-[1080px] mx-auto px-5 min-[476px]:px-8 min-[768px]:px-6 flex flex-col items-center text-center gap-4">
-          <h2 className="m-0 text-[28px] min-[767px]:text-[32px] min-[1000px]:text-[40px] font-normal leading-[115%]">
-            Artifacts
-          </h2>
+        <div className="max-w-[1080px] mx-auto px-5 min-[476px]:px-8 min-[768px]:px-6 flex flex-col items-center text-center gap-6">
+          <div className="flex flex-col gap-2">
+            <h2 className="m-0 text-[28px] min-[767px]:text-[32px] min-[1000px]:text-[40px] font-normal leading-[115%]">
+              Artifacts
+            </h2>
 
-          <p className="m-0 text-[15px] font-[460] tracking-[0.15px] mt-4 w-full max-w-[360px] text-neutral-700">
-            Case studies & Records of products finding their users.
-          </p>
+            <p className="m-0 text-[15px] font-[460] tracking-[0.15px] w-full max-w-[500px] text-neutral-700">
+              Case studies & Records of products finding their users.
+            </p>
+          </div>
 
           <Link href="/contact">
             <button

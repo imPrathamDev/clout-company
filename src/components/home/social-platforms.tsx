@@ -23,7 +23,7 @@ function SocialPlatforms() {
             }}
             className="text-background leading-[120%] m-0 mx-auto text-center text-[26px] min-[768px]:text-[32px] min-[1000px]:text-[40px] max-w-[22ch]"
           >
-            Multiple platforms. Every user.
+            Build compounding reach with
             <br />
             <span
               style={{
@@ -34,11 +34,12 @@ function SocialPlatforms() {
                 textShadow: "none",
               }}
             >
-              One OS
+              self-improving AI.
             </span>
           </h2>
-          <p className="m-0 mx-auto mt-5 max-w-[580px] text-center text-[16px] font-[460] leading-[150%] text-background/80">
-            Build compounding reach across channels.
+          <p className="m-0 mx-auto mt-5 max-w-[500px] text-center text-[16px] font-medium leading-[150%] text-background/80">
+            Every campaign feeds Clout OS, allowing it to learn, adapt to
+            platform shifts, and make each launch more effective than the last.
           </p>
         </div>
 
