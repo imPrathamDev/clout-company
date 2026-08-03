@@ -24,14 +24,14 @@ const arr = [
       </svg>
     ),
     heading: " Send an Owl 🦉",
-    subHeading: "15-28 hours response time.",
+    subHeading: "15-28 hours response time",
     label: "shubha@thecrescentmediagroup.com",
     href: "mailto:shubha@thecrescentmediagroup.com",
   },
   {
     icon: <span>📞</span>,
     heading: "Call the Pack 🐕",
-    subHeading: "6-10 hours response time.",
+    subHeading: "6-10 hours response time",
     label: "+91 84489 97487",
     href: "tel:91 84489 97487",
   },
@@ -47,7 +47,7 @@ const arr = [
       </svg>
     ),
     heading: "Quick Woof  🐾",
-    subHeading: "Sometimes instantly.",
+    subHeading: "Sometimes instantly",
     label: "+91 95991 62551",
     href: "https://wa.me/919599162551",
   },

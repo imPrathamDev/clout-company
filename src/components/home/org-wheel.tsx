@@ -354,6 +354,8 @@ export const OrgWheel: React.FC = () => {
                       "market_mapping",
                       "enablers",
                       "narrative_testing",
+                      "market_sizing",
+                      "conversions",
                     ].includes(f.id),
                 )
                   .map((m) => m.id)
@@ -380,7 +382,9 @@ export const OrgWheel: React.FC = () => {
               <h3 className="text-sm font-medium text-stone-800 leading-tight">
                 The Clout Company
               </h3>
-              <p className="text-[11px] text-stone-500">by Crescent</p>
+              <p className="text-[11px] text-stone-500">
+                by Crescent Media Group
+              </p>
             </div>
           </div>
 
