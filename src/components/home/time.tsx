@@ -33,12 +33,12 @@ function DisplayTime() {
         />
       </svg> */}
       <span
-        className="ml-2.5 text-[13px] font-medium leading-[140%] tracking-[-0.15px] tabular-nums text-foreground"
+        className="ml-2.5 text-[0.8125rem] font-medium leading-[140%] tracking-[-0.009375rem] tabular-nums text-foreground"
         suppressHydrationWarning
       >
         {hours}:{minutes}:{seconds} {period}
       </span>
-      <span className="ml-3 font-af text-[13px] font-medium leading-[140%] tracking-[-0.15px] text-foreground/60">
+      <span className="ml-3 font-af text-[0.8125rem] font-medium leading-[140%] tracking-[-0.009375rem] text-foreground/60">
         London, UK
       </span>
     </div>

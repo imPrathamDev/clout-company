@@ -6,6 +6,10 @@
   --foreground: #2c2c2c;
 }
 
+html {
+  font-size: 85%;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

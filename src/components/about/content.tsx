@@ -14,24 +14,24 @@ function Content() {
   return (
     <div className="w-full">
       <section
-        className="pb-[60px] md:pb-[280px] pt-0 px-0 w-full mx-auto"
+        className="pb-[3.75rem] md:pb-[17.5rem] pt-0 px-0 w-full mx-auto"
         data-navbar-theme="light"
       >
         <div className="flex justify-center w-full">
-          <div className="max-w-[580px] lg:max-w-[740px] xl:max-w-[880px] px-5 md:px-8 pt-[200px] mlg:pt-[300px]">
-            <p className="font-medium text-[15px] tracking-[-0.15px] leading-[140%] text-center mb-[30px] max-w-[530px] mx-auto text-foreground/80">
+          <div className="max-w-[36.25rem] lg:max-w-[46.25rem] xl:max-w-[55rem] px-5 md:px-8 pt-[12.5rem] mlg:pt-[18.75rem]">
+            <p className="font-medium text-[0.9375rem] tracking-[-0.009375rem] leading-[140%] text-center mb-[1.875rem] max-w-[33.125rem] mx-auto text-foreground/80">
               The joy of entrepreneurship has always been building.Yet, too many
               founders spend more time chasing distribution than building
               products people love.
             </p>
 
-            <h2 className="text-pretty font-normal font-serif text-[32px] lg:text-[40px] xl:text-[48px] tracking-[-0.44px] md:tracking-[-0.8px] lg:tracking-[-0.96px] leading-[120%] md:leading-[110%] text-center mb-[100px]">
+            <h2 className="text-pretty font-normal font-serif text-[2rem] lg:text-[2.5rem] xl:text-[3rem] tracking-[-0.0275rem] md:tracking-[-0.05rem] lg:tracking-[-0.06rem] leading-[120%] md:leading-[110%] text-center mb-[6.25rem]">
               By making distribution programmable, we can return founders to
               what they do best: solving meaningful problems and building
               products people love.
             </h2>
 
-            <div className="relative max-w-[630px] mx-auto">
+            <div className="relative max-w-[39.375rem] mx-auto">
               <div className="relative overflow-hidden rounded-2xl pb-30 p-5 md:p-10 rounded-2xl border border-foreground/10 bg-foreground/5 shadow-lg w-full h-full">
                 <div className="absolute inset-0 -z-1 opacity-100">
                   <Image
@@ -47,25 +47,25 @@ function Content() {
                   {paras.map((para, index) => (
                     <p
                       key={index}
-                      className="font-medium text-[17px] tracking-[-0.27px] leading-[130%] text-foreground/80"
+                      className="font-medium text-[1.0625rem] tracking-[-0.016875rem] leading-[130%] text-foreground/80"
                     >
                       {para}
                     </p>
                   ))}
 
                   <div className="mt-20">
-                    <p className="font-medium text-[17px] tracking-[-0.27px] leading-[130%] text-foreground/80">
+                    <p className="font-medium text-[1.0625rem] tracking-[-0.016875rem] leading-[130%] text-foreground/80">
                       with love,
                     </p>
 
-                    <p className="font-medium text-[17px] tracking-[-0.27px] leading-[130%]">
+                    <p className="font-medium text-[1.0625rem] tracking-[-0.016875rem] leading-[130%]">
                       Crescent &amp; Shubha
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="h-[240px] w-[170px] md:h-[280px] md:w-[200px] px-3 pt-3 pb-8 bg-background absolute -bottom-[40px] md:-bottom-[110px] right-4 md:-right-[20px] rotate-12 shadow">
+              <div className="h-[15rem] w-[10.625rem] md:h-[17.5rem] md:w-[12.5rem] px-3 pt-3 pb-8 bg-background absolute -bottom-[2.5rem] md:-bottom-[6.875rem] right-4 md:-right-[1.25rem] rotate-12 shadow">
                 <div className="w-full h-full overflow-hidden relative">
                   <Image
                     src={"/assets/images/about/about-frame.jpeg"}

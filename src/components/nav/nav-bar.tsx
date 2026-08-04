@@ -38,13 +38,13 @@ export const Navbar: React.FC = () => {
     <Fragment>
       <nav
         ref={navRef}
-        className="fixed top-0 lg:top-4 left-0 lg:left-1/2 lg:-translate-x-1/2 z-100000 w-full lg:max-w-fit mx-auto lg:rounded-[12px] transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] will-change-[background-color,border-color,box-shadow,backdrop-filter] lg:border border-white/20 bg-gradient-to-r from-[rgba(249,250,247,0.12)] to-[rgba(249,250,247,0.18)] lg:shadow-[0_2px_6px_0_rgba(0,0,0,0.15)] backdrop-blur-[9px]"
+        className="fixed top-0 lg:top-4 left-0 lg:left-1/2 lg:-translate-x-1/2 z-100000 w-full lg:max-w-fit mx-auto lg:rounded-[0.75rem] transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] will-change-[background-color,border-color,box-shadow,backdrop-filter] lg:border border-white/20 bg-gradient-to-r from-[rgba(249,250,247,0.12)] to-[rgba(249,250,247,0.18)] lg:shadow-[0_2px_6px_0_rgba(0,0,0,0.15)] backdrop-blur-[9px]"
       >
         <div className="flex gap-6 items-center px-5 py-3 lg:px-3 lg:py-2 w-full justify-between">
           {/* Brand Logo */}
           <Link href="/" className="group">
             <div
-              className={`relative w-[34px] h-[34px] transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] flex-shrink-0 overflow-hidden rounded-lg border ${theme === "dark" ? "border-background/20" : "border-[#9c7238]/20"}`}
+              className={`relative w-[2.125rem] h-[2.125rem] transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] flex-shrink-0 overflow-hidden rounded-lg border ${theme === "dark" ? "border-background/20" : "border-[#9c7238]/20"}`}
             >
               <Image
                 src={"/assets/images/logo/logo.png"}
@@ -66,7 +66,7 @@ export const Navbar: React.FC = () => {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`font-medium text-[15px] leading-[140%] tracking-[-0.15px] hover:opacity-80 transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${theme === "dark" ? "text-background" : "text-foreground"}`}
+                className={`font-medium text-[0.9375rem] leading-[140%] tracking-[-0.009375rem] hover:opacity-80 transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${theme === "dark" ? "text-background" : "text-foreground"}`}
               >
                 {item.label}
               </Link>
@@ -78,7 +78,7 @@ export const Navbar: React.FC = () => {
             <div className="flex gap-2 items-center">
               <Link href="/contact">
                 <button
-                  className="inline-flex items-center justify-center whitespace-nowrap font-medium outline-none focus-visible:ring-[3px] focus-visible:ring-white/20 cursor-pointer group border border-[#282834] rounded-lg gap-2 text-white hover:opacity-90 transition-opacity h-9 px-4 py-2 pr-3 text-[15px] tracking-[-0.15px] leading-[140%] before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white/.5)_50%,transparent_75%,transparent_100%)] dark:before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] relative before:bg-no-repeat before:[transition:background-position_0s_ease] hover:before:bg-[position:-100%_0,0_0] hover:before:duration-[1500ms]"
+                  className="inline-flex items-center justify-center whitespace-nowrap font-medium outline-none focus-visible:ring-[3px] focus-visible:ring-white/20 cursor-pointer group border border-[#282834] rounded-lg gap-2 text-white hover:opacity-90 transition-opacity h-9 px-4 py-2 pr-3 text-[0.9375rem] tracking-[-0.009375rem] leading-[140%] before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white/.5)_50%,transparent_75%,transparent_100%)] dark:before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] relative before:bg-no-repeat before:[transition:background-position_0s_ease] hover:before:bg-[position:-100%_0,0_0] hover:before:duration-[1500ms]"
                   style={{
                     background:
                       "linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.12) 100%), #1F1F29",
@@ -87,7 +87,7 @@ export const Navbar: React.FC = () => {
                   enter the chat
                   {/* Micro Arrow Badge */}
                   <div
-                    className="flex items-center justify-center w-3 h-4 pl-[2.5px] pr-[1.5px] py-0 rounded-[50px] border leading-none"
+                    className="flex items-center justify-center w-3 h-4 pl-[0.15625rem] pr-[0.09375rem] py-0 rounded-[3.125rem] border leading-none"
                     style={{
                       borderColor: "rgba(255,255,255,0.24)",
                       background:
@@ -96,7 +96,7 @@ export const Navbar: React.FC = () => {
                     }}
                   >
                     <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
-                      <div className="relative overflow-hidden flex items-center justify-center w-[7px] h-[10px]">
+                      <div className="relative overflow-hidden flex items-center justify-center w-[0.4375rem] h-[0.625rem]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="7"

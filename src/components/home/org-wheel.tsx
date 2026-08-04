@@ -140,7 +140,7 @@ const FlowingParticles: React.FC<{
 
 /** Small status indicator badge sitting above nodes */
 const StatusBadge: React.FC<StatusBadgeProps> = ({ yellow, blue, green }) => (
-  <div className="absolute -top-3 sm:-top-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1 sm:gap-1.5 px-1 sm:px-2 py-0.5 rounded-sm sm:rounded-md bg-[#F5F5F2]/95 border border-black/10 shadow-sm text-[8px] sm:text-[10px] font-mono text-stone-700 pointer-events-none z-20">
+  <div className="absolute -top-3 sm:-top-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1 sm:gap-1.5 px-1 sm:px-2 py-0.5 rounded-sm sm:rounded-md bg-[#F5F5F2]/95 border border-black/10 shadow-sm text-[0.5rem] sm:text-[0.625rem] font-mono text-stone-700 pointer-events-none z-20">
     <span className="flex items-center gap-0.5">
       <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-amber-400 inline-block" />
       {yellow}
@@ -193,7 +193,7 @@ export const OrgWheel: React.FC = () => {
   const RADIUS = 184;
 
   return (
-    <div className="orch-frame mt-8 md:mt-16 relative flex flex-col overflow-hidden w-full max-w-[1080px] mx-auto min-h-[400px] md:min-h-[600px] rounded-2xl border border-gray-200 shadow-lg">
+    <div className="orch-frame mt-8 md:mt-16 relative flex flex-col overflow-hidden w-full max-w-[67.5rem] mx-auto min-h-[25rem] md:min-h-[37.5rem] rounded-2xl border border-gray-200 shadow-lg">
       {/* Header Bar */}
       <div className="absolute top-0 left-0 w-full h-fit flex justify-between px-4 py-2 border-b border-gray-200 bg-white z-10">
         <div className="flex items-center gap-2">
@@ -236,7 +236,7 @@ export const OrgWheel: React.FC = () => {
 
       <div className="flex flex-col lg:flex-row justify-between h-full pt-12 pb-4 lg:pb-8 bg-[#F4F4F0] px-4 text-stone-800 antialiased overflow-hidden gap-6 lg:gap-0">
         {/* Left: Responsive constraints container for the Wheel */}
-        <div className="relative w-full max-w-[320px] sm:max-w-[420px] md:max-w-[550px] lg:max-w-[600px] aspect-square select-none mx-auto lg:mx-0 lg:ml-2">
+        <div className="relative w-full max-w-[20rem] sm:max-w-[26.25rem] md:max-w-[34.375rem] lg:max-w-[37.5rem] aspect-square select-none mx-auto lg:mx-0 lg:ml-2">
           {/* --- SVG Background: Rings, Spokes, Connection Dots --- */}
           <svg
             viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
@@ -309,7 +309,7 @@ export const OrgWheel: React.FC = () => {
                 alt="Logo"
                 width={60}
                 height={30}
-                className="h-auto object-contain w-8 sm:w-12 md:w-[60px]"
+                className="h-auto object-contain w-8 sm:w-12 md:w-[3.75rem]"
               />
             </div>
 
@@ -342,7 +342,7 @@ export const OrgWheel: React.FC = () => {
                 {dept.status && <StatusBadge {...dept.status} />}
 
                 {/* Department Card */}
-                <div className="w-[72px] sm:w-[84px] md:w-[92px] py-1.5 font-semibold sm:py-2 md:py-2.5 px-1 sm:px-2 rounded-md border border-black/10 bg-[#FBFBF8] shadow-[0_2px_8px_rgba(0,0,0,0.04)] text-center text-[9px] sm:text-[10px] md:text-xs text-stone-700 tracking-wide font-normal hover:border-stone-400 hover:shadow-md transition-all cursor-pointer leading-tight sm:leading-normal">
+                <div className="w-[4.5rem] sm:w-[5.25rem] md:w-[5.75rem] py-1.5 font-semibold sm:py-2 md:py-2.5 px-1 sm:px-2 rounded-md border border-black/10 bg-[#FBFBF8] shadow-[0_2px_8px_rgba(0,0,0,0.04)] text-center text-[0.5625rem] sm:text-[0.625rem] md:text-xs text-stone-700 tracking-wide font-normal hover:border-stone-400 hover:shadow-md transition-all cursor-pointer leading-tight sm:leading-normal">
                   {dept.label}
                 </div>
 
@@ -382,7 +382,7 @@ export const OrgWheel: React.FC = () => {
               <h3 className="text-sm font-medium text-stone-800 leading-tight">
                 The Clout Company
               </h3>
-              <p className="text-[11px] text-stone-500">
+              <p className="text-[0.6875rem] text-stone-500">
                 by Crescent Media Group
               </p>
             </div>
@@ -395,13 +395,13 @@ export const OrgWheel: React.FC = () => {
                 key={idx}
                 className="flex flex-col gap-1.5 w-full self-end animate-fade-in-up"
               >
-                <div className="w-fit px-2.5 py-1.5 font-semibold bg-white border border-stone-100 rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.02)] text-[13px] md:text-sm text-stone-600 leading-relaxed">
+                <div className="w-fit px-2.5 py-1.5 font-semibold bg-white border border-stone-100 rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.02)] text-[0.8125rem] md:text-sm text-stone-600 leading-relaxed">
                   <span>{msg.title}</span>
                 </div>
 
                 <div className="w-[80%] self-start flex gap-1">
-                  <span className="text-[12px] font-semibold">.::</span>{" "}
-                  <p className="text-[12px] font-normal text-foreground ml-1">
+                  <span className="text-[0.75rem] font-semibold">.::</span>{" "}
+                  <p className="text-[0.75rem] font-normal text-foreground ml-1">
                     {msg.text}
                   </p>
                 </div>

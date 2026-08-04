@@ -69,22 +69,22 @@ function Content({ log }: { log: LogDetail }) {
 
   return (
     <div className="w-full">
-      <section className="2xl:pb-[220px] xl:pb-[200px] md:pb-[160px] pb-[120px] 2xl:pt-[220px] xl:pt-[200px] md:pt-[160px] pt-[120px] w-full mx-auto px-5 sm:px-25">
-        <div className="w-full mx-auto max-w-[1280px]">
+      <section className="2xl:pb-[13.75rem] xl:pb-[12.5rem] md:pb-[10rem] pb-[7.5rem] 2xl:pt-[13.75rem] xl:pt-[12.5rem] md:pt-[10rem] pt-[7.5rem] w-full mx-auto px-5 sm:px-25">
+        <div className="w-full mx-auto max-w-[80rem]">
           <div className="px-4 pb-8 sm:pb-12 mx-auto w-full max-w-4xl flex flex-col items-center gap-6 sm:gap-10">
             <Link
               href={"/log"}
-              className="font-medium text-[14px] text-foreground/60 underline"
+              className="font-medium text-[0.875rem] text-foreground/60 underline"
             >
               Go Back
             </Link>
 
             <div className="">
-              <h1 className="text-center text-[32px] sm:text-[48px] lg:text-[54px] 3xl:text-[64px] leading-[110%] tracking-[-1.08px] font-normal mb-6 md:mb-4 font-serif">
+              <h1 className="text-center text-[2rem] sm:text-[3rem] lg:text-[3.375rem] 3xl:text-[4rem] leading-[110%] tracking-[-0.0675rem] font-normal mb-6 md:mb-4 font-serif">
                 {log.title}
               </h1>
 
-              <div className="flex items-center justify-center gap-3 text-[16px] font-medium text-foreground/90">
+              {/* <div className="flex items-center justify-center gap-3 text-[1rem] font-medium text-foreground/90">
                 <span>
                   Published On {moment(log.publishedAt).format("Do MMMM, YYYY")}
                 </span>
@@ -92,7 +92,7 @@ function Content({ log }: { log: LogDetail }) {
                 <span>
                   {log.categories?.map((category) => category.title).join(", ")}
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -111,7 +111,7 @@ function Content({ log }: { log: LogDetail }) {
               </div>
             </div>
 
-            <div className="post-content max-w-[750px] mx-auto prose text-neutral-900 prose-p:text-[15px] prose-p:tracking-[-0.15px] sm:prose-p:text-[18px] sm:prose-p:tracking-[-0.18px] prose-p:mb-6 prose-h2:font-medium prose-h2:text-2xl prose-h2:mb-4 prose-h2:mt-8 sm:prose-h2:mt-14 lg:prose-h2:mt-16 2xl:prose-h2:mt-20 prose-h3:font-medium prose-h3:text-lg prose-h3:mb-4 prose-h3:mt-8 sm:prose-h3:mt-14 lg:prose-h3:mt-16 2xl:prose-h3:mt-20 prose-a:text-neutral-700 prose-a:no-underline prose-a:border-b prose-a:border-neutral-300 prose-a:font-normal prose-a:leading-[130%] prose-a:transition-all prose-a:duration-200 prose-a:hover:text-neutral-900 prose-a:hover:border-neutral-900 prose-ol:text-neutral-900 prose-ol:pl-2 prose-li:mt-0 prose-li:mb-6 prose-li:text-[15px] prose-li:tracking-[-0.15px] prose-li:leading-[150%] sm:prose-li:text-[18px] sm:prose-li:tracking-[-0.18px] prose-strong:font-medium prose-img:my-8 sm:prose-img:my-14 lg:prose-img:my-16 2xl:prose-img:my-20 prose-img:shadow-[0_2px_2px_0_rgba(0,0,0,0.06),0_6px_6px_0_rgba(0,0,0,0),0_0_0_5px_rgba(0,0,0,0.04)] prose-img:rounded-lg md:prose-img:rounded-2xl">
+            <div className="post-content max-w-[46.875rem] mx-auto prose text-neutral-900 prose-p:text-[0.9375rem] prose-p:tracking-[-0.009375rem] sm:prose-p:text-[1.125rem] sm:prose-p:tracking-[-0.01125rem] prose-p:mb-6 prose-h2:font-medium prose-h2:text-2xl prose-h2:mb-4 prose-h2:mt-8 sm:prose-h2:mt-14 lg:prose-h2:mt-16 2xl:prose-h2:mt-20 prose-h3:font-medium prose-h3:text-lg prose-h3:mb-4 prose-h3:mt-8 sm:prose-h3:mt-14 lg:prose-h3:mt-16 2xl:prose-h3:mt-20 prose-a:text-neutral-700 prose-a:no-underline prose-a:border-b prose-a:border-neutral-300 prose-a:font-normal prose-a:leading-[130%] prose-a:transition-all prose-a:duration-200 prose-a:hover:text-neutral-900 prose-a:hover:border-neutral-900 prose-ol:text-neutral-900 prose-ol:pl-2 prose-li:mt-0 prose-li:mb-6 prose-li:text-[0.9375rem] prose-li:tracking-[-0.009375rem] prose-li:leading-[150%] sm:prose-li:text-[1.125rem] sm:prose-li:tracking-[-0.01125rem] prose-strong:font-medium prose-img:my-8 sm:prose-img:my-14 lg:prose-img:my-16 2xl:prose-img:my-20 prose-img:shadow-[0_2px_2px_0_rgba(0,0,0,0.06),0_6px_6px_0_rgba(0,0,0,0),0_0_0_5px_rgba(0,0,0,0.04)] prose-img:rounded-lg md:prose-img:rounded-2xl">
               <PortableText value={log.content} />
             </div>
 
@@ -119,7 +119,7 @@ function Content({ log }: { log: LogDetail }) {
               <div className="w-full h-px bg-foreground/10"></div>
 
               <div className="flex flex-col gap-3">
-                <p className="text-[18px] font-medium">Share this log</p>
+                <p className="text-[1.125rem] font-medium">Share this log</p>
 
                 <div className="flex items-center gap-2.5">
                   <button
@@ -174,7 +174,7 @@ function Content({ log }: { log: LogDetail }) {
                         "copy",
                       )
                     }
-                    className="py-1.5 px-2 text-[14px] font-medium rounded-lg bg-[#f8f9f5] border border-[#e8ece0] flex items-center gap-1"
+                    className="cursor-pointer py-1.5 px-2 text-[0.875rem] font-medium rounded-lg bg-[#f8f9f5] border border-[#e8ece0] flex items-center gap-1"
                   >
                     <span>{copied ? "Copied!" : "Copy link"}</span>{" "}
                     <svg

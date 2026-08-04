@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 function Machine() {
   return (
     <main className="w-full h-full bg-[#000] text-background">
-      <section className="2xl:pb-[200px] xl:pb-[180px] md:pb-[140px] pb-[120px] px-4 w-full min-h-screen flex flex-col max-w-[640px] mx-auto">
+      <section className="2xl:pb-[12.5rem] xl:pb-[11.25rem] md:pb-[8.75rem] pb-[7.5rem] px-4 w-full min-h-screen flex flex-col max-w-[40rem] mx-auto">
         <div className="flex-1 pt-40 py-12 px-4 md:px-2 lg:px-0 flex flex-col gap-4">
           <div className="">
             <Image

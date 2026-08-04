@@ -38,7 +38,7 @@ const Card = ({ item }: { item: LogListItem }) => {
             <h3 className="text-center text-2xl font-medium text-background">
               {item.title}
             </h3>
-            <p className="text-[12px] text-background/80">
+            <p className="text-[0.75rem] text-background/80">
               Published On {moment(item.publishedAt).format("Do MMM, YYYY")}
             </p>
           </div>
@@ -56,9 +56,9 @@ function LogList({ logs }: { logs: LogListItem[] }) {
     >
       <div className="w-full">
         <div className="sm:px-4 mx-auto w-full max-w-7xl">
-          <div className="flex items-center gap-4 text-[16px] font-medium">
-            <p className="text-[16px] font-medium">
-              Epiphanies amid execution {logs.length}
+          <div className="flex items-center gap-4 text-[1rem] font-medium">
+            <p className="text-[1rem] font-medium">
+              Epiphanies amid execution ({logs.length})
             </p>
           </div>
 

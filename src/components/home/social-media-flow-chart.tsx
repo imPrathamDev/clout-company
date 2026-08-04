@@ -386,9 +386,9 @@ function NodeCard({
   return (
     <div
       ref={nodeRef}
-      className={`absolute flex items-center justify-center rounded-[10px] bg-background/90 ${
+      className={`absolute flex items-center justify-center rounded-[0.625rem] bg-background/90 ${
         title
-          ? "py-2 pl-2 pr-3.5 gap-2.5 w-max min-w-[140px]" // w-max ensures it fits the content
+          ? "py-2 pl-2 pr-3.5 gap-2.5 w-max min-w-[8.75rem]" // w-max ensures it fits the content
           : "p-2 w-12 h-12 sm:w-14 sm:h-14 aspect-square" // explicitly makes the boxes perfectly square
       } shadow-[0_0_0_1px_#fff_inset,0_0_0_1px_rgba(0,0,0,0.08),0_0_20px_0_rgba(0,0,0,0.03),0_36px_28px_0_rgba(0,0,0,0.02),0_4px_4px_0_rgba(0,0,0,0.02)]`}
       style={{
@@ -411,7 +411,7 @@ function NodeCard({
       )}
 
       {title && (
-        <span className="font-serif whitespace-nowrap text-[14px] font-medium text-[rgba(32,32,32,0.85)]">
+        <span className="font-serif whitespace-nowrap text-[0.875rem] font-medium text-[rgba(32,32,32,0.85)]">
           {title}
         </span>
       )}
@@ -651,7 +651,7 @@ export default function AgencyFlowChart() {
       {/* Overflow text for small screens */}
       {PLATFORMS.length > visibleCount && (
         <div className="absolute -bottom-2 left-0 w-full text-center fade-in">
-          <p className="text-[13px] font-medium text-[rgba(32,32,32,0.5)]">
+          <p className="text-[0.8125rem] font-medium text-[rgba(32,32,32,0.5)]">
             + {PLATFORMS.length - visibleCount} more platforms available
           </p>
         </div>

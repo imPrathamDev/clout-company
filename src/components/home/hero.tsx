@@ -86,12 +86,12 @@ export const Hero: React.FC = () => {
               {/* Main Headline */}
               <h1
                 ref={textRef}
-                className="opacity-0 tracking-[-1.08px] home-hero-title font-serif text-background text-center relative z-10 font-normal max-w-[24ch] mx-auto pt-4 md:pt-10 text-[41px] sm:text-[49px] lg:text-[52px] 3xl:text-[57px] leading-[95%]"
+                className="opacity-0 tracking-[-0.0675rem] home-hero-title font-serif text-background text-center relative z-10 font-normal max-w-[24ch] mx-auto pt-4 md:pt-10 text-[2.5625rem] sm:text-[3.0625rem] lg:text-[3.25rem] 3xl:text-[3.5625rem] leading-[95%]"
                 style={{ textShadow: "0 0 4.978px rgba(255, 255, 255, 0.80)" }}
               >
                 The Clout Company
                 <br />
-                <span className="text-[26px] sm:text-[28px] lg:text-[36px] 3xl:text-[38px] flex items-center justify-center gap-4">
+                <span className="text-[1.625rem] sm:text-[1.75rem] lg:text-[2.25rem] 3xl:text-[2.375rem] flex items-center justify-center gap-4">
                   <span className="italic">by </span>
                   <span>Crescent Media Group</span>
                 </span>
@@ -201,10 +201,10 @@ export const Hero: React.FC = () => {
               <div className="sticky z-50 mb-4 ml-4 mr-4 md:mr-auto top-[calc(100vh-278px)] md:top-[calc(100vh-330px)] transition-opacity duration-300 ease-in-out">
                 <div className="p-5 lg:p-8 lg:pr-6 relative rounded-2xl backdrop-blur-[15px] border border-background/20 shadow-[0_2px_6px_0_rgba(0,0,0,0.15)] bg-linear-to-r from-foreground/10 via-foreground/5 to-foreground/5 max-w-125">
                   <div className="flex relative z-10 flex-col gap-4 items-start">
-                    <h2 className="font-medium font-serif text-[22px] sm:text-[28px] xl:text-[40px] leading-[120%] md:leading-[110%] tracking-[-0.44px] sm:tracking-[-0.56px] xl:tracking-[-0.8px] text-background max-w-[25ch] text-left mb-2">
+                    <h2 className="font-medium font-serif text-[1.375rem] sm:text-[1.75rem] xl:text-[2.5rem] leading-[120%] md:leading-[110%] tracking-[-0.0275rem] sm:tracking-[-0.035rem] xl:tracking-[-0.05rem] text-background max-w-[25ch] text-left mb-2">
                       The Distribution OS for Consumer Companies.
                     </h2>
-                    <p className="font-medium text-background text-[15px] leading-[140%] max-w-[42ch] tracking-[-0.15px]">
+                    <p className="font-medium text-background text-[0.9375rem] leading-[140%] max-w-[42ch] tracking-[-0.009375rem]">
                       The Clout Company engineers AI powered systems to enable
                       distribution at internet scale from first launch to global
                       adoption.
@@ -212,14 +212,14 @@ export const Hero: React.FC = () => {
 
                     {/* CTA Button */}
                     <Link href="/about" passHref>
-                      <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium outline-none cursor-pointer group transition-colors duration-200 rounded-none h-9 text-[15px] tracking-[-0.15px] leading-[140%] text-white p-0 mr-auto hover:text-white">
+                      <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium outline-none cursor-pointer group transition-colors duration-200 rounded-none h-9 text-[0.9375rem] tracking-[-0.009375rem] leading-[140%] text-white p-0 mr-auto hover:text-white">
                         <span className="flex items-center border-b transition-all duration-200 border-b-neutral-600 group-hover:border-b-neutral-400">
                           Learn our source code
                         </span>
 
                         {/* Custom Animated Arrow Badge */}
                         <div
-                          className="flex items-center justify-center w-3 h-4 pl-[2.5px] pr-[1.5px] py-0 rounded-[50px] border leading-none ml-1"
+                          className="flex items-center justify-center w-3 h-4 pl-[0.15625rem] pr-[0.09375rem] py-0 rounded-[3.125rem] border leading-none ml-1"
                           style={{
                             borderColor: "rgba(255,255,255,0.24)",
                             background:
