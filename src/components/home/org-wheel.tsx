@@ -366,7 +366,7 @@ export const OrgWheel: React.FC = () => {
         </div>
 
         {/* Right: Chat Section */}
-        <div className="relative z-100 rounded-xl lg:self-stretch w-full lg:w-[calc(100%-620px)] lg:max-w-[420px] h-[400px] lg:h-auto bg-white/60 backdrop-blur-sm flex flex-col border border-black/5 shadow-sm overflow-hidden mt-4 lg:mt-0 lg:mr-0">
+        <div className="relative z-100 rounded-xl lg:self-stretch w-full lg:w-[calc(100%-38.75rem)] lg:max-w-105 h-100 lg:h-auto bg-white/60 backdrop-blur-sm flex flex-col border border-black/5 shadow-sm overflow-hidden mt-4 lg:mt-0 lg:mr-0">
           {/* Chat Header */}
           <div className="px-4 py-3 border-b border-black/5 bg-white/80 flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg border border-stone-200 flex items-center justify-center shrink-0 overflow-clip">
