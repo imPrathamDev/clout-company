@@ -10,6 +10,14 @@ html {
   font-size: 85%;
 }
 
+/* Make font-size normal (100%) on mobile and tablet devices;
+   the 85% compact scale only applies on desktop (>= 1000px). */
+@media (max-width: 999px) {
+  html {
+    font-size: 100%;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
