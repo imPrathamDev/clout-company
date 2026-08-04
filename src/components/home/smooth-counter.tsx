@@ -10,7 +10,7 @@ interface CounterProps {
 }
 
 export const SmoothCounter: React.FC<CounterProps> = ({
-  initialValue = 159087463993,
+  initialValue = 15_908_746,
   incrementAmount = 36,
   duration = 8, // Increased from 3s to 8s for a much slower, smoother roll
   pauseDuration = 1, // Adds a 1-second pause between updates
