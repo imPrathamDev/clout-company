@@ -42,7 +42,7 @@ export const SmoothCounter: React.FC<CounterProps> = ({
   );
 
   return (
-    <p className="text-[12px] font-medium text-gray-500/70 text-center [font-variant-numeric:tabular-nums]">
+    <p className="text-[0.75rem] font-medium text-gray-500/70 text-center [font-variant-numeric:tabular-nums]">
       Over <span ref={numberRef}>{initialValue.toLocaleString("en-US")}</span>{" "}
       users acquired via Clout OS
     </p>

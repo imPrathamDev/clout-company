@@ -35,7 +35,7 @@ export const SegmentedProgressBar: React.FC<SegmentedProgressBarProps> = ({
   trigger = true,
   scrollStart,
   barHeight = "h-8",
-  gap = "gap-[2px]",
+  gap = "gap-[0.125rem]",
   containerWidth = "w-full",
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -103,7 +103,7 @@ export const SegmentedProgressBar: React.FC<SegmentedProgressBarProps> = ({
           <div
             key={index}
             // The segment now automatically takes up exactly 1 grid column
-            className={`relative overflow-hidden rounded-[1px] w-full ${barHeight} ${inactiveColor}`}
+            className={`relative overflow-hidden rounded-[0.0625rem] w-full ${barHeight} ${inactiveColor}`}
           >
             {isActiveSegment && (
               <div

@@ -79,14 +79,14 @@ const Card = ({ creator }: { creator: Creator }) => {
           height={80}
           className="size-10 object-cover rounded-full"
         />
-        <p className="text-[16px] font-medium whitespace-nowrap">
+        <p className="text-[1rem] font-medium whitespace-nowrap">
           {creator.name}
         </p>
       </div>
 
       {/* inset-0 + flex perfectly centers the content every time */}
       <div className="to-show absolute inset-0 flex items-center justify-center pointer-events-none">
-        <p className="text-[12px] font-medium flex items-center gap-1 whitespace-nowrap">
+        <p className="text-[0.75rem] font-medium flex items-center gap-1 whitespace-nowrap">
           View Video{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@ function Talents({ creators }: { creators: Creator[] }) {
   const marqueeRow2 = [...secondHalf, ...secondHalf];
 
   return (
-    <div className="relative z-10 mx-auto max-w-[1100px] px-6 flex flex-col items-center">
+    <div className="relative z-10 mx-auto max-w-[68.75rem] px-6 flex flex-col items-center">
       {/* Inject custom keyframes and hover state for the marquee */}
       <style>{`
         @keyframes marquee-left {
@@ -144,14 +144,14 @@ function Talents({ creators }: { creators: Creator[] }) {
       `}</style>
 
       <section className="flex flex-col items-center justify-center gap-8 pt-12 pb-12 w-full">
-        <h2 className="text-center m-0 text-[24px] min-[767px]:text-[28px] min-[1000px]:text-[36px] font-normal leading-[115%] mx-auto">
+        <h2 className="text-center m-0 text-[1.5rem] min-[767px]:text-[1.75rem] min-[1000px]:text-[2.25rem] font-normal leading-[115%] mx-auto">
           600+ live creators in
           <br />
           <span className="text-foreground/70">EMEA, APAC, LATAM and MENA</span>
         </h2>
 
         {/* Added 'marquee-container' class here for the hover logic */}
-        <div className="mt-8 md:mt-16 relative flex flex-col gap-4 overflow-hidden w-full max-w-[1080px] mx-auto py-4 marquee-container">
+        <div className="mt-8 md:mt-16 relative flex flex-col gap-4 overflow-hidden w-full max-w-[67.5rem] mx-auto py-4 marquee-container">
           {/* Left Gradient Fade */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-32 bg-gradient-to-r from-background to-transparent z-10" />
 

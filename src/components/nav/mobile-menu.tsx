@@ -107,7 +107,7 @@ function MobileMenu({
           <Link
             key={m.href}
             href={m.href}
-            className={`text-[56px] font-serif leading-[100%]`}
+            className={`text-[3.5rem] font-serif leading-[100%]`}
           >
             <span className="mobile-nav-item">{m.label}</span>
           </Link>

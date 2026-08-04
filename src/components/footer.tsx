@@ -51,7 +51,7 @@ function Footer() {
             className="object-contain"
           />
 
-          <h2 className="font-serif text-[32px] lg:text-[40px] xl:text-[48px] tracking-[-0.44px] md:tracking-[-0.8px] lg:tracking-[-0.96px] leading-[120%] md:leading-[110%] text-center mb-8 max-w-[24ch] mx-auto">
+          <h2 className="font-serif text-[2rem] lg:text-[2.5rem] xl:text-[3rem] tracking-[-0.0275rem] md:tracking-[-0.05rem] lg:tracking-[-0.06rem] leading-[120%] md:leading-[110%] text-center mb-8 max-w-[24ch] mx-auto">
             We're programming distribution for businesses that love building
           </h2>
         </div>
@@ -61,7 +61,7 @@ function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[13px] -tracking-wide font-medium hover:text-foreground/70 transition-colors duration-200"
+                className="text-[0.8125rem] -tracking-wide font-medium hover:text-foreground/70 transition-colors duration-200"
               >
                 {link.label}
               </Link>
@@ -77,34 +77,34 @@ function Footer() {
         {dividers.map((divide) => (
           <div key={divide.color}>
             <div
-              className="w-full h-[6px]"
+              className="w-full h-[0.375rem]"
               style={{
                 backgroundColor: divide.color,
               }}
             ></div>
-            <div className="w-full h-[2px] bg-background"></div>
+            <div className="w-full h-[0.125rem] bg-background"></div>
           </div>
         ))}
       </div>
       <div
-        className="relative h-[500px]"
+        className="relative h-[31.25rem]"
         style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
       >
-        <div className="relative h-[calc(100vh+500px)] -top-[100vh]">
+        <div className="relative h-[calc(100vh+31.25rem)] -top-[100vh]">
           <div
             data-navbar-theme="dark"
-            className="h-[500px] sticky top-[calc(100vh-500px)]"
+            className="h-[31.25rem] sticky top-[calc(100vh-31.25rem)]"
           >
             <section className="relative h-full w-full overflow-hidden">
               <div className="absolute w-screen h-full z-10 footer-gradient"></div>
-              <div className="max-w-[1280px] mx-auto px-5 pb-5 absolute z-10 bottom-0 left-0 right-0 flex flex-col-reverse sm:flex-row justify-between items-center">
+              <div className="max-w-[80rem] mx-auto px-5 pb-5 absolute z-10 bottom-0 left-0 right-0 flex flex-col-reverse sm:flex-row justify-between items-center">
                 <div className="flex gap-1 text-center md:text-left">
-                  <span className="font-medium text-[13px] tracking-[-0.13px] leading-[130%] text-background">
+                  <span className="font-medium text-[0.8125rem] tracking-[-0.008125rem] leading-[130%] text-background">
                     © The Clout Company by Crescent 2026
                   </span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <span className="font-medium text-[13px] tracking-[-0.13px] leading-[130%] text-background">
+                  <span className="font-medium text-[0.8125rem] tracking-[-0.008125rem] leading-[130%] text-background">
                     All Right Reserved.
                   </span>
                 </div>

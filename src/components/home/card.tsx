@@ -155,7 +155,7 @@ export const BookCard: React.FC<BookCardProps> = ({
       <div
         ref={cardWrapperRef}
         onClick={!isOpen ? handleOpen : undefined}
-        className={`relative w-80 sm:w-96 h-[500px] cursor-pointer transition-shadow duration-300 [perspective:1500px] ${
+        className={`relative w-80 sm:w-96 h-[31.25rem] cursor-pointer transition-shadow duration-300 [perspective:1500px] ${
           isOpen ? "" : "hover:scale-[1.02]"
         }`}
       >
@@ -215,7 +215,7 @@ export const BookCard: React.FC<BookCardProps> = ({
           </div>
 
           {/* Cover Footer */}
-          <div className="flex justify-between items-center text-[11px] font-mono text-stone-400 pt-2">
+          <div className="flex justify-between items-center text-[0.6875rem] font-mono text-stone-400 pt-2">
             <span>{author}</span>
             <span>{year}</span>
           </div>
