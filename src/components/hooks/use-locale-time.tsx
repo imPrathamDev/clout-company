@@ -12,15 +12,12 @@ export interface LocaleTimeResult {
   hours: string;
   minutes: string;
   seconds: string;
-  period: string; // 'AM' | 'PM' or localized equivalent
+  period: string;
   timeOfDayKey: TimeOfDayKey;
   timeOfDayText: string;
-  timeZone: string; // Added so you can display the visitor's exact time zone if needed
+  timeZone: string;
 }
 
-/**
- * Helper to compute time of day based on a 24-hour hour integer.
- */
 const getTimeOfDay = (hours24: number): TimeOfDay => {
   if (hours24 >= 5 && hours24 < 12) {
     return { key: "morning", text: "Good Morning" };
@@ -33,27 +30,34 @@ const getTimeOfDay = (hours24: number): TimeOfDay => {
   }
 };
 
-/**
- * Custom React Hook to retrieve real-time components and time-of-day info.
- * Defaults to the visitor's current browser locale and time zone.
- */
+// A fixed, SSR-safe placeholder. Server and client MUST agree on this
+// so there is zero hydration mismatch on first paint.
+const DEFAULT_RESULT: LocaleTimeResult = {
+  formattedTime: "",
+  hours: "--",
+  minutes: "--",
+  seconds: "--",
+  period: "",
+  timeOfDayKey: "morning",
+  timeOfDayText: "Good Morning",
+  timeZone: "UTC",
+};
+
 export const useLocaleTime = (
   customLocale?: string,
   customTimeZone?: string,
 ): LocaleTimeResult => {
   const getTimeData = useCallback((): LocaleTimeResult => {
+    // Guard: only compute the real, visitor-specific value on the client.
+    if (typeof window === "undefined") {
+      return DEFAULT_RESULT;
+    }
+
     const now = new Date();
-
-    // 1. Get visitor defaults if no custom overrides are provided
-    // SSR safe check for navigator
-    const isClient = typeof window !== "undefined";
-    const locale = customLocale || (isClient ? navigator.language : "en-US");
-
-    // Automatically grabs the visitor's IANA time zone (e.g., 'America/New_York')
+    const locale = customLocale || navigator.language;
     const timeZone =
       customTimeZone || Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-    // 2. Format parts for 12-hour breakdown
     const formatter12 = new Intl.DateTimeFormat(locale, {
       hour: "2-digit",
       minute: "2-digit",
@@ -62,7 +66,6 @@ export const useLocaleTime = (
       timeZone,
     });
 
-    // 3. Format parts for 24-hour calculation (accurate time-of-day determination)
     const formatter24 = new Intl.DateTimeFormat("en-US", {
       hour: "2-digit",
       hour12: false,
@@ -99,10 +102,12 @@ export const useLocaleTime = (
     };
   }, [customLocale, customTimeZone]);
 
-  const [timeData, setTimeData] = useState<LocaleTimeResult>(getTimeData);
+  // Initialize with the fixed default — identical on server and client,
+  // so React's first hydration pass matches exactly.
+  const [timeData, setTimeData] = useState<LocaleTimeResult>(DEFAULT_RESULT);
 
   useEffect(() => {
-    // Initial set in case of hydration mismatches
+    // Runs client-only, after hydration is already reconciled cleanly.
     setTimeData(getTimeData());
 
     const intervalId = setInterval(() => {
