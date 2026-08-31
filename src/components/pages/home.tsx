@@ -15,6 +15,7 @@ import { ClientLogo } from "@/sanity/queries/clinetsLogo";
 import { ArtifactCampaign } from "@/sanity/queries/artifactCampaign";
 import { Creator } from "@/sanity/queries/creators";
 import Talents from "../home/talents";
+import PRSection from "../home/pr";
 
 function HomePage({
   clientLogos,
@@ -35,6 +36,7 @@ function HomePage({
       <Artifacts artifactCampaigns={artifactCampaigns} />
       <Talents creators={creators} />
       <SocialPlatforms />
+      <PRSection />
       <WordSearchReveal />
       <Footer />
     </main>
