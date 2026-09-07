@@ -100,7 +100,7 @@ function Footer() {
               <div className="max-w-[80rem] mx-auto px-5 pb-5 absolute z-10 bottom-0 left-0 right-0 flex flex-col-reverse sm:flex-row justify-between items-center">
                 <div className="flex gap-1 text-center md:text-left">
                   <span className="font-medium text-[0.8125rem] tracking-[-0.008125rem] leading-[130%] text-background">
-                    © The Clout Company by Crescent 2026
+                    © The Clout Company by Cressayont Territories Pvt. Ltd. 2026
                   </span>
                 </div>
                 <div className="flex items-center gap-1">
