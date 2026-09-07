@@ -97,17 +97,17 @@ function Footer() {
           >
             <section className="relative h-full w-full overflow-hidden">
               <div className="absolute w-screen h-full z-10 footer-gradient"></div>
-              <div className="max-w-[80rem] mx-auto px-5 pb-5 absolute z-10 bottom-0 left-0 right-0 flex flex-col-reverse sm:flex-row justify-between items-center">
+              <div className="max-w-[80rem] mx-auto px-5 pb-5 absolute z-10 bottom-0 left-0 right-0 flex flex-col-reverse sm:flex-row justify-center items-center">
                 <div className="flex gap-1 text-center md:text-left">
                   <span className="font-medium text-[0.8125rem] tracking-[-0.008125rem] leading-[130%] text-background">
-                    © The Clout Company by Cressayont Territories Pvt. Ltd. 2026
+                    All Rights Reserved by Cressayont Territories Pvt. Ltd. 2026
                   </span>
                 </div>
-                <div className="flex items-center gap-1">
+                {/* <div className="flex items-center gap-1">
                   <span className="font-medium text-[0.8125rem] tracking-[-0.008125rem] leading-[130%] text-background">
                     All Right Reserved.
                   </span>
-                </div>
+                </div> */}
               </div>
 
               <div className="h-full w-full relative overflow-hidden">
