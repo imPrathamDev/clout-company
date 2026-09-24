@@ -4,6 +4,7 @@ import Hero from "../about/hero";
 import HeroDivider from "../home/hero-divider";
 import Content from "../about/content";
 import Footer from "../footer";
+import PRSection from "../about/pr";
 
 function AboutPage() {
   return (
@@ -12,6 +13,7 @@ function AboutPage() {
       <Hero />
       <HeroDivider />
       <Content />
+      <PRSection />
       <Footer />
     </main>
   );
