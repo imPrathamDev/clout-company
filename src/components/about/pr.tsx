@@ -13,9 +13,9 @@ const data = [
     siteName: "Silicon India",
   },
   {
-    text: "The Clout Company just proved that at agency scale, and it validates a thesis every operator in this industry needs to read twice.",
+    text: "What you need is a better system, not a bigger crew. The Clout Company just proved that at agency scale, and it validates a thesis every operator in this industry needs to read twice.",
     link: "https://demg.ai/blog/clout-company-zero-employees-multi-million-valuation/",
-    siteName: "Jeff Barnes, Founder (AIN)",
+    siteName: `Jeff Barnes, Founder, Angel Investors Network (AIN) & Author of "All hands on deck"`,
   },
 ];
 
@@ -39,7 +39,7 @@ function PRSection() {
             textShadow:
               "0 0 3px rgba(0, 0, 0, 0.08), 0 0.5px 0.5px rgba(0, 0, 0, 0.12)",
           }}
-          className="m-0 text-[32px] md:text-[48px] leading-[115%] tracking-[0.32px] text-center text-background"
+          className="m-0 text-[28px] md:text-[42px] leading-[115%] tracking-[0.32px] text-center text-background"
         >
           In the spotlight
         </h3>
@@ -55,15 +55,15 @@ function PRSection() {
               className="rounded-2xl p-6 bg-background flex flex-col gap-6 md:gap-8 justify-between"
             >
               <div className="space-y-3">
-                <p className="text-[20px] font-serif text-left">
-                  <span className="text-[23px]">“</span>
+                <p className="text-[18px] font-serif text-left">
+                  <span className="text-[21px]">“</span>
                   {pr.text}
-                  <span className="text-[23px]">”</span>
+                  <span className="text-[21px]">”</span>
                 </p>
               </div>
 
-              <div className="flex justify-between items-center">
-                <p className="text-sm md:text-base">- {pr.siteName}</p>
+              <div className="flex justify-between items-center gap-6">
+                <p className="text-xs md:text-sm">- {pr.siteName}</p>
 
                 <a target="_blank" href={pr.link}>
                   <button
