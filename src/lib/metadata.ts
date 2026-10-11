@@ -7,7 +7,8 @@ type RoutePath =
   | "/terms-and-conditions"
   | "/privacy-policy"
   | "/log"
-  | "/contact";
+  | "/contact"
+  | "/case-studies";
 
 export function getSiteMetadata(path: RoutePath): Metadata {
   const siteName = "The Clout Company";
@@ -122,6 +123,21 @@ export function getSiteMetadata(path: RoutePath): Metadata {
           url: `${baseUrl}/log`,
         },
       };
+    case "/case-studies":
+      return {
+        ...baseMetadata,
+        title: `Case Studies | ${siteName}`,
+        description:
+          "Explore case studies and records of products finding their users, from early growth to Series B and beyond.",
+        openGraph: {
+          ...baseMetadata.openGraph,
+          title: `Case Studies | ${siteName}`,
+          description:
+            "Explore case studies and records of products finding their users, from early growth to Series B and beyond.",
+          url: `${baseUrl}/case-studies`,
+        },
+      };
+
     default:
       return baseMetadata;
   }
