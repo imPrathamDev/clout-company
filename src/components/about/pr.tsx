@@ -41,7 +41,7 @@ function PRSection() {
           }}
           className="m-0 text-[28px] md:text-[42px] leading-[115%] tracking-[0.32px] text-center text-background"
         >
-          In the spotlight
+          In the news
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-14">

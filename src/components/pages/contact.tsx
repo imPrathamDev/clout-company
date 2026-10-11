@@ -117,7 +117,7 @@ function ContactPage() {
             }}
             className="mx-auto max-w-[22ch] text-3xl font-semibold leading-tight text-foreground md:text-4xl lg:text-[2.5rem]"
           >
-            Enter the chat
+            Contact Us
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base font-medium leading-relaxed text-foreground/80 md:text-lg">
             Brand or creator? Deploy your next growth cycle with us

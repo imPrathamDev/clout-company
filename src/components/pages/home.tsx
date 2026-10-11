@@ -28,7 +28,7 @@ function HomePage({
       <HeroDivider />
       <Clients clientLogos={clientLogos} />
       <Wheel />
-      <Artifacts artifactCampaigns={artifactCampaigns} />
+      {/* <Artifacts artifactCampaigns={artifactCampaigns} /> */}
       <Talents creators={creators} />
       <SocialPlatforms />
       <WordSearchReveal />

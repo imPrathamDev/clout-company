@@ -102,12 +102,20 @@ export const Hero: React.FC = () => {
                 <div className="p-5 lg:p-8 lg:pr-6 relative rounded-2xl backdrop-blur-[15px] border border-background/20 shadow-[0_2px_6px_0_rgba(0,0,0,0.15)] bg-linear-to-r from-foreground/10 via-foreground/5 to-foreground/5 max-w-125">
                   <div className="flex relative z-10 flex-col gap-4 items-start">
                     <h2 className="font-medium font-serif text-[1.375rem] sm:text-[1.75rem] xl:text-[2.5rem] leading-[120%] md:leading-[110%] tracking-[-0.0275rem] sm:tracking-[-0.035rem] xl:tracking-[-0.05rem] text-background max-w-[25ch] text-left mb-2">
-                      The Distribution OS for Consumer Companies.
+                      Make your product impossible to miss.
                     </h2>
                     <p className="font-medium text-background text-[0.9375rem] leading-[140%] max-w-[42ch] tracking-[-0.009375rem]">
-                      The Clout Company engineers AI powered systems to enable
-                      distribution at internet scale from first launch to global
-                      adoption.
+                      <span className="italic">
+                        Build global clout across the internet.
+                      </span>
+                      <br />
+                      <br />
+                      All platforms
+                      <br />
+                      All geographies
+                      <br />
+                      All Languages
+                      <br />
                     </p>
 
                     {/* CTA Button */}

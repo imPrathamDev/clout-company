@@ -33,7 +33,7 @@ function Artifacts({
                   "linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.12) 100%), #1F1F29",
               }}
             >
-              enter the chat
+              contact us
               {/* Micro Arrow Badge */}
               <div
                 className="flex items-center justify-center w-3 h-4 pl-[0.15625rem] pr-[0.09375rem] py-0 rounded-[3.125rem] border leading-none"
@@ -133,13 +133,13 @@ function Artifacts({
                   <div className="h-0 md:h-[2vh]"></div>
                   <Link href={"/contact"}>
                     <button
-              className="inline-flex items-center justify-center whitespace-nowrap font-medium outline-none focus-visible:ring-[3px] focus-visible:ring-white/20 cursor-pointer group border border-[#282834] rounded-lg gap-2 text-white hover:opacity-90 transition-opacity h-9 px-4 py-2 pr-3 text-[0.9375rem] tracking-[-0.009375rem] leading-[140%] before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white/.5)_50%,transparent_75%,transparent_100%)] dark:before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] relative before:bg-no-repeat before:[transition:background-position_0s_ease] hover:before:bg-[position:-100%_0,0_0] hover:before:duration-[1500ms]"
+                      className="inline-flex items-center justify-center whitespace-nowrap font-medium outline-none focus-visible:ring-[3px] focus-visible:ring-white/20 cursor-pointer group border border-[#282834] rounded-lg gap-2 text-white hover:opacity-90 transition-opacity h-9 px-4 py-2 pr-3 text-[0.9375rem] tracking-[-0.009375rem] leading-[140%] before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white/.5)_50%,transparent_75%,transparent_100%)] dark:before:bg-[linear-gradient(45deg,transparent_25%,theme(colors.white)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] relative before:bg-no-repeat before:[transition:background-position_0s_ease] hover:before:bg-[position:-100%_0,0_0] hover:before:duration-[1500ms]"
                       style={{
                         background:
                           "linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.12) 100%), #1F1F29",
                       }}
                     >
-                      enter the chat
+                      contact us
                       {/* Micro Arrow Badge */}
                       <div
                         className="flex items-center justify-center w-3 h-4 pl-[0.15625rem] pr-[0.09375rem] py-0 rounded-[3.125rem] border leading-none"
@@ -392,7 +392,9 @@ function Artifacts({
                                   key={s.label}
                                   className="flex items-center justify-between"
                                 >
-                                  <span className="text-[0.75rem]">{s.label}</span>
+                                  <span className="text-[0.75rem]">
+                                    {s.label}
+                                  </span>
                                   <span className="font-medium">{s.value}</span>
                                 </div>
                               ))}

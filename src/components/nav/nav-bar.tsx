@@ -84,7 +84,7 @@ export const Navbar: React.FC = () => {
                       "linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.12) 100%), #1F1F29",
                   }}
                 >
-                  enter the chat
+                  contact us
                   {/* Micro Arrow Badge */}
                   <div
                     className="flex items-center justify-center w-3 h-4 pl-[0.15625rem] pr-[0.09375rem] py-0 rounded-[3.125rem] border leading-none"
