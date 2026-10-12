@@ -27,6 +27,10 @@ function MobileMenu({
         label: "Source Code",
       },
       {
+        href: "/case-studies",
+        label: "Case Studies",
+      },
+      {
         href: "/log",
         label: "Logs",
       },

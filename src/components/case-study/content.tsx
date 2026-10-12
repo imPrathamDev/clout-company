@@ -1,14 +1,60 @@
 "use client";
 
 import { urlFor } from "@/sanity/lib/image";
-import { CaseStudy } from "@/sanity/queries/caseStudy";
+import { CaseStudy, StatItem } from "@/sanity/queries/caseStudy";
 import { PortableText, type PortableTextComponents } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
-import React, { Fragment, useCallback, useState } from "react";
-import { SegmentedProgressBar } from "../segmented-progress-bar";
+import { Fragment, useCallback, useState } from "react";
+import VideoEmbed from "./video-embed";
 
 type ShareAction = "twitter" | "linkedin" | "copy";
+
+function StatsRow({
+  primary,
+  secondary,
+  className = "",
+}: {
+  primary: StatItem;
+  secondary: StatItem[];
+  className?: string;
+}) {
+  return (
+    <div
+      className={`not-prose p-6 sm:p-8 w-full border-y border-gray-100 ${className}`}
+    >
+      <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start justify-center">
+        <div className="flex flex-col gap-1.5 shrink-0">
+          <p className="text-[0.75rem] text-foreground/60">{primary.label}</p>
+          <h2 className="text-[2.5rem] sm:text-6xl font-serif font-medium leading-none">
+            {primary.value}
+          </h2>
+        </div>
+
+        {secondary.length > 0 && (
+          <div className="hidden md:block w-px bg-foreground/10 self-stretch" />
+        )}
+
+        {secondary.map((stat, index) => (
+          <Fragment key={stat.label}>
+            <div className="flex flex-col gap-1.5 shrink-0">
+              <p className="text-[0.75rem] text-foreground/60">
+                {stat.label}
+              </p>
+              <h2 className="text-[2.5rem] sm:text-6xl font-serif font-medium leading-none">
+                {stat.value}
+              </h2>
+            </div>
+
+            {index !== secondary.length - 1 && (
+              <div className="hidden md:block w-px bg-foreground/10 self-stretch" />
+            )}
+          </Fragment>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const portableTextComponents: PortableTextComponents = {
   types: {
@@ -35,10 +81,11 @@ const portableTextComponents: PortableTextComponents = {
       if (!value?.asset?.url) return null;
       return (
         <span className="block my-8 sm:my-14">
-          {/* Natively hosted Sanity video asset — not a YouTube/Vimeo embed */}
+          {/* Natively hosted Sanity video asset — no network cost until played */}
           <video
             controls
             playsInline
+            preload="none"
             className="w-full rounded-lg md:rounded-2xl"
             src={value.asset.url}
           />
@@ -49,6 +96,17 @@ const portableTextComponents: PortableTextComponents = {
           )}
         </span>
       );
+    },
+    statsBlock: ({ value }) => (
+      <StatsRow
+        primary={value.primary}
+        secondary={value.secondary ?? []}
+        className="my-8 sm:my-14"
+      />
+    ),
+    videoEmbed: ({ value }) => {
+      if (!value?.url) return null;
+      return <VideoEmbed url={value.url} caption={value.caption} />;
     },
   },
 };
@@ -144,39 +202,11 @@ function Content({ caseStudy }: { caseStudy: CaseStudy }) {
 
           <div className="px-0 md:px-25">
             {/* Stats */}
-            <div className="mb-10 sm:mb-15 md:mb-15 lg:mb-20 xl:mb-25 p-6 sm:p-8 w-full border-y border-gray-100">
-              <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start justify-center">
-                <div className="flex flex-col gap-1.5 shrink-0">
-                  <p className="text-[0.75rem] text-foreground/60">
-                    {caseStudy.stats.primary.label}
-                  </p>
-                  <h2 className="text-[2.5rem] sm:text-6xl font-serif font-medium leading-none">
-                    {caseStudy.stats.primary.value}
-                  </h2>
-                </div>
-
-                <div className="hidden md:block w-px bg-foreground/10 self-stretch" />
-
-                {caseStudy.stats.secondary.map((stat, index) => (
-                  <Fragment key={stat.label}>
-                    <div className="flex flex-col gap-1.5 shrink-0">
-                      <p className="text-[0.75rem] text-foreground/60">
-                        {stat.label}
-                      </p>
-                      <h2 className="text-[2.5rem] sm:text-6xl font-serif font-medium leading-none">
-                        {stat.value}
-                      </h2>
-                    </div>
-
-                    {index !== caseStudy.stats.secondary.length - 1 && (
-                      <div className="hidden md:block w-px bg-foreground/10 self-stretch" />
-                    )}
-                  </Fragment>
-                ))}
-                {/* <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 flex-1 w-full">
-                </div> */}
-              </div>
-            </div>
+            <StatsRow
+              primary={caseStudy.stats.primary}
+              secondary={caseStudy.stats.secondary}
+              className="mb-10 sm:mb-15 md:mb-15 lg:mb-20 xl:mb-25"
+            />
 
             <div className="post-content max-w-[46.875rem] mx-auto prose text-neutral-900 prose-p:text-[0.9375rem] prose-p:tracking-[-0.009375rem] sm:prose-p:text-[1.125rem] sm:prose-p:tracking-[-0.01125rem] prose-p:mb-6 prose-h2:font-medium prose-h2:text-2xl prose-h2:mb-4 prose-h2:mt-8 sm:prose-h2:mt-14 lg:prose-h2:mt-16 2xl:prose-h2:mt-20 prose-h3:font-medium prose-h3:text-lg prose-h3:mb-4 prose-h3:mt-8 sm:prose-h3:mt-14 lg:prose-h3:mt-16 2xl:prose-h3:mt-20 prose-h4:font-medium prose-h4:text-base prose-h4:mb-3 prose-h4:mt-6 prose-blockquote:font-normal prose-blockquote:not-italic prose-a:text-neutral-700 prose-a:no-underline prose-a:border-b prose-a:border-neutral-300 prose-a:font-normal prose-a:leading-[130%] prose-a:transition-all prose-a:duration-200 prose-a:hover:text-neutral-900 prose-a:hover:border-neutral-900 prose-ol:text-neutral-900 prose-ol:pl-2 prose-li:mt-0 prose-li:mb-6 prose-li:text-[0.9375rem] prose-li:tracking-[-0.009375rem] prose-li:leading-[150%] sm:prose-li:text-[1.125rem] sm:prose-li:tracking-[-0.01125rem] prose-strong:font-medium prose-img:my-8 sm:prose-img:my-14 lg:prose-img:my-16 2xl:prose-img:my-20 prose-img:shadow-[0_2px_2px_0_rgba(0,0,0,0.06),0_6px_6px_0_rgba(0,0,0,0),0_0_0_5px_rgba(0,0,0,0.04)] prose-img:rounded-lg md:prose-img:rounded-2xl">
               <PortableText

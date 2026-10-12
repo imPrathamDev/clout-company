@@ -199,6 +199,122 @@ export default defineType({
             }),
           },
         },
+
+        // Embedded video from YouTube or Instagram (lazy-loaded on the frontend)
+        {
+          type: "object",
+          name: "videoEmbed",
+          title: "Embedded Video (YouTube / Instagram)",
+          fields: [
+            defineField({
+              name: "url",
+              title: "Video URL",
+              type: "url",
+              description:
+                "Paste a YouTube (youtube.com / youtu.be) or Instagram (instagram.com/p, /reel(s), /tv) link.",
+              validation: (Rule) =>
+                Rule.required()
+                  .uri({ scheme: ["https", "http"] })
+                  .custom((value) => {
+                    if (!value) return true;
+                    const isSupported =
+                      /(?:youtube\.com|youtu\.be)/.test(value) ||
+                      /instagram\.com\/(?:[^/]+\/)?(p|reels?|tv)\//.test(
+                        value,
+                      );
+                    return isSupported
+                      ? true
+                      : "Only YouTube or Instagram post/reel links are supported.";
+                  }),
+            }),
+            defineField({ name: "caption", title: "Caption", type: "string" }),
+          ],
+          preview: {
+            select: { title: "url", subtitle: "caption" },
+            prepare: ({
+              title,
+              subtitle,
+            }: {
+              title?: string;
+              subtitle?: string;
+            }) => ({
+              title: `📺 ${subtitle || title || "Embedded Video"}`,
+            }),
+          },
+        },
+
+        // Inline stats row (same shape as the top-level Stats field)
+        {
+          type: "object",
+          name: "statsBlock",
+          title: "Stats Row",
+          fields: [
+            defineField({
+              name: "primary",
+              title: "Primary Stat",
+              type: "object",
+              validation: (Rule) => Rule.required(),
+              fields: [
+                defineField({
+                  name: "label",
+                  title: "Label",
+                  type: "string",
+                  validation: (Rule) => Rule.required(),
+                }),
+                defineField({
+                  name: "value",
+                  title: "Value",
+                  type: "string",
+                  validation: (Rule) => Rule.required(),
+                }),
+              ],
+            }),
+            defineField({
+              name: "secondary",
+              title: "Secondary Stats",
+              type: "array",
+              validation: (Rule) => Rule.min(0).max(6),
+              of: [
+                {
+                  type: "object",
+                  name: "statItem",
+                  fields: [
+                    defineField({
+                      name: "label",
+                      title: "Label",
+                      type: "string",
+                      validation: (Rule) => Rule.required(),
+                    }),
+                    defineField({
+                      name: "value",
+                      title: "Value",
+                      type: "string",
+                      validation: (Rule) => Rule.required(),
+                    }),
+                  ],
+                  preview: {
+                    select: { title: "label", subtitle: "value" },
+                  },
+                },
+              ],
+            }),
+          ],
+          preview: {
+            select: {
+              primaryLabel: "primary.label",
+              primaryValue: "primary.value",
+            },
+            prepare: ({
+              primaryLabel,
+              primaryValue,
+            }: {
+              primaryLabel?: string;
+              primaryValue?: string;
+            }) => ({
+              title: `📊 Stats: ${primaryValue ?? ""} ${primaryLabel ?? ""}`,
+            }),
+          },
+        },
       ],
     }),
     defineField({

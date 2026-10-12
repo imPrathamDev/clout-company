@@ -97,7 +97,25 @@ export interface CaseStudyVideoBlock {
   caption?: string;
 }
 
-export type CaseStudyBodyBlock = PortableTextBlock | CaseStudyVideoBlock;
+export interface CaseStudyStatsBlock {
+  _type: "statsBlock";
+  _key: string;
+  primary: StatItem;
+  secondary: StatItem[];
+}
+
+export interface CaseStudyVideoEmbedBlock {
+  _type: "videoEmbed";
+  _key: string;
+  url: string;
+  caption?: string;
+}
+
+export type CaseStudyBodyBlock =
+  | PortableTextBlock
+  | CaseStudyVideoBlock
+  | CaseStudyStatsBlock
+  | CaseStudyVideoEmbedBlock;
 
 export interface CaseStudy {
   _id: string;
