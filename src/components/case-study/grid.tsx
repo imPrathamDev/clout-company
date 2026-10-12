@@ -61,8 +61,8 @@ function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
 
             <div className="flex max-[400px]:flex-col gap-2 justify-center items-center mb-6">
               <p className="font-medium text-[1rem] tracking-[-0.009375rem] leading-[140%] text-foreground/80 text-center">
-                These logs document what worked, what didn't, and what we'll
-                build next.
+                Real-world examples of how we turned global distribution into
+                measurable growth for ambitious tech companies.
               </p>
             </div>
           </div>
@@ -108,15 +108,14 @@ function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
                       closeOnSelect
                       physics
                       drift={0.5}
-                      onSelect={(value, index) => console.log(value, index)}
                       folderColor="#3f3f46"
                       frontColor="#52525b"
                       paperColor="#f5f5f5"
                       itemColor="#f5f5f5"
                       itemTextColor="#18181b"
                       labelColor="#f5f5f5"
-                      width={200}
-                      height={148}
+                      width={180}
+                      height={138}
                       radius={14}
                       spread={180}
                       lift={26}
@@ -126,6 +125,7 @@ function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
                       openDuration={520}
                       stagger={45}
                       bounce={0.3}
+                      brandLogo={item.brand_logo}
                     />
                   </Link>
                 </div>

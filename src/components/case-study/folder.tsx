@@ -10,6 +10,7 @@ import React, {
   type PointerEvent,
 } from "react";
 import Matter from "matter-js";
+import Image from "next/image";
 const { Bodies, Body, Composite, Engine } = Matter;
 
 export type FolderFloatItem = string | { label: string; value: string };
@@ -44,6 +45,7 @@ export interface FolderFloatProps {
   stagger?: number;
   bounce?: number;
   className?: string;
+  brandLogo?: string;
 }
 
 type Entry = { label: string; value: string };
@@ -166,6 +168,7 @@ const FolderFloat: React.FC<FolderFloatProps> = ({
   stagger = 45,
   bounce = 0.3,
   className = "",
+  brandLogo,
 }) => {
   const [open, setOpen] = useState(defaultOpen);
   const [popped, setPopped] = useState(-1);
@@ -565,7 +568,16 @@ const FolderFloat: React.FC<FolderFloatProps> = ({
           className="absolute right-0 bottom-0 left-0 z-[2] box-border flex h-[76%] flex-col justify-end gap-[5px] px-4 py-3.5 [border-radius:var(--ff-r)] [background:linear-gradient(180deg,color-mix(in_srgb,var(--ff-front)_92%,#fff),var(--ff-front)_60%)] [color:var(--ff-label)] shadow-[0_-10px_24px_rgba(0,0,0,0.28)] [transform:perspective(600px)_rotateX(calc(-1*var(--ff-rest)))] [transform-origin:50%_100%] [transition:transform_var(--ff-open)_var(--ff-ease-out)] group-data-[open]:[transform:perspective(600px)_rotateX(calc(-1*var(--ff-angle)))] motion-reduce:group-data-[open]:[transform:perspective(600px)_rotateX(calc(-1*var(--ff-rest)))] motion-reduce:[transition:opacity_200ms_ease]"
           aria-hidden="true"
         >
-          <span className="text-[13px] font-medium">{label}</span>
+          {brandLogo ? (
+            <Image
+              src={brandLogo}
+              alt={label}
+              fill
+              className="brightness-0 invert object-contain"
+            />
+          ) : (
+            <span className="text-[13px] font-medium">{label}</span>
+          )}
           <span className="text-[11px] opacity-55">{sub}</span>
         </span>
         <button
