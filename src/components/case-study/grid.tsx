@@ -69,7 +69,7 @@ function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
 
           <div className="relative mx-auto w-full h-[21.875rem]">
             <Image
-              src={"/assets/images/footer/bg.png"}
+              src={"/assets/images/case-studies/bg.png"}
               alt={""}
               width={3840}
               height={300}
@@ -87,7 +87,7 @@ function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
               No case studies published yet.
             </p>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 sm:gap-x-12 gap-y-14 sm:gap-y-16 justify-center place-items-center w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-x-8 sm:gap-x-12 gap-y-14 sm:gap-y-16 justify-center place-items-center w-full max-w-[900px] mx-auto">
               {caseStudies.map((item) => (
                 <div key={item._id} className="group">
                   <Link href={"/case-study/" + item.slug}>

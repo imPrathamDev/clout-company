@@ -1,4 +1,5 @@
 import type { PortableTextBlock } from "sanity";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { groq } from "next-sanity";
 import { client } from "../lib/client";
 
@@ -15,6 +16,10 @@ const BODY_FIELDS = groq`
         mimeType,
         originalFilename
       }
+    },
+    _type == "videoEmbed" => {
+      ...,
+      "thumbnailLqip": thumbnail.asset->metadata.lqip
     }
   }
 `;
@@ -109,6 +114,8 @@ export interface CaseStudyVideoEmbedBlock {
   _key: string;
   url: string;
   caption?: string;
+  thumbnail?: SanityImageSource;
+  thumbnailLqip?: string;
 }
 
 export type CaseStudyBodyBlock =

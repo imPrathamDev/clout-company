@@ -227,6 +227,24 @@ export default defineType({
                       : "Only YouTube or Instagram post/reel links are supported.";
                   }),
             }),
+            defineField({
+              name: "thumbnail",
+              title: "Thumbnail",
+              type: "image",
+              options: { hotspot: true },
+              description:
+                "Poster image shown on the video card. Required for Instagram links (no public thumbnail is available); optional for YouTube, which falls back to its own thumbnail.",
+              validation: (Rule) =>
+                Rule.custom((value, context) => {
+                  const url = (context.parent as { url?: string } | undefined)
+                    ?.url;
+                  if (value || !url) return true;
+                  const isInstagram = /instagram\.com/.test(url);
+                  return isInstagram
+                    ? "Required for Instagram links."
+                    : true;
+                }),
+            }),
             defineField({ name: "caption", title: "Caption", type: "string" }),
           ],
           preview: {
