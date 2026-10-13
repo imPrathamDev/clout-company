@@ -58,9 +58,11 @@ function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
             <h1 className="text-pretty text-center text-[2rem] sm:text-[3rem] lg:text-[3.375rem] 3xl:text-[4rem] leading-[110%] tracking-[-0.0675rem] font-normal mb-6 md:mb-4 font-serif">
               Case Studies
             </h1>
+            {/*
 
+*/}
             <div className="flex max-[400px]:flex-col gap-2 justify-center items-center mb-6">
-              <p className="font-medium text-[1rem] tracking-[-0.009375rem] leading-[140%] text-foreground/80 text-center">
+              <p className="font-medium text-[1rem] tracking-[-0.009375rem] leading-[140%] text-foreground/80 text-center max-w-xl">
                 Real-world examples of how we turned global distribution into
                 measurable growth for ambitious tech companies.
               </p>
