@@ -35,7 +35,7 @@ function StatsRow({
     <div
       className={`not-prose p-6 sm:p-8 w-full border-y border-gray-100 ${className}`}
     >
-      <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start justify-center">
+      <div className="flex flex-row md:flex-row gap-8 md:gap-16 items-start justify-center">
         <div className="flex flex-col gap-1.5 shrink-0">
           <p className="text-[0.75rem] text-foreground/60">{primary.label}</p>
           <h2 className="text-[2.5rem] sm:text-6xl font-serif font-medium leading-none">
@@ -135,8 +135,7 @@ function Content({ caseStudy }: { caseStudy: CaseStudy }) {
   // the sticky rail instead of inline between paragraphs.
   const { textBody, videoBlocks } = useMemo(() => {
     const textBody: CaseStudyBodyBlock[] = [];
-    const videoBlocks: (CaseStudyVideoBlock | CaseStudyVideoEmbedBlock)[] =
-      [];
+    const videoBlocks: (CaseStudyVideoBlock | CaseStudyVideoEmbedBlock)[] = [];
 
     for (const block of caseStudy.body) {
       if (isVideoBlock(block)) {
@@ -220,7 +219,7 @@ function Content({ caseStudy }: { caseStudy: CaseStudy }) {
               Go Back
             </Link>
 
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex flex-col gap-4">
                 <h1 className="text-left text-[2rem] sm:text-[3rem] lg:text-[3.375rem] 3xl:text-[4rem] leading-[110%] tracking-[-0.0675rem] font-normal font-serif">
                   {caseStudy.title}
@@ -231,7 +230,7 @@ function Content({ caseStudy }: { caseStudy: CaseStudy }) {
                 </p>
               </div>
 
-              <div className="rounded-xl bg-[#f8f9f5] border border-[#e8ece0] size-20 sm:size-52 flex items-center justify-center p-4 shrink-0">
+              <div className="rounded-xl bg-[#f8f9f5] border border-[#e8ece0] w-full h-32 md:size-52 flex items-center justify-center p-4 shrink-0">
                 {caseStudy.brand_logo ? (
                   <Image
                     src={caseStudy.brand_logo}

@@ -89,7 +89,7 @@ function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
               No case studies published yet.
             </p>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-x-8 sm:gap-x-12 gap-y-14 sm:gap-y-16 justify-center place-items-center mx-auto max-w-[850px] w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-x-8 sm:gap-x-12 gap-y-14 sm:gap-y-16 justify-center place-items-center mx-auto max-w-[800px] w-full">
               {caseStudies.map((item) => (
                 <div
                   key={item._id}
@@ -132,7 +132,7 @@ function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
                       bounce={0.3}
                       brandLogo={item.brand_logo}
                     /> */}
-                    <div className="w-full h-48 rounded-2xl p-1 bg-gray-100">
+                    <div className="w-full h-40 rounded-2xl p-1 bg-gray-100">
                       <div className="w-full h-full rounded-xl bg-gray-200 p-4">
                         <div className="w-full h-full relative">
                           <Image

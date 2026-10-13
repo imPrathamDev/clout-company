@@ -11,6 +11,8 @@ import { ClientLogo } from "@/sanity/queries/clinetsLogo";
 import { ArtifactCampaign } from "@/sanity/queries/artifactCampaign";
 import { Creator } from "@/sanity/queries/creators";
 import Talents from "../home/talents";
+import Testimonials from "../home/testimonials";
+import TestimonialsMasonry from "../home/testimonials-masonry";
 
 function HomePage({
   clientLogos,
@@ -30,6 +32,8 @@ function HomePage({
       <Wheel />
       {/* <Artifacts artifactCampaigns={artifactCampaigns} /> */}
       <Talents creators={creators} />
+      {/* <Testimonials /> */}
+      <TestimonialsMasonry />
       <SocialPlatforms />
       <WordSearchReveal />
       <Footer />
