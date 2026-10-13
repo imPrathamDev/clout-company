@@ -69,7 +69,7 @@ function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
 
           <div className="relative mx-auto w-full h-[21.875rem]">
             <Image
-              src={"/assets/images/case-studies/bg.png"}
+              src={"/assets/images/case-studies/bg2.png"}
               alt={""}
               width={3840}
               height={300}
@@ -87,11 +87,14 @@ function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
               No case studies published yet.
             </p>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-x-8 sm:gap-x-12 gap-y-14 sm:gap-y-16 justify-center place-items-center w-full max-w-[900px] mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-x-8 sm:gap-x-12 gap-y-14 sm:gap-y-16 justify-center place-items-center w-full">
               {caseStudies.map((item) => (
-                <div key={item._id} className="group">
+                <div
+                  key={item._id}
+                  className="group w-full hover:scale-105 transition-transform duration-500"
+                >
                   <Link href={"/case-study/" + item.slug}>
-                    <FolderFloat
+                    {/* <FolderFloat
                       items={[
                         {
                           label: item.stats.primary.label,
@@ -126,7 +129,19 @@ function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
                       stagger={45}
                       bounce={0.3}
                       brandLogo={item.brand_logo}
-                    />
+                    /> */}
+                    <div className="w-full h-48 rounded-2xl p-1 bg-gray-100">
+                      <div className="w-full h-full rounded-xl bg-gray-200 p-2">
+                        <div className="w-full h-full relative">
+                          <Image
+                            src={item.brand_logo}
+                            fill
+                            className="object-contain"
+                            alt={item.campaign_name}
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </Link>
                 </div>
               ))}
