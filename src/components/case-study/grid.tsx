@@ -71,11 +71,11 @@ function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
 
           <div className="relative mx-auto w-full h-[21.875rem]">
             <Image
-              src={"/assets/images/case-studies/bg2.png"}
+              src={require("../../../public/assets/images/case-studies/bg.png")}
               alt={""}
               width={3840}
               height={300}
-              // placeholder="blur"
+              placeholder="blur"
               // blurDataURL={logs[0].mainImage?.asset.metadata.lqip}
               className="absolute inset-0 h-full w-full object-cover object-[50%_30%] rounded-t-2xl"
             />
