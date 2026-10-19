@@ -5,6 +5,8 @@ import Navbar from "../nav/nav-bar";
 import Footer from "../footer";
 import Script from "next/script";
 
+// test commmite
+
 const arr = [
   {
     icon: (
