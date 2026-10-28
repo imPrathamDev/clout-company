@@ -77,7 +77,7 @@ const portableTextComponents: PortableTextComponents = {
             alt={value.alt || ""}
             width={1400}
             height={900}
-            className="w-full h-auto rounded-lg md:rounded-2xl shadow-[0_2px_2px_0_rgba(0,0,0,0.06),0_6px_6px_0_rgba(0,0,0,0),0_0_0_5px_rgba(0,0,0,0.04)]"
+            className="w-[50%] h-auto rounded-lg md:rounded-2xl shadow-[0_2px_2px_0_rgba(0,0,0,0.06),0_6px_6px_0_rgba(0,0,0,0),0_0_0_5px_rgba(0,0,0,0.04)]"
           />
           {value.caption && (
             <span className="block text-center text-[0.8125rem] text-foreground/60 mt-3">
