@@ -35,10 +35,12 @@ function StatsRow({
     <div
       className={`not-prose p-6 sm:p-8 w-full border-y border-gray-100 ${className}`}
     >
-      <div className="flex flex-row md:flex-row gap-8 md:gap-16 items-start justify-center">
+      <div className="flex flex-row md:flex-row gap-4 md:gap-16 items-start justify-center">
         <div className="flex flex-col gap-1.5 shrink-0">
-          <p className="text-[0.75rem] text-foreground/60">{primary.label}</p>
-          <h2 className="text-[2.5rem] sm:text-6xl font-serif font-medium leading-none">
+          <p className="text-[0.6rem] md:text-[0.75rem] text-foreground/60">
+            {primary.label}
+          </p>
+          <h2 className="text-[2rem] md:text-6xl font-serif font-medium leading-none">
             {primary.value}
           </h2>
         </div>
@@ -50,8 +52,10 @@ function StatsRow({
         {secondary.map((stat, index) => (
           <Fragment key={stat.label}>
             <div className="flex flex-col gap-1.5 shrink-0">
-              <p className="text-[0.75rem] text-foreground/60">{stat.label}</p>
-              <h2 className="text-[2.5rem] sm:text-6xl font-serif font-medium leading-none">
+              <p className="text-[0.6rem] md:text-[0.75rem] text-foreground/60">
+                {stat.label}
+              </p>
+              <h2 className="text-[2rem] md:text-6xl font-serif font-medium leading-none">
                 {stat.value}
               </h2>
             </div>
