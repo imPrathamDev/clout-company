@@ -110,9 +110,9 @@ export const Hero: React.FC = () => {
                       </span>
                       <br />
                       <br />
-                      All platforms
+                      All Platforms
                       <br />
-                      All geographies
+                      All Geographies
                       <br />
                       All Languages
                       <br />
